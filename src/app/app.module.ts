@@ -1,0 +1,34 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { ChartsModule } from 'ng2-charts';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { AlumnosComponent } from './components/alumnos/alumnos.component';
+import { DocentesComponent } from './components/docentes/docentes.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    RegisterComponent,
+    LoginComponent,
+    AlumnosComponent,
+    DocentesComponent,
+    ProfileComponent,
+    DashboardComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ChartsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

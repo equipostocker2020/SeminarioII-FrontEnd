@@ -1,0 +1,95 @@
+<section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/login">Login </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/dashboard">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/alumnos">Alumnos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/docentes">Docentes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
+<br><br><br><br><br>
+<section>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2 class="text-center">VER / EDITAR PERFIL</h2>
+                    </div>
+                    <div class="body">
+                        <form id="form_validation" method="POST">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="nombre" required>
+                                    <label class="form-label">Nombre</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="apellido" required>
+                                    <label class="form-label">Apellido</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="direccion" required>
+                                    <label class="form-label">Direccion</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="email" class="form-control" name="email" required>
+                                    <label class="form-label">Email</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="dni" required>
+                                    <label class="form-label">DNI</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="cuit" required>
+                                    <label class="form-label">CUIT</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="date" class="form-control" id="start" name="fecha" value="2020-01-01" min="1900-01-01" max="2018-12-31" required autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="edad" required>
+                                    <label class="form-label">Edad</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
