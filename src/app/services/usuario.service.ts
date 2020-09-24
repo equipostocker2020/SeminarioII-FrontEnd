@@ -63,6 +63,23 @@ export class UsuarioService {
           return err.throw(err);
         }));
   }
+
+  crearUsuario(usuario: Usuario) {
+    const url = URL_SERVICIOS + '/usuario';
+    return this.http.post(url, usuario)
+      .pipe(
+        map((resp: any) => {
+          Swal.fire('Usuario creado', usuario.email, 'success');
+          return resp.usuario;
+        }),
+        catchError((err: any) => {
+          console.log(err);
+          // console.log(err.error.errors.message);
+          // const errores = err.error.errors.message;
+          Swal.fire('Error al registrarse', 'saasa', 'error');
+          return err.throw(err);
+        }));
+  }
 }
 
 
