@@ -21,9 +21,9 @@ export class UsuarioService {
   ) { }
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
-    localStorage.setItem('id', id);
+    localStorage.setItem('ID_USUARIO', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('usuario', JSON.stringify(usuario));
+    localStorage.setItem('Usuario', JSON.stringify(usuario));
     this.usuario = usuario;
     this.token = token;
   }
@@ -31,7 +31,7 @@ export class UsuarioService {
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+      this.usuario = JSON.parse(localStorage.getItem('Usuario'));
     } else {
       this.token = '';
       this.usuario = null;
@@ -44,7 +44,7 @@ export class UsuarioService {
 
   login(usuario: Usuario, recordar: boolean = false) {
     if (recordar) {
-      localStorage.setItem('email', usuario.email);
+      localStorage.setItem('email', usuario.EMAIL);
     } else {
       localStorage.removeItem('email');
     }
@@ -69,13 +69,11 @@ export class UsuarioService {
     return this.http.post(url, usuario)
       .pipe(
         map((resp: any) => {
-          Swal.fire('Usuario creado', usuario.email, 'success');
+          Swal.fire('Usuario creado', usuario.EMAIL, 'success');
           return resp.usuario;
         }),
         catchError((err: any) => {
           console.log(err);
-          // console.log(err.error.errors.message);
-          // const errores = err.error.errors.message;
           Swal.fire('Error al registrarse', 'saasa', 'error');
           return err.throw(err);
         }));

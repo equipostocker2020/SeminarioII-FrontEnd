@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.email = localStorage.getItem('email') || '';
-    if (this.email.length > 1) {
-      this.recuerdame = true;
-    }
+    // this.email = localStorage.getItem('email') || '';
+    // if (this.email.length > 1) {
+    //   this.recuerdame = true;
+    // }
   }
 
   ingresar(forma: NgForm) {
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     this.usuarioService.login(usuario, forma.value.recuerdame)
       .subscribe((resp: any) => {
         this.router.navigate(['/dashboard']);
+        console.log(resp)
       }, (err) => {
         console.log(err);
       });

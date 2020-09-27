@@ -50,7 +50,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-pink">
+                                <tr *ngFor="let usuario of usuarios">
+                                    <td>
+                                        {{usuario.NOMBRE}}
+                                    </td>
+                                    <td>
+                                        {{usuario.APELLIDO}}
+                                    </td>
+                                </tr>
+                                <!-- <tr class="bg-pink">
                                     <th scope="row">1</th>
                                     <td>Mark</td>
                                     <td>Otto</td>
@@ -79,7 +87,7 @@
                                     <td>Larry</td>
                                     <td>Kikat</td>
                                     <td>@lakitkat</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

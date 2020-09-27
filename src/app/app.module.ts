@@ -13,6 +13,9 @@ import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { DocentesComponent } from './components/docentes/docentes.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AulasComponent } from './components/aulas/aulas.component';
+import { MateriasComponent } from './components/materias/materias.component';
+import { EvaluacionesComponent } from './components/evaluaciones/evaluaciones.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AlumnosComponent,
     DocentesComponent,
     ProfileComponent,
-    DashboardComponent
+    DashboardComponent,
+    AulasComponent,
+    MateriasComponent,
+    EvaluacionesComponent
   ],
   imports: [
     BrowserModule,
