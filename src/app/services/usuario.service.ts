@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from '../config/config';
-import { filter, map, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import Swal from 'sweetalert2';
 import { Usuario } from '../models/usuario.models';
@@ -21,9 +21,9 @@ export class UsuarioService {
   ) { }
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
-    localStorage.setItem('ID_USUARIO', id);
+    localStorage.setItem('id_usuario', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('Usuario', JSON.stringify(usuario));
+    localStorage.setItem('usuario', JSON.stringify(usuario));
     this.usuario = usuario;
     this.token = token;
   }
@@ -52,10 +52,10 @@ export class UsuarioService {
     return this.http.post(url, usuario)
       .pipe(
         map((resp: any) => {
-          console.log(resp);
-          this.guardarStorage(resp.usuario.id_usuario, resp.token, resp.usuario);
           console.log('respuesta servicio :' + resp);
-          console.log(usuario);
+          console.log(resp.token)
+          console.log(resp.usuario);
+          this.guardarStorage(resp.usuario.id_usuario, resp.token, resp.usuario);
           return true;
         }),
         catchError((err: any) => {

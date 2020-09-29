@@ -21,6 +21,12 @@
                     <a class="nav-link" href="/docentes">Docentes</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/aulas">Aulas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/materias">Materias</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/profile">Perfil</a>
                 </li>
             </ul>
@@ -36,8 +42,16 @@
                     <div class="header">
                         <h2 class="text-center">
                             Listado de Docentes
-                            <small>Ver el listado de docentes registrados y las materias que dictan</small>
+                            <small>Ver el listado de docentes registrados anotados en sus respectivas materias</small>
                         </h2>
+                    </div>
+                    <div class="container text-center">
+                        <button class="btn btn-lg bg-cyan text-center m-1">
+                            <span class="input-group-addon">
+                                <i class="material-icons">control_point</i>
+                                Agregar Docente
+                            </span>
+                        </button>
                     </div>
                     <div class="body table-responsive">
                         <table class="table table-condensed">
@@ -46,11 +60,46 @@
                                     <th>#</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
+                                    <th>Direccion</th>
                                     <th>Email</th>
+                                    <th>DNI</th>
+                                    <th>Cuit/Cuil</th>
+                                    <th>Fecha de nacimiento</th>
+                                    <th>Edad</th>
+                                    <th>ROL</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-pink">
+                               <tr *ngFor="let usuario of usuarios">
+                                <td>
+                                    {{usuario.id_usuario}}
+                                </td>
+                                    <td>
+                                        {{usuario.nombre}}
+                                    </td>
+                                    <td>
+                                        {{usuario.apellido}}
+                                    </td>
+                                    <td>
+                                        {{usuario.direccion}}
+                                    </td>
+                                    <td>
+                                        {{usuario.email}}
+                                    </td>
+                                    <td>
+                                        {{usuario.cuit_cuil}}
+                                    </td>
+                                    <td>
+                                        {{usuario.fecha_nac}}
+                                    </td>
+                                    <td>
+                                        {{usuario.edad}}
+                                    </td>
+                                    <td>
+                                        {{usuario.rol}}
+                                    </td>
+                                </tr>
+                               <!--   <tr class="bg-pink">
                                     <th scope="row">1</th>
                                     <td>Mark</td>
                                     <td>Otto</td>
@@ -79,7 +128,7 @@
                                     <td>Larry</td>
                                     <td>Kikat</td>
                                     <td>@lakitkat</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
