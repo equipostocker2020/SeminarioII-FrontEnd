@@ -8,6 +8,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AulasComponent } from './components/aulas/aulas.component';
 import { MateriasComponent } from './components/materias/materias.component';
+import { EvaluacionesComponent } from './components/evaluaciones/evaluaciones.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent , data: {titulo: 'Ver Perfil'}},
   { path: 'aulas', component: AulasComponent , data: {titulo: 'Ver Aulas'}},
   { path: 'materias', component: MateriasComponent , data: {titulo: 'Ver Materias'}},
+  { path: 'evaluaciones', component: EvaluacionesComponent , data: {titulo: 'Ver Evaluaciones'}},
   { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard'}},
   { path: '**', redirectTo: '/login' }
 ];
