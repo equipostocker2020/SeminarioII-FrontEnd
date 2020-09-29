@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from '../config/config';
-import { filter, map, catchError } from 'rxjs/operators';
-// import 'rxjs/add/operator/map';
-import Swal from 'sweetalert2';
 import { Usuario } from '../models/usuario.models';
 
 @Injectable({
@@ -21,10 +18,10 @@ export class TipoUsuarioService {
     this.cargarStorage();
    }
 
-  guardarStorage(ID_USUARIO: string, token: string, usuario: Usuario) {
-    localStorage.setItem('ID_USUARIO', ID_USUARIO);
+   guardarStorage(id: string, token: string, usuario: Usuario) {
+    localStorage.setItem('ID_USUARIO', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('usuario', JSON.stringify(usuario));
+    localStorage.setItem('Usuario', JSON.stringify(usuario));
     this.usuario = usuario;
     this.token = token;
   }
@@ -32,13 +29,12 @@ export class TipoUsuarioService {
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+      this.usuario = JSON.parse(localStorage.getItem('Usuario'));
     } else {
       this.token = '';
       this.usuario = null;
     }
   }
-
 
   getAlumno() {
     let url = URL_SERVICIOS + '/tipo/alumno';

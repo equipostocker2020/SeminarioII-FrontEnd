@@ -39,55 +39,53 @@
                             <small>Ver el listado de alumnos registrados anotados en sus respectivas materias</small>
                         </h2>
                     </div>
+                    <div class="container text-center">
+                        <button class="btn btn-lg bg-cyan text-center m-1">
+                            <span class="input-group-addon">
+                                <i class="material-icons">control_point</i>
+                                Agregar Alumno
+                            </span>
+                        </button>
+                    </div>
                     <div class="body table-responsive">
                         <table class="table table-condensed">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>#</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Email</th>
+                                    <th>Edad</th>
+                                    <th>DNI</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let usuario of usuarios">
+                                <tr class="bg-cyan text-center" *ngFor=" let usuario of usuarios ">
                                     <td>
-                                        {{usuario.NOMBRE}}
+                                        {{usuario.id_usuario}}
                                     </td>
                                     <td>
-                                        {{usuario.APELLIDO}}
+                                        {{usuario.nombre}}
+                                    </td>
+                                    <td>
+                                        {{usuario.apellido}}
+                                    </td>
+                                    <td>
+                                        {{usuario.email}}
+                                    </td>
+                                    <td>
+                                        {{usuario.edad}}
+                                    </td>
+                                    <td>
+                                        {{usuario.dni}}
+                                    </td>
+                                    <td>
+                                        <span class="input-group-addon">
+                                            <i class="material-icons text-center">edit</i>
+                                        </span>
                                     </td>
                                 </tr>
-                                <!-- <tr class="bg-pink">
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr class="bg-cyan">
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr class="bg-teal">
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                                <tr class="bg-orange">
-                                    <th scope="row">4</th>
-                                    <td>Larry</td>
-                                    <td>Jellybean</td>
-                                    <td>@lajelly</td>
-                                </tr>
-                                <tr class="bg-purple">
-                                    <th scope="row">5</th>
-                                    <td>Larry</td>
-                                    <td>Kikat</td>
-                                    <td>@lakitkat</td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>

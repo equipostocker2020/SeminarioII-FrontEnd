@@ -24,7 +24,7 @@ export class AlumnosComponent implements OnInit {
   getAlumno(){
     this.tipoUsuario.getAlumno()
     .subscribe((resp:any)=>{
-      console.log(resp.usuario);
+      console.log(resp);
       this.usuarios = resp.usuario;
     });
   }
