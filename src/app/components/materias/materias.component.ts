@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MateriaService } from 'src/app/services/materia.service';
+import { Materia } from '../../models/materia.models';
 
 @Component({
   selector: 'app-materias',
@@ -8,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MateriasComponent implements OnInit {
 
-  constructor() { }
+  materias: Materia [] = [];
+  materia: Materia;
+
+  constructor(
+    public _materiaService: MateriaService
+  ) { }
 
   ngOnInit(): void {
+    this.getMateria();
   }
 
+  getMateria(){
+    this._materiaService.getMateria()
+    .subscribe((resp:any)=>{
+      console.log(resp);
+      this.materias = resp.materias;
+    });
+  }
 }

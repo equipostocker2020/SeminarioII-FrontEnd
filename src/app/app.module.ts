@@ -16,6 +16,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AulasComponent } from './components/aulas/aulas.component';
 import { MateriasComponent } from './components/materias/materias.component';
 import { EvaluacionesComponent } from './components/evaluaciones/evaluaciones.component';
+import { CargarAlumnoComponent } from './components/cargar-alumno/cargar-alumno.component';
+import { CargarDocenteComponent } from './components/cargar-docente/cargar-docente.component';
+import { CargarAulaComponent } from './components/cargar-aula/cargar-aula.component';
+import { CargarEvaluacionComponent } from './components/cargar-evaluacion/cargar-evaluacion.component';
+import { CargarMateriaComponent } from './components/cargar-materia/cargar-materia.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,12 @@ import { EvaluacionesComponent } from './components/evaluaciones/evaluaciones.co
     DashboardComponent,
     AulasComponent,
     MateriasComponent,
-    EvaluacionesComponent
+    EvaluacionesComponent,
+    CargarAlumnoComponent,
+    CargarDocenteComponent,
+    CargarAulaComponent,
+    CargarEvaluacionComponent,
+    CargarMateriaComponent
   ],
   imports: [
     BrowserModule,

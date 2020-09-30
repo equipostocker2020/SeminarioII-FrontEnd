@@ -9,6 +9,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AulasComponent } from './components/aulas/aulas.component';
 import { MateriasComponent } from './components/materias/materias.component';
 import { EvaluacionesComponent } from './components/evaluaciones/evaluaciones.component';
+import { CargarAlumnoComponent } from './components/cargar-alumno/cargar-alumno.component';
+import { CargarAulaComponent } from './components/cargar-aula/cargar-aula.component';
+import { CargarDocenteComponent } from './components/cargar-docente/cargar-docente.component';
+import { CargarEvaluacionComponent } from './components/cargar-evaluacion/cargar-evaluacion.component';
+import { CargarMateriaComponent } from './components/cargar-materia/cargar-materia.component';
 
 
 const routes: Routes = [
@@ -20,6 +25,11 @@ const routes: Routes = [
   { path: 'aulas', component: AulasComponent , data: {titulo: 'Ver Aulas'}},
   { path: 'materias', component: MateriasComponent , data: {titulo: 'Ver Materias'}},
   { path: 'evaluaciones', component: EvaluacionesComponent , data: {titulo: 'Ver Evaluaciones'}},
+  { path: 'alumno/cargar-alumno', component: CargarAlumnoComponent , data: {titulo: 'Cargar Alumno'}},
+  { path: 'aula/cargar-aula', component: CargarAulaComponent , data: {titulo: 'Cargar Aula'}},
+  { path: 'docente/cargar-docente', component: CargarDocenteComponent, data: {titulo: 'Cargar Docente'}},
+  { path: 'evaluacion/cargar-evaluacion', component: CargarEvaluacionComponent, data: {titulo: 'Cargar Evaluación'}},
+  { path: 'materia/cargar-materia', component: CargarMateriaComponent, data: {titulo: 'Cargar Materia'}},
   { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard'}},
   { path: '**', redirectTo: '/login' }
 ];

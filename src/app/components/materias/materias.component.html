@@ -48,6 +48,14 @@
                             <small>Ver el listado de materias </small>
                         </h2>
                     </div>
+                    <div class="container text-center">
+                        <button class="btn btn-lg bg-cyan text-center m-1"  routerLink="/materia/cargar-materia">
+                            <span class="input-group-addon">
+                                <i class="material-icons" >control_point</i>
+                                Agregar Materia
+                            </span>
+                        </button>
+                    </div>
                     <div class="body table-responsive">
                         <table class="table table-condensed">
                             <thead>
@@ -60,44 +68,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                             <!--   <tr *ngFor="let usuario of usuarios">
+                              <tr class="bg-cyan text-center" *ngFor="let materia of materias">
                                     <td>
-                                        {{usuario.NOMBRE}}
+                                        {{materia.Id_materia}}
                                     </td>
                                     <td>
-                                        {{usuario.APELLIDO}}
+                                        {{materia.nombre_materia}}
+                                    </td>                                 
+                                    <td>
+                                        {{materia.dia}}
+                                    </td>
+                                    <td>
+                                        {{materia.horario}}
+                                    </td>
+                                    <td>
+                                        {{materia.estado}}
+                                    </td>
+                                    <td>
+                                        <div class="col text-center">
+                                            <button  routerLink="/materia/actualizar-materia" class="btn btn-primary">
+                                                        <fa-icon [icon]="faPencilAlt">Actualizar</fa-icon>
+                                                    </button>
+                                        </div>
                                     </td>
                                 </tr>
-                                 <tr class="bg-pink">
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr class="bg-cyan">
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr class="bg-teal">
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                                <tr class="bg-orange">
-                                    <th scope="row">4</th>
-                                    <td>Larry</td>
-                                    <td>Jellybean</td>
-                                    <td>@lajelly</td>
-                                </tr>
-                                <tr class="bg-purple">
-                                    <th scope="row">5</th>
-                                    <td>Larry</td>
-                                    <td>Kikat</td>
-                                    <td>@lakitkat</td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>
