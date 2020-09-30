@@ -93,7 +93,7 @@
                                         {{usuario.dni}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-success" routerLink="/alumno/actualizar-alumno">
+                                        <button class="btn btn-success" routerLink="/alumno/actualizar-alumno" (click)="guardarStorage(usuario.id_usuario, token, usuario)">
                                         <span class="input-group-addon">
                                             <i class="material-icons text-center">edit</i>
                                         </span>

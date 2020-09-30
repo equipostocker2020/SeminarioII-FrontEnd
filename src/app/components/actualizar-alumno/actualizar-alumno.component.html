@@ -49,55 +49,59 @@
                         <h2 class="text-center">Actualizar Alumno</h2>
                     </div>
                     <div class="body">
-                        <form id="form_validation" method="POST">
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)">
                             <div class="form-group form-float">
+                                <label class="form-label">Nombre</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="nombre" required>
-                                    <label class="form-label">Nombre</label>
+                                    <input [ngModel]="usuario.nombre" type="text" class="form-control" name="nombre" required>
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">Apellido</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="apellido" required>
-                                    <label class="form-label">Apellido</label>
+                                    <input [ngModel]="usuario.apellido" type="text" class="form-control" name="apellido" required>
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">Direccion</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="direccion" required>
-                                    <label class="form-label">Direccion</label>
+                                    <input [ngModel]="usuario.direccion" type="text" class="form-control" name="direccion" required>
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">Email</label>
                                 <div class="form-line">
-                                    <input type="email" class="form-control" name="email" required>
-                                    <label class="form-label">Email</label>
+                                    <input [ngModel]="usuario.email" type="email" class="form-control" name="email" required>
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">DNI</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="dni" required>
-                                    <label class="form-label">DNI</label>
+                                    <input [ngModel]="usuario.dni" type="text" class="form-control" name="dni" required>
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">CUIT</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="cuit" required>
-                                    <label class="form-label">CUIT</label>
+                                    <input [ngModel]="usuario.cuit_cuil" type="text" class="form-control" name="cuit_cuil" required>
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">Fecha Nacimiento</label>
                                 <div class="form-line">
-                                    <input type="date" class="form-control" id="start" name="fecha" value="2020-01-01" min="1900-01-01" max="2018-12-31" required autofocus>
+                                    <input [ngModel]="usuario.fecha_nac " type="date" class="form-control | date:'dd-MM-yyyy' " id="start" name="fecha_nac " value="2020-01-01" min="1900-01-01" max="2018-12-31" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">Edad</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="edad" required>
-                                    <label class="form-label">Edad</label>
+                                    <input [ngModel]="usuario.edad" type="text" class="form-control" name="edad" required>
                                 </div>
                             </div>
-                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                            <div class="text-center">
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Actualizar</button>
+                                <button type="submit" routerLink="/alumnos" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+                            </div>
                         </form>
                     </div>
                 </div>

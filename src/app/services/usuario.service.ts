@@ -18,7 +18,9 @@ export class UsuarioService {
   constructor(
     public http: HttpClient,
     public router: Router
-  ) { }
+  ) { 
+    this.cargarStorage();
+  }
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem('id_usuario', id);

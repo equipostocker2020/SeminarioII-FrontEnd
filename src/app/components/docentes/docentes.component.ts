@@ -18,10 +18,10 @@ export class DocentesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAlumno();
+    this.getDocente();
   }
 
-  getAlumno(){
+  getDocente(){
     this.tipoUsuario.getDocente()
     .subscribe((resp:any)=>{
       console.log(resp.usuario);
