@@ -30,6 +30,9 @@
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/inscripciones">Inscripcion</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/profile">Perfil</a>
                 </li>
             </ul>
@@ -60,46 +63,52 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Direccion</th>
-                                    <th>Email</th>
-                                    <th>DNI</th>
-                                    <th>Cuit/Cuil</th>
-                                    <th>Fecha de nacimiento</th>
-                                    <th>Edad</th>
-                                    <th>ROL</th>
+                                    <th class="text">#</th>
+                                    <th class="text">Nombre</th>
+                                    <th class="text">Apellido</th>
+                                    <th class="text">Direccion</th>
+                                    <th class="text">Email</th>
+                                    <th class="text">DNI</th>
+                                    <th class="text">Cuit/Cuil</th>
+                                    <th class="text">Fecha de nacimiento</th>
+                                    <th class="text">Edad</th>
+                                    <th class="text">ROL</th>
+                                    <th class="text"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                <tr class="bg-cyan text-center" *ngFor="let usuario of usuarios">
-                                <td>
+                                <td class="text text-center">
                                     {{usuario.id_usuario}}
                                 </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{usuario.nombre}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{usuario.apellido}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{usuario.direccion}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{usuario.email}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{usuario.cuit_cuil}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{usuario.fecha_nac}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{usuario.edad}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{usuario.rol}}
+                                    </td>
+                                    <td class="text text-center">
+                                        <div class="col text-center">
+                                            <button  routerLink="/docente/actualizar-docente" class="btn btn-primary">Actualziar</button>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>

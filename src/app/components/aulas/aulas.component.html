@@ -30,6 +30,9 @@
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/inscripciones">Inscripcion</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/profile">Perfil</a>
                 </li>
             </ul>
@@ -60,57 +63,29 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Direccion</th>
-                                    <th>Email</th>
-                                    <th>DNI</th>
-                                    <th>Cuit/Cuil</th>
-                                    <th>Fecha de nacimiento</th>
-                                    <th>Edad</th>
-                                    <th>ROL</th>
+                                    <th class="text">#</th>
+                                    <th class="text">Nombre</th>
+                                    <th class="text">Estado</th>
+                                    <th class="text"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                              <!--  <tr class="bg-cyan text-center" *ngFor="let usuario of usuarios">
-                                    <td>
-                                        {{usuario.nombre}}
+                               <tr class="bg-cyan text-center" *ngFor="let aula of aulas">
+                                    <td class="text text-center">
+                                        {{aula.id_aula}}
+                                    </td>
+                                    <td class="text text-center">
+                                        {{aula.nombre_aula}}
+                                    </td>
+                                    <td class="text text-center">
+                                        {{aula.estado}}
                                     </td>
                                     <td>
-                                        {{usuario.apellido}}
+                                        <div class="col text-center">
+                                            <button  routerLink="/aula/actualizar-aula" class="btn btn-primary">Actualziar</button>
+                                        </div>
                                     </td>
                                 </tr>
-                                 <tr class="bg-pink">
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr class="bg-cyan">
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr class="bg-teal">
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                                <tr class="bg-orange">
-                                    <th scope="row">4</th>
-                                    <td>Larry</td>
-                                    <td>Jellybean</td>
-                                    <td>@lajelly</td>
-                                </tr>
-                                <tr class="bg-purple">
-                                    <th scope="row">5</th>
-                                    <td>Larry</td>
-                                    <td>Kikat</td>
-                                    <td>@lakitkat</td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>

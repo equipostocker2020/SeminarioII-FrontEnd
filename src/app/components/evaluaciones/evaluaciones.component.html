@@ -30,6 +30,9 @@
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/inscripciones">Inscripcion</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/profile">Perfil</a>
                 </li>
             </ul>
@@ -60,52 +63,35 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Nombre de la materia</th>
-                                    <th>Fecha</th>
-                                    <th>Final</th>
-                                    <th>Estado</th>
+                                    <th class="text">#</th>
+                                    <th class="text">Nombre de la materia</th>
+                                    <th class="text">Fecha</th>
+                                    <th class="text">Final</th>
+                                    <th class="text">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <!-- <tr class="bg-cyan text-center" *ngFor="let usuario of usuarios">
-                                    <td>
-                                        {{usuario.NOMBRE}}
+                             <tr class="bg-cyan text-center" *ngFor="let evaluacion of evaluaciones">
+                                    <td class="text text-center">
+                                        {{evaluacion.id_evaluacion}}
+                                    </td>
+                                    <td class="text text-center">
+                                        {{evaluacion.nombre_materia}}
+                                    </td>
+                                    <td class="text text-center">
+                                        {{evaluacion.fecha}}
+                                    </td>
+                                    <td class="text text-center">
+                                        {{evaluacion.final}}
+                                    </td>
+                                    <td class="text text-center">
+                                        {{evaluacion.estado}}
                                     </td>
                                     <td>
-                                        {{usuario.APELLIDO}}
+                                        <div class="col text-center">
+                                            <button  routerLink="/evaluacion/actualizar-evaluacion" class="btn btn-primary">Actualziar</button>
+                                        </div>
                                     </td>
-                                </tr>
-                                    <tr class="bg-pink">
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr class="bg-cyan">
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr class="bg-teal">
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                                <tr class="bg-orange">
-                                    <th scope="row">4</th>
-                                    <td>Larry</td>
-                                    <td>Jellybean</td>
-                                    <td>@lajelly</td>
-                                </tr>
-                                <tr class="bg-purple">
-                                    <th scope="row">5</th>
-                                    <td>Larry</td>
-                                    <td>Kikat</td>
-                                    <td>@lakitkat</td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>

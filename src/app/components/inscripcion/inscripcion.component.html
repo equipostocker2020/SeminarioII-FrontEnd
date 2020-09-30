@@ -33,6 +33,9 @@
                     <a class="nav-link" href="/inscripciones">Inscripcion</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/inscripciones">Inscripcion</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/profile">Perfil</a>
                 </li>
             </ul>
@@ -47,54 +50,66 @@
                 <div class="card">
                     <div class="header">
                         <h2 class="text-center">
-                            Listado de Alumnos
-                            <small>Ver el listado de alumnos registrados anotados en sus respectivas materias</small>
+                            Listado de Inscripciones
+                            <small>Ver el listado de inscripciones </small>
                         </h2>
                     </div>
                     <div class="container text-center">
-                        <button class="btn btn-lg bg-cyan text-center m-1"  routerLink="/alumno/cargar-alumno">
+                        <button class="btn btn-lg bg-cyan text-center m-1"  routerLink="/inscripcion/cargar-inscripcion">
                             <span class="input-group-addon">
                                 <i class="material-icons" >control_point</i>
-                                Agregar Alumno
+                                Agregar Inscripcion
                             </span>
                         </button>
                     </div>
                     <div class="body table-responsive">
                         <table class="table table-condensed">
                             <thead>
-                                <tr class="text-center">
-                                    <th class="text">#</th>
-                                    <th class="text">Nombre</th>
-                                    <th class="text">Apellido</th>
-                                    <th class="text">Email</th>
-                                    <th class="text">Edad</th>
-                                    <th class="text">DNI</th>
-                                    <th class="text">Editar</th>
+                                <tr>
+                                    <th  class="text">#</th>
+                                    <th  class="text">Nombre</th>
+                                    <th  class="text">Apellido</th>
+                                    <th  class="text">Nombre del aula</th>
+                                    <th  class="text">Nombre de la Materia</th>
+                                    <th  class="text">Día</th>
+                                    <th  class="text">Horario</th>
+                                    <th  class="text">Año</th>
+                                    <th  class="text">Estado</th>
+                                    <th  class="text"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-cyan text-center" *ngFor=" let usuario of usuarios ">
+                              <tr class="bg-cyan text-center" *ngFor="let inscripcion of inscripciones">
                                     <td class="text text-center">
-                                        {{usuario.id_usuario}}
+                                        {{inscripcion.id_inscripcion}}
                                     </td>
                                     <td class="text text-center">
-                                        {{usuario.nombre}}
+                                        {{inscripcion.nombre}}
+                                    </td>                                 
+                                    <td class="text text-center">
+                                        {{inscripcion.apellido}}
                                     </td>
                                     <td class="text text-center">
-                                        {{usuario.apellido}}
+                                        {{inscripcion.nombre_aula}}
                                     </td>
                                     <td class="text text-center">
-                                        {{usuario.email}}
+                                        {{inscripcion.nombre_materia}}
                                     </td>
                                     <td class="text text-center">
-                                        {{usuario.edad}}
+                                        {{inscripcion.dia}}
                                     </td>
                                     <td class="text text-center">
-                                        {{usuario.dni}}
+                                        {{inscripcion.horario}}
+                                    </td>
+                                    <td class="text text-center">
+                                        {{inscripcion.anho}}
+                                    </td>
+                                    <td class="text text-center">
+                                        {{inscripcion.estado}}
                                     </td>
                                     <td>
                                         <div class="col text-center">
-                                            <button  routerLink="/alumno/actualizar-alumno" class="btn btn-primary">Actualziar</button>
+                                            <button  routerLink="/inscripcion/actualizar-inscripcion" class="btn btn-primary">Actualziar</button>
                                         </div>
                                     </td>
                                 </tr>

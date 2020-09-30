@@ -14,6 +14,14 @@ import { CargarAulaComponent } from './components/cargar-aula/cargar-aula.compon
 import { CargarDocenteComponent } from './components/cargar-docente/cargar-docente.component';
 import { CargarEvaluacionComponent } from './components/cargar-evaluacion/cargar-evaluacion.component';
 import { CargarMateriaComponent } from './components/cargar-materia/cargar-materia.component';
+import { ActualizarAlumnoComponent } from './components/actualizar-alumno/actualizar-alumno.component';
+import { ActualizarDocenteComponent } from './components/actualizar-docente/actualizar-docente.component';
+import { ActualizarAulaComponent } from './components/actualizar-aula/actualizar-aula.component';
+import { ActualizarMateriaComponent } from './components/actualizar-materia/actualizar-materia.component';
+import { ActualizarEvaluacionComponent } from './components/actualizar-evaluacion/actualizar-evaluacion.component';
+import { InscripcionComponent } from './components/inscripcion/inscripcion.component';
+import { CargarInscripcionComponent } from './components/cargar-inscripcion/cargar-inscripcion.component';
+import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
 
 
 const routes: Routes = [
@@ -25,11 +33,19 @@ const routes: Routes = [
   { path: 'aulas', component: AulasComponent , data: {titulo: 'Ver Aulas'}},
   { path: 'materias', component: MateriasComponent , data: {titulo: 'Ver Materias'}},
   { path: 'evaluaciones', component: EvaluacionesComponent , data: {titulo: 'Ver Evaluaciones'}},
+  { path: 'inscripciones', component: InscripcionComponent , data: {titulo: 'Ver Inscripcion'}},
   { path: 'alumno/cargar-alumno', component: CargarAlumnoComponent , data: {titulo: 'Cargar Alumno'}},
   { path: 'aula/cargar-aula', component: CargarAulaComponent , data: {titulo: 'Cargar Aula'}},
   { path: 'docente/cargar-docente', component: CargarDocenteComponent, data: {titulo: 'Cargar Docente'}},
   { path: 'evaluacion/cargar-evaluacion', component: CargarEvaluacionComponent, data: {titulo: 'Cargar Evaluación'}},
   { path: 'materia/cargar-materia', component: CargarMateriaComponent, data: {titulo: 'Cargar Materia'}},
+  { path: 'inscripcion/cargar-inscripcion', component: CargarInscripcionComponent, data: {titulo: 'Cargar Inscripcion'}},
+  { path: 'alumno/actualizar-alumno', component: ActualizarAlumnoComponent, data: {titulo: 'Actualizar Alumno'}},
+  { path: 'docente/actualizar-docente', component: ActualizarDocenteComponent, data: {titulo: 'Actualizar Docente'}},
+  { path: 'aula/actualizar-aula', component: ActualizarAulaComponent, data: {titulo: 'Actualizar Aula'}},
+  { path: 'materia/actualizar-materia', component: ActualizarMateriaComponent, data: {titulo: 'Actualizar Materia'}},
+  { path: 'evaluacion/actualizar-evaluacion', component: ActualizarEvaluacionComponent, data: {titulo: 'Actualizar Evalucion'}},
+  { path: 'inscripcion/actualizar-inscripcion', component: ActualizarInscripcionComponent, data: {titulo: 'Actualizar Inscripcion'}},
   { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard'}},
   { path: '**', redirectTo: '/login' }
 ];

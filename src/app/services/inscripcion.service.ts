@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from '../config/config';
-import { Aula } from '../models/aula.models';
+import { Inscripcion } from '../models/inscripcion.models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AulaService {
+export class InscripcionService {
 
   token: string;
-  Aula: Aula;
+  inscripcion: Inscripcion;
 
   constructor(
     public http: HttpClient,
@@ -19,27 +19,28 @@ export class AulaService {
     this.cargarStorage();
    }
 
-   guardarStorage(id: string, token: string, Aula: Aula) {
-    localStorage.setItem('id_aula', id);
+   guardarStorage(id: string, token: string, Inscripcion: Inscripcion) {
+    localStorage.setItem('id_inscripcion', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('Aula', JSON.stringify(Aula));
-    this.Aula = Aula;
+    localStorage.setItem('inscripcion', JSON.stringify(Inscripcion));
+    this.inscripcion = Inscripcion;
     this.token = token;
   }
 
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.Aula = JSON.parse(localStorage.getItem('Aula'));
+      this.inscripcion = JSON.parse(localStorage.getItem('inscripcion'));
     } else {
       this.token = '';
-      this.Aula = null;
+      this.inscripcion = null;
     }
   }
 
-  getAula() {
-    let url = URL_SERVICIOS + '/aula';
+  getInscripcion() {
+    let url = URL_SERVICIOS + '/inscripcion';
     url += '?token=' + this.token;
     return this.http.get(url);
   }
+
 }

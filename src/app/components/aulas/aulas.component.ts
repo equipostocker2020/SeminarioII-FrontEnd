@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AulaService} from '../../services/aula.service'
+import { Aula } from '../../models/aula.models';
 
 @Component({
   selector: 'app-aulas',
@@ -8,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AulasComponent implements OnInit {
 
-  constructor() { }
+  aulas: Aula [] = [];
+  aula: Aula;
+
+  constructor(
+    public _aulaService: AulaService
+  ) { }
 
   ngOnInit(): void {
+    this.getAula();
   }
 
+  getAula(){
+    this._aulaService.getAula()
+    .subscribe((resp:any)=>{
+      console.log(resp.aula);
+      this.aulas = resp.aula;
+    });
+  }
 }

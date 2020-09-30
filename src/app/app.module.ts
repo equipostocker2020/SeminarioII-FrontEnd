@@ -21,6 +21,14 @@ import { CargarDocenteComponent } from './components/cargar-docente/cargar-docen
 import { CargarAulaComponent } from './components/cargar-aula/cargar-aula.component';
 import { CargarEvaluacionComponent } from './components/cargar-evaluacion/cargar-evaluacion.component';
 import { CargarMateriaComponent } from './components/cargar-materia/cargar-materia.component';
+import { ActualizarAlumnoComponent } from './components/actualizar-alumno/actualizar-alumno.component';
+import { ActualizarDocenteComponent } from './components/actualizar-docente/actualizar-docente.component';
+import { ActualizarAulaComponent } from './components/actualizar-aula/actualizar-aula.component';
+import { ActualizarEvaluacionComponent } from './components/actualizar-evaluacion/actualizar-evaluacion.component';
+import { ActualizarMateriaComponent } from './components/actualizar-materia/actualizar-materia.component';
+import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
+import { CargarInscripcionComponent } from './components/cargar-inscripcion/cargar-inscripcion.component';
+import { InscripcionComponent } from './components/inscripcion/inscripcion.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +47,15 @@ import { CargarMateriaComponent } from './components/cargar-materia/cargar-mater
     CargarDocenteComponent,
     CargarAulaComponent,
     CargarEvaluacionComponent,
-    CargarMateriaComponent
+    CargarMateriaComponent,
+    ActualizarAlumnoComponent,
+    ActualizarDocenteComponent,
+    ActualizarAulaComponent,
+    ActualizarEvaluacionComponent,
+    ActualizarMateriaComponent,
+    ActualizarInscripcionComponent,
+    CargarInscripcionComponent,
+    InscripcionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EvaluacionService } from 'src/app/services/evaluacion.service';
+import { Evaluacion } from '../../models/evaluacion.models';
 
 @Component({
   selector: 'app-evaluaciones',
@@ -8,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EvaluacionesComponent implements OnInit {
 
-  constructor() { }
+  evaluaciones: Evaluacion [] = [];
+  evaluacion: Evaluacion;
+
+  constructor(
+    public _evaluacionService: EvaluacionService
+  ) { }
 
   ngOnInit(): void {
+    this.getEvaluacion();
   }
 
+  getEvaluacion(){
+    this._evaluacionService.getEvaluacion()
+    .subscribe((resp:any)=>{
+      console.log(resp);
+      this.evaluaciones = resp.evaluaciones;
+    });
+  }
 }

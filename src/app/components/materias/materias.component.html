@@ -30,6 +30,9 @@
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/inscripciones">Inscripcion</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/profile">Perfil</a>
                 </li>
             </ul>
@@ -60,35 +63,34 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Día</th>
-                                    <th>Horario</th>
-                                    <th>Estado</th>
+                                    <th  class="text">#</th>
+                                    <th  class="text">Nombre</th>
+                                    <th  class="text">Día</th>
+                                    <th  class="text">Horario</th>
+                                    <th  class="text">Estado</th>
+                                    <th  class="text"></th>
                                 </tr>
                             </thead>
                             <tbody>
                               <tr class="bg-cyan text-center" *ngFor="let materia of materias">
-                                    <td>
+                                    <td class="text text-center">
                                         {{materia.Id_materia}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{materia.nombre_materia}}
                                     </td>                                 
-                                    <td>
+                                    <td class="text text-center">
                                         {{materia.dia}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{materia.horario}}
                                     </td>
-                                    <td>
+                                    <td class="text text-center">
                                         {{materia.estado}}
                                     </td>
                                     <td>
                                         <div class="col text-center">
-                                            <button  routerLink="/materia/actualizar-materia" class="btn btn-primary">
-                                                        <fa-icon [icon]="faPencilAlt">Actualizar</fa-icon>
-                                                    </button>
+                                            <button  routerLink="/materia/actualizar-materia" class="btn btn-primary">Actualziar</button>
                                         </div>
                                     </td>
                                 </tr>
