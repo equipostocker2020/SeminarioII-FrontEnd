@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     const usuario = new Usuario(null, null, null, forma.value.email, null,  forma.value.contraseña, null, null, null, null, null);
+    console.log(usuario)
     this.usuarioService.login(usuario, forma.value.recuerdame)
       .subscribe((resp: any) => {
         this.router.navigate(['/dashboard']);

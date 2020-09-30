@@ -31,7 +31,7 @@ export class UsuarioService {
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.usuario = JSON.parse(localStorage.getItem('Usuario'));
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
     } else {
       this.token = '';
       this.usuario = null;
