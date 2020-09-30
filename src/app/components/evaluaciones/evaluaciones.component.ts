@@ -24,7 +24,6 @@ export class EvaluacionesComponent implements OnInit {
   getEvaluacion(){
     this._evaluacionService.getEvaluacion()
     .subscribe((resp:any)=>{
-      console.log(resp);
       this.evaluaciones = resp.evaluaciones;
     });
   }

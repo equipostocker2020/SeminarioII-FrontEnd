@@ -52,7 +52,7 @@
                         </h2>
                     </div>
                     <div class="container text-center">
-                        <button class="btn btn-lg bg-cyan text-center m-1"  routerLink="/alumno/cargar-alumno">
+                        <button class="btn btn-lg bg-cyan text-center m-1" routerLink="/alumno/cargar-alumno">
                             <span class="input-group-addon">
                                 <i class="material-icons" >control_point</i>
                                 Agregar Alumno
@@ -93,9 +93,11 @@
                                         {{usuario.dni}}
                                     </td>
                                     <td>
-                                        <div class="col text-center">
-                                            <button  routerLink="/alumno/actualizar-alumno" class="btn btn-primary">Actualziar</button>
-                                        </div>
+                                        <button class="btn btn-success" routerLink="/alumno/actualizar-alumno">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons text-center">edit</i>
+                                        </span>
+                                    </button>
                                     </td>
                                 </tr>
                             </tbody>

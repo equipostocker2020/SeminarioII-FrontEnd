@@ -52,7 +52,7 @@
                         </h2>
                     </div>
                     <div class="container text-center">
-                        <button class="btn btn-lg bg-cyan text-center m-1"  routerLink="/materia/cargar-materia">
+                        <button class="btn btn-lg bg-cyan text-center m-1" routerLink="/materia/cargar-materia">
                             <span class="input-group-addon">
                                 <i class="material-icons" >control_point</i>
                                 Agregar Materia
@@ -60,27 +60,27 @@
                         </button>
                     </div>
                     <div class="body table-responsive">
-                        <table class="table table-condensed">
+                        <table class="table table-condensed text-center">
                             <thead>
                                 <tr>
-                                    <th  class="text">#</th>
-                                    <th  class="text">Nombre</th>
-                                    <th  class="text">Día</th>
-                                    <th  class="text">Horario</th>
-                                    <th  class="text">Estado</th>
-                                    <th  class="text"></th>
+                                    <th class="text">#</th>
+                                    <th class="text">Nombre</th>
+                                    <th class="text">Día</th>
+                                    <th class="text">Horario</th>
+                                    <th class="text">Estado</th>
+                                    <th class="text">Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr class="bg-cyan text-center" *ngFor="let materia of materias">
+                                <tr class="bg-cyan text-center" *ngFor="let materia of materias">
                                     <td class="text text-center">
-                                        {{materia.Id_materia}}
+                                        {{materia.id_materia}}
                                     </td>
                                     <td class="text text-center">
                                         {{materia.nombre_materia}}
-                                    </td>                                 
+                                    </td>
                                     <td class="text text-center">
-                                        {{materia.dia}}
+                                        {{materia.dia }}
                                     </td>
                                     <td class="text text-center">
                                         {{materia.horario}}
@@ -89,9 +89,11 @@
                                         {{materia.estado}}
                                     </td>
                                     <td>
-                                        <div class="col text-center">
-                                            <button  routerLink="/materia/actualizar-materia" class="btn btn-primary">Actualziar</button>
-                                        </div>
+                                        <button class="btn btn-success" routerLink="/materia/actualizar-materia">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons text-center">edit</i>
+                                            </span>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>

@@ -55,7 +55,7 @@
                         </h2>
                     </div>
                     <div class="container text-center">
-                        <button class="btn btn-lg bg-cyan text-center m-1"  routerLink="/inscripcion/cargar-inscripcion">
+                        <button class="btn btn-lg bg-cyan text-center m-1" routerLink="/inscripcion/cargar-inscripcion">
                             <span class="input-group-addon">
                                 <i class="material-icons" >control_point</i>
                                 Agregar Inscripcion
@@ -63,29 +63,29 @@
                         </button>
                     </div>
                     <div class="body table-responsive">
-                        <table class="table table-condensed">
+                        <table class="table table-condensed text-center">
                             <thead>
                                 <tr>
-                                    <th  class="text">#</th>
-                                    <th  class="text">Nombre</th>
-                                    <th  class="text">Apellido</th>
-                                    <th  class="text">Nombre del aula</th>
-                                    <th  class="text">Nombre de la Materia</th>
-                                    <th  class="text">Día</th>
-                                    <th  class="text">Horario</th>
-                                    <th  class="text">Año</th>
-                                    <th  class="text">Estado</th>
-                                    <th  class="text"></th>
+                                    <th class="text">#</th>
+                                    <th class="text">Nombre Alumno</th>
+                                    <th class="text">Apellido Alumno</th>
+                                    <th class="text">Aula</th>
+                                    <th class="text">Materia</th>
+                                    <th class="text">Día</th>
+                                    <th class="text">Horario</th>
+                                    <th class="text">Año</th>
+                                    <th class="text">Estado</th>
+                                    <th class="text">Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr class="bg-cyan text-center" *ngFor="let inscripcion of inscripciones">
+                                <tr class="bg-cyan text-center" *ngFor="let inscripcion of inscripciones">
                                     <td class="text text-center">
                                         {{inscripcion.id_inscripcion}}
                                     </td>
                                     <td class="text text-center">
                                         {{inscripcion.nombre}}
-                                    </td>                                 
+                                    </td>
                                     <td class="text text-center">
                                         {{inscripcion.apellido}}
                                     </td>
@@ -108,10 +108,13 @@
                                         {{inscripcion.estado}}
                                     </td>
                                     <td>
-                                        <div class="col text-center">
-                                            <button  routerLink="/inscripcion/actualizar-inscripcion" class="btn btn-primary">Actualziar</button>
-                                        </div>
+                                        <button class="btn btn-success" routerLink="/inscripcion/actualizar-inscripcion">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons text-center">edit</i>
+                                            </span>
+                                        </button>
                                     </td>
+
                                 </tr>
                             </tbody>
                         </table>

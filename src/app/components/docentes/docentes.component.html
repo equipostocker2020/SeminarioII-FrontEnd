@@ -60,7 +60,7 @@
                         </button>
                     </div>
                     <div class="body table-responsive">
-                        <table class="table table-condensed">
+                        <table class="table table-condensed text-center">
                             <thead>
                                 <tr>
                                     <th class="text">#</th>
@@ -69,18 +69,18 @@
                                     <th class="text">Direccion</th>
                                     <th class="text">Email</th>
                                     <th class="text">DNI</th>
-                                    <th class="text">Cuit/Cuil</th>
-                                    <th class="text">Fecha de nacimiento</th>
-                                    <th class="text">Edad</th>
+                                    <!-- <th class="text">Cuit/Cuil</th> -->
+                                    <!-- <th class="text">Fecha de nacimiento</th> -->
+                                    <!-- <th class="text">Edad</th> -->
                                     <th class="text">ROL</th>
-                                    <th class="text"></th>
+                                    <th class="text">Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               <tr class="bg-cyan text-center" *ngFor="let usuario of usuarios">
-                                <td class="text text-center">
-                                    {{usuario.id_usuario}}
-                                </td>
+                                <tr class="bg-cyan text-center" *ngFor="let usuario of usuarios">
+                                    <td class="text text-center">
+                                        {{usuario.id_usuario}}
+                                    </td>
                                     <td class="text text-center">
                                         {{usuario.nombre}}
                                     </td>
@@ -94,21 +94,23 @@
                                         {{usuario.email}}
                                     </td>
                                     <td class="text text-center">
-                                        {{usuario.cuit_cuil}}
+                                        {{usuario.dni}}
                                     </td>
-                                    <td class="text text-center">
+                                    <!-- <td class="text text-center">
                                         {{usuario.fecha_nac}}
-                                    </td>
-                                    <td class="text text-center">
+                                    </td> -->
+                                    <!-- <td class="text text-center">
                                         {{usuario.edad}}
-                                    </td>
+                                    </td> -->
                                     <td class="text text-center">
                                         {{usuario.rol}}
                                     </td>
-                                    <td class="text text-center">
-                                        <div class="col text-center">
-                                            <button  routerLink="/docente/actualizar-docente" class="btn btn-primary">Actualziar</button>
-                                        </div>
+                                    <td>
+                                        <button class="btn btn-success" routerLink="/docente/actualizar-docente">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons text-center">edit</i>
+                                        </span>
+                                    </button>
                                     </td>
                                 </tr>
                             </tbody>

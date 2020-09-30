@@ -11,12 +11,4 @@ export class Inscripcion {
         public 	anho?: string,
         public id_inscripcion?: string
     ) { }
-
-    /*constructor(
-        public 	id_alumno ?: string,
-        public 	id_aula_materia?: string,
-        public 	estado?: string,
-        public id_inscripcion?: string
-        // public ID_USUARIO?: string,
-    ) { }*/
 }

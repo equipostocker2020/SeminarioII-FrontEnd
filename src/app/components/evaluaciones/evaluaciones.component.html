@@ -52,7 +52,7 @@
                         </h2>
                     </div>
                     <div class="container text-center">
-                        <button class="btn btn-lg bg-cyan text-center m-1"  routerLink="/evaluacion/cargar-evaluacion">
+                        <button class="btn btn-lg bg-cyan text-center m-1" routerLink="/evaluacion/cargar-evaluacion">
                             <span class="input-group-addon">
                                 <i class="material-icons" >control_point</i>
                                 Agregar Evaluación
@@ -60,7 +60,7 @@
                         </button>
                     </div>
                     <div class="body table-responsive">
-                        <table class="table table-condensed">
+                        <table class="table table-condensed text-center">
                             <thead>
                                 <tr>
                                     <th class="text">#</th>
@@ -71,7 +71,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                             <tr class="bg-cyan text-center" *ngFor="let evaluacion of evaluaciones">
+                                <tr class="bg-cyan text-center" *ngFor="let evaluacion of evaluaciones">
                                     <td class="text text-center">
                                         {{evaluacion.id_evaluacion}}
                                     </td>
@@ -79,7 +79,7 @@
                                         {{evaluacion.nombre_materia}}
                                     </td>
                                     <td class="text text-center">
-                                        {{evaluacion.fecha}}
+                                        {{evaluacion.fecha | date:'dd-MM-yyyy' }}
                                     </td>
                                     <td class="text text-center">
                                         {{evaluacion.final}}
@@ -88,9 +88,11 @@
                                         {{evaluacion.estado}}
                                     </td>
                                     <td>
-                                        <div class="col text-center">
-                                            <button  routerLink="/evaluacion/actualizar-evaluacion" class="btn btn-primary">Actualziar</button>
-                                        </div>
+                                        <button class="btn btn-success" routerLink="/evaluacion/actualizar-evaluacion">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons text-center">edit</i>
+                                            </span>
+                                        </button>
                                     </td>
                             </tbody>
                         </table>
