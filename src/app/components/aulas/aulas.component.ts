@@ -12,20 +12,31 @@ export class AulasComponent implements OnInit {
 
   aulas: Aula [] = [];
   aula: Aula;
+  token: string;
 
   constructor(
-    public _aulaService: AulaService
-  ) { }
+    public aulaService: AulaService
+  ) { 
+    this.aulaService.Aula;
+  }
 
   ngOnInit(): void {
     this.getAula();
   }
 
   getAula(){
-    this._aulaService.getAula()
+    this.aulaService.getAula()
     .subscribe((resp:any)=>{
       console.log(resp.aula);
       this.aulas = resp.aula;
     });
   }
+  guardarStorage(id: string, token: string, aula: Aula) {
+    localStorage.setItem('idActualizar', id);
+    localStorage.setItem('token', token);
+    localStorage.setItem('usuarioActualizar', JSON.stringify(aula));
+    this.aula = aula;
+    this.token = token;
+  }
+
 }

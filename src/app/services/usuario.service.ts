@@ -93,9 +93,6 @@ export class UsuarioService {
         }),
         catchError((err: any) => {
           console.log(err);
-          // console.log(err.error.errors.message);
-          // const errores = err.error.errors.message;
-          // Swal.fire('Error al actualizar', errores.substring(27), 'error');
           return err.throw(err);
         }));
   }

@@ -46,17 +46,20 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2 class="text-center">Cargar Alumno</h2>
+                        <h2 class="text-center">Registrar Aula</h2>
                     </div>
                     <div class="body">
-                        <form id="form_validation" method="POST">
+                        <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarAula()" id="loginform">
                             <div class="form-group form-float">
+                                <label class="form-label">Nombre aula</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="nombre" required>
-                                    <label class="form-label">Nombre aula</label>
+                                    <input formControlName="nombre_aula" type="text" class="form-control" name="nombre_aula" required>
                                 </div>
                             </div>
-                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                            <div class="text-center">
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Registrar Aula</button>
+                                <button type="submit" routerLink="/aulas" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+                            </div>
                         </form>
                     </div>
                 </div>

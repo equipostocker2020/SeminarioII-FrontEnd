@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from '../config/config';
 import { Materia } from '../models/materia.models';
+import Swal from 'sweetalert2';
+import { map, catchError } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +46,19 @@ export class MateriaService {
     return this.http.get(url);
   }
 
+  postMateria(materia: Materia){
+    let url = URL_SERVICIOS + '/materia';
+    url +=  '?token=' + this.token;
+    return this.http.post(url, materia)
+    .pipe(
+      map((resp: any)=>{
+        Swal.fire('Materia creada', materia.nombre_materia, 'success')
+        return resp.materia;
+      }),
+      catchError((err: any) =>{
+        console.log(err);
+        Swal.fire('Error al registrar materia', err, 'warning');
+        return err.throw(err);
+      }));
+  }
 }
