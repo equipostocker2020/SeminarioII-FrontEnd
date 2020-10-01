@@ -29,6 +29,8 @@ import { ActualizarMateriaComponent } from './components/actualizar-materia/actu
 import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
 import { CargarInscripcionComponent } from './components/cargar-inscripcion/cargar-inscripcion.component';
 import { InscripcionComponent } from './components/inscripcion/inscripcion.component';
+import { AsignacionComponent } from './components/asignacion/asignacion.component';
+import { CargarAsignacionComponent } from './components/cargar-asignacion/cargar-asignacion.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { InscripcionComponent } from './components/inscripcion/inscripcion.compo
     ActualizarMateriaComponent,
     ActualizarInscripcionComponent,
     CargarInscripcionComponent,
-    InscripcionComponent
+    InscripcionComponent,
+    AsignacionComponent,
+    CargarAsignacionComponent
   ],
   imports: [
     BrowserModule,

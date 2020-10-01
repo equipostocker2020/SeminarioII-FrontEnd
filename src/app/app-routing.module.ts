@@ -22,6 +22,8 @@ import { ActualizarEvaluacionComponent } from './components/actualizar-evaluacio
 import { InscripcionComponent } from './components/inscripcion/inscripcion.component';
 import { CargarInscripcionComponent } from './components/cargar-inscripcion/cargar-inscripcion.component';
 import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
+import { AsignacionComponent } from './components/asignacion/asignacion.component';
+import { CargarAsignacionComponent } from './components/cargar-asignacion/cargar-asignacion.component';
 
 
 const routes: Routes = [
@@ -47,6 +49,8 @@ const routes: Routes = [
   { path: 'evaluacion/actualizar-evaluacion', component: ActualizarEvaluacionComponent, data: {titulo: 'Actualizar Evalucion'}},
   { path: 'inscripcion/actualizar-inscripcion', component: ActualizarInscripcionComponent, data: {titulo: 'Actualizar Inscripcion'}},
   { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard'}},
+  { path: 'asignacion', component: AsignacionComponent , data: {titulo: 'Dashboard'}},
+  { path: 'asignaciones', component: CargarAsignacionComponent , data: {titulo: 'Dashboard'}},
   { path: '**', redirectTo: '/login' }
 ];
 
