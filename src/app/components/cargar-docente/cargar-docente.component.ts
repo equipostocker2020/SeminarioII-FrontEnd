@@ -45,7 +45,6 @@ export class CargarDocenteComponent implements OnInit {
       edad: new FormControl(null, Validators.required),
       contraseña: new FormControl(null, Validators.required),
       contraseña2: new FormControl(null, Validators.required),
-      // condiciones: new FormControl(false),
     }, { validators: this.sonInguales('contraseña', 'contraseña2') });
 
     this.forma.setValue({
@@ -60,18 +59,10 @@ export class CargarDocenteComponent implements OnInit {
       contraseña: '',
       contraseña2: '',
       fecha_nac: '',
-      // condiciones: true
     });
   }
 
   registrarUsuario(){
-    // if (this.forma.invalid){
-    //   return;
-    // }
-    // if (!this.forma.value.condicione) {
-    //   Swal.fire('Importante', 'Debe aceptar las condiciones', 'warning');
-    //   return;
-    // }
     console.log(this.forma.value);
     const usuario = new Usuario (
       this.forma.value.nombre,
@@ -96,4 +87,6 @@ export class CargarDocenteComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
+
+
 }

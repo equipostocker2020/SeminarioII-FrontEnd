@@ -69,9 +69,6 @@
                                     <th class="text">Direccion</th>
                                     <th class="text">Email</th>
                                     <th class="text">DNI</th>
-                                    <!-- <th class="text">Cuit/Cuil</th> -->
-                                    <!-- <th class="text">Fecha de nacimiento</th> -->
-                                    <!-- <th class="text">Edad</th> -->
                                     <th class="text">ROL</th>
                                     <th class="text">Editar</th>
                                 </tr>
@@ -96,17 +93,11 @@
                                     <td class="text text-center">
                                         {{usuario.dni}}
                                     </td>
-                                    <!-- <td class="text text-center">
-                                        {{usuario.fecha_nac}}
-                                    </td> -->
-                                    <!-- <td class="text text-center">
-                                        {{usuario.edad}}
-                                    </td> -->
                                     <td class="text text-center">
                                         {{usuario.rol}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-success" routerLink="/docente/actualizar-docente">
+                                        <button class="btn btn-success" routerLink="/docente/actualizar-docente"  (click)="guardarStorage(usuario.id_usuario, token, usuario)">
                                         <span class="input-group-addon">
                                             <i class="material-icons text-center">edit</i>
                                         </span>

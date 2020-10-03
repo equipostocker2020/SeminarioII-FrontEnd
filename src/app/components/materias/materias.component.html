@@ -80,7 +80,7 @@
                                         {{materia.nombre_materia}}
                                     </td>
                                     <td class="text text-center">
-                                        {{materia.dia }}
+                                        {{materia.dia}}
                                     </td>
                                     <td class="text text-center">
                                         {{materia.horario}}
@@ -89,7 +89,7 @@
                                         {{materia.estado}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-success" routerLink="/materia/actualizar-materia">
+                                        <button class="btn btn-success" routerLink="/materia/actualizar-materia" (click)="guardarStorage(materia.id_materia, token, materia)">
                                             <span class="input-group-addon">
                                                 <i class="material-icons text-center">edit</i>
                                             </span>

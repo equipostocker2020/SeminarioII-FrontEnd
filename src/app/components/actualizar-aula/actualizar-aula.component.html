@@ -46,58 +46,20 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2 class="text-center">Actualizar Aula</h2>
+                        <h2 class="text-center">Actualizar Alumno</h2>
                     </div>
                     <div class="body">
-                        <form id="form_validation" method="POST">
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)">
                             <div class="form-group form-float">
+                                <label class="form-label">Nombre del Aula</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="nombre" required>
-                                    <label class="form-label">Nombre</label>
+                                    <input [ngModel]="aula.nombre_aula" type="text" class="form-control" name="nombre_aula" required>
                                 </div>
                             </div>
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="apellido" required>
-                                    <label class="form-label">Apellido</label>
-                                </div>
+                            <div class="text-center">
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Actualizar</button>
+                                <button type="submit" routerLink="/aulas" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
                             </div>
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="direccion" required>
-                                    <label class="form-label">Direccion</label>
-                                </div>
-                            </div>
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="email" class="form-control" name="email" required>
-                                    <label class="form-label">Email</label>
-                                </div>
-                            </div>
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="dni" required>
-                                    <label class="form-label">DNI</label>
-                                </div>
-                            </div>
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="cuit" required>
-                                    <label class="form-label">CUIT</label>
-                                </div>
-                            </div>
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="date" class="form-control" id="start" name="fecha" value="2020-01-01" min="1900-01-01" max="2018-12-31" required autofocus>
-                                </div>
-                            </div>
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="edad" required>
-                                    <label class="form-label">Edad</label>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
                         </form>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 export class Evaluacion {
 
     constructor(
-        public 	nombre_materia ?: string,
+        public 	id_materia ?: string,
         public 	fecha?: string,
         public 	final?: string,
         public 	estado?: string,

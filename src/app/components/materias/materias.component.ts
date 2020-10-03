@@ -12,6 +12,7 @@ export class MateriasComponent implements OnInit {
 
   materias: Materia [] = [];
   materia: Materia;
+  token: string;
 
   constructor(
     public _materiaService: MateriaService
@@ -25,7 +26,31 @@ export class MateriasComponent implements OnInit {
     this._materiaService.getMateria()
     .subscribe((resp:any)=>{
       console.log(resp);
-      this.materias = resp.materias;
+      this.materias = resp.materia;
     });
   }
+
+  updateMateria(materia: Materia){
+    this._materiaService.actualizarMateria(materia)
+    .subscribe((resp: any) => {
+     console.log(resp);
+     this.eliminarStorage();
+    });
+  }
+
+  guardarStorage(id: string, token: string, materia: Materia) {
+    localStorage.setItem('id_materia', id);
+    localStorage.setItem('token', token);
+    localStorage.setItem('materiaActualizar', JSON.stringify(materia));
+    this.materia = materia;
+    this.token = token;
+  }
+
+
+  eliminarStorage() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    localStorage.removeItem('materia');
+  }
+
 }

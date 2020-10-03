@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 export class MateriaService {
 
   token: string;
-  Materia: Materia;
+  materia: Materia;
 
   constructor(
     public http: HttpClient,
@@ -25,18 +25,18 @@ export class MateriaService {
    guardarStorage(id: string, token: string, Materia: Materia) {
     localStorage.setItem('id_materia', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('Materia', JSON.stringify(Materia));
-    this.Materia = Materia;
+    localStorage.setItem('materia', JSON.stringify(Materia));
+    this.materia = Materia;
     this.token = token;
   }
 
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.Materia = JSON.parse(localStorage.getItem('Materia'));
+      this.materia = JSON.parse(localStorage.getItem('materia'));
     } else {
       this.token = '';
-      this.Materia = null;
+      this.materia = null;
     }
   }
 
@@ -60,5 +60,29 @@ export class MateriaService {
         Swal.fire('Error al registrar materia', err, 'warning');
         return err.throw(err);
       }));
+  }
+
+  actualizarMateria(materia: Materia) {
+    let url = URL_SERVICIOS + '/materia/' + materia.id_materia;
+    url += '?token=' + this.token;
+    return this.http.put(url, materia)
+      .pipe(
+        map((resp: any) => {
+          Swal.fire('Materia actualizada', materia.nombre_materia, 'success');
+          return resp.materia;
+        }),
+        catchError((err: any) => {
+          console.log(err);
+          return err.throw(err);
+        }));
+  }
+  borrarMateria(id: string) {
+    let url = URL_SERVICIOS + '/materia/' + id;
+    url += '?token=' + this.token;
+    return this.http.delete(url)
+      .map(resp => {
+        Swal.fire('Materia Borrada', 'LA materia fue eliminado correctamente', 'success');
+        return true;
+      });
   }
 }

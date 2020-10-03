@@ -17,7 +17,7 @@ export class AulasComponent implements OnInit {
   constructor(
     public aulaService: AulaService
   ) { 
-    this.aulaService.Aula;
+    this.aulaService.aula;
   }
 
   ngOnInit(): void {
@@ -31,12 +31,30 @@ export class AulasComponent implements OnInit {
       this.aulas = resp.aula;
     });
   }
+
+  updateAula(aula: Aula){
+    this.aulaService.actualizarAula(aula)
+    .subscribe((resp: any) => {
+     console.log(resp);
+     this.eliminarStorage();
+    });
+  }
+
   guardarStorage(id: string, token: string, aula: Aula) {
-    localStorage.setItem('idActualizar', id);
+    localStorage.setItem('id_aula', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('usuarioActualizar', JSON.stringify(aula));
+    localStorage.setItem('aulaActualizar', JSON.stringify(aula));
     this.aula = aula;
     this.token = token;
   }
+
+
+  eliminarStorage() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    localStorage.removeItem('aula');
+  }
+
+  
 
 }
