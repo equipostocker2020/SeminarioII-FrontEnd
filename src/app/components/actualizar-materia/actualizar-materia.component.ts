@@ -17,14 +17,15 @@ export class ActualizarMateriaComponent implements OnInit {
     public materiaService: MateriaService,
     public router: Router,
   ) {
-    this.materia = this.materiaService.materia;
-    console.log(this.materia);
+    //this.materia = this.materiaService.materia;
     this.cargarStorage();
-    this.guardarStorage(
+    console.log(this.materia);
+    /*this.guardarStorage(
       this.materiaService.materia.id_materia,
       this.materiaService.token,
       this.materia
-    ); }
+    ); */
+  }
 
   ngOnInit(): void {}
   
@@ -48,7 +49,7 @@ export class ActualizarMateriaComponent implements OnInit {
   }
 
   resetStorage() {
-    localStorage.setItem('id', this.materiaService.materia.id_materia);
+    //localStorage.setItem('id', this.materiaService.materia.id_materia);
     localStorage.setItem('token', this.materiaService.token);
     localStorage.setItem('materia', JSON.stringify(this.materiaService.materia));
     this.materia = this.materiaService.materia;

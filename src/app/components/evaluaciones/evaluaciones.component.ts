@@ -14,9 +14,9 @@ export class EvaluacionesComponent implements OnInit {
   evaluacion: Evaluacion;
   token: string;
 
-  constructor(
-    public _evaluacionService: EvaluacionService
-  ) { }
+  constructor(public _evaluacionService: EvaluacionService) { 
+    this._evaluacionService.evaluacion;
+  }
 
   ngOnInit(): void {
     this.getEvaluacion();
@@ -26,6 +26,7 @@ export class EvaluacionesComponent implements OnInit {
     this._evaluacionService.getEvaluacion()
     .subscribe((resp:any)=>{
       this.evaluaciones = resp.evaluaciones;
+      console.log(this.evaluaciones);
     });
   }
 
@@ -37,12 +38,12 @@ export class EvaluacionesComponent implements OnInit {
     });
   }
 
-  guardarStorage(id: string, token: string, evaluacion: Evaluacion) {
+  guardarStorage(id: string, evaluacion: Evaluacion) {
     localStorage.setItem('id_evaluacion', id);
-    localStorage.setItem('token', token);
+    //localStorage.setItem('token', token);
     localStorage.setItem('evaluacionActualizar', JSON.stringify(evaluacion));
     this.evaluacion = evaluacion;
-    this.token = token;
+    //this.token = token;
   }
 
 

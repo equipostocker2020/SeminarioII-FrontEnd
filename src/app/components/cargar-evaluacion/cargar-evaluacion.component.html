@@ -49,25 +49,31 @@
                         <h2 class="text-center">Cargar Docente</h2>
                     </div>
                     <div class="body">
-                        <form id="form_validation" method="POST">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <h6>#Dato ID Materia</h6>
-                                </div>
-                            </div>
+                        <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarEvaluacion()" id="loginform">
+                            <label class="form-label">Materias</label>
+                            <select formControlName="id_materia" class="form-control" required> 
+                                <option value="">Seleccione una Materia</option>
+                                <option class="form-control"  *ngFor="let materia of materias"  [value]="materia.id_materia">
+                                    {{materia.nombre_materia}}
+                                </option>
+                            </select>
                             <br>
                             <div class="form-group form-float">
+                                <label class="form-label">Fecha</label>
                                 <div class="form-line">
-                                    <input type="date" class="form-control" id="start" name="fecha" value="2020-01-01" min="1900-01-01" max="2018-12-31" required autofocus>
+                                    <input formControlName="fecha" type="date" class="form-control" name="fecha"   required>
                                 </div>
                             </div>
                             <div class="form-group form-float">
+                                <label class="form-label">Final</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="dinal" required>
-                                    <label class="form-label">Final</label>
+                                    <input formControlName="final" type="number" class="form-control" name="final" required>
                                 </div>
                             </div>
-                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                            <div class="text-center">
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Registrar Aula</button>
+                                <button type="submit" routerLink="/evaluaciones" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+                            </div>
                         </form>
                     </div>
                 </div>

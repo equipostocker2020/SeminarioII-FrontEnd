@@ -38,12 +38,12 @@ export class MateriasComponent implements OnInit {
     });
   }
 
-  guardarStorage(id: string, token: string, materia: Materia) {
+  guardarStorage(id: string,  materia: Materia) {
     localStorage.setItem('id_materia', id);
-    localStorage.setItem('token', token);
+    //localStorage.setItem('token', token);
     localStorage.setItem('materiaActualizar', JSON.stringify(materia));
     this.materia = materia;
-    this.token = token;
+    //this.token = token;
   }
 
 
