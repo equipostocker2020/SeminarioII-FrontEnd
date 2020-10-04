@@ -21,7 +21,7 @@ export class TipoUsuarioService {
    guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem('ID_USUARIO', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('Usuario', JSON.stringify(usuario));
+    localStorage.setItem('usuario', JSON.stringify(usuario));
     this.usuario = usuario;
     this.token = token;
   }
@@ -29,7 +29,7 @@ export class TipoUsuarioService {
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.usuario = JSON.parse(localStorage.getItem('Usuario'));
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
     } else {
       this.token = '';
       this.usuario = null;

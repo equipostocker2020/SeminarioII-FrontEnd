@@ -18,7 +18,7 @@ export class UsuarioService {
   constructor(
     public http: HttpClient,
     public router: Router
-  ) { 
+  ) {
     this.cargarStorage();
   }
 
@@ -77,7 +77,7 @@ export class UsuarioService {
         }),
         catchError((err: any) => {
           console.log(err);
-          Swal.fire('Error al registrarse', 'saasa', 'error');
+          Swal.fire('Error al registrarse', err.error.error.sqlMessage , 'error');
           return err.throw(err);
         }));
   }
@@ -93,7 +93,8 @@ export class UsuarioService {
         }),
         catchError((err: any) => {
           console.log(err);
-          return err.throw(err);
+          Swal.fire('Error al actualizar usuario', err.error.error.sqlMessage, 'error' );
+          return err.throw(err.error.error.sqlMessage);
         }));
   }
   borrarUsuario(id: string) {

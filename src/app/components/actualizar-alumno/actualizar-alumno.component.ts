@@ -18,7 +18,7 @@ export class ActualizarAlumnoComponent implements OnInit {
     public router: Router,
   ) {
     this.usuario = this.usuarioService.usuario;
-    console.log(this.usuario);
+    console.log('->',this.usuario);
     this.cargarStorage();
     this.guardarStorage(
       this.usuarioService.usuario.id_usuario,
@@ -66,6 +66,7 @@ export class ActualizarAlumnoComponent implements OnInit {
     this.usuario.email = usuario.email;
     this.usuario.dni = usuario.dni;
     this.usuario.cuit_cuil = usuario.cuit_cuil;
+    // this.usuario.rol = usuario.rol;
     this.usuario.fecha_nac = usuario.fecha_nac;
     this.usuario.edad = usuario.edad;
     this.usuarioService.token = this.token;

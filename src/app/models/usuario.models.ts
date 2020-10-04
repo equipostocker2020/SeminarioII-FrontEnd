@@ -12,6 +12,7 @@ export class Usuario {
         public fecha_nac?: Date,
         public edad?: string,
         public id_usuario?: string,
+        public estado?: string,
         // public ID_USUARIO?: string,
     ) { }
 }

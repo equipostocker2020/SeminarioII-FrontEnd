@@ -14,23 +14,24 @@ export class ActualizarAulaComponent implements OnInit {
 
   token: string;
   aula: Aula;
-  
+
   constructor(
     public aulaService: AulaService,
     public router: Router,
-    public usuarioService : UsuarioService
+    public usuarioService: UsuarioService
   ) {
-    this.aula = this.aulaService.aula; // explota
-    console.log(this.aula);
+    // this.aula = this.aulaService.aula; // explota
     this.cargarStorage();
-    this.guardarStorage(
-      this.aulaService.aula.id_aula,
-      this.usuarioService.token,
-      this.aula
-    ); }
+    console.log(this.aula);
+    // this.guardarStorage(
+    //   this.aulaService.aula.id_aula,
+    //   this.usuarioService.token,
+    //   this.aula
+    // ); 
+  }
 
   ngOnInit(): void {}
-  
+
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
@@ -43,7 +44,7 @@ export class ActualizarAulaComponent implements OnInit {
 
   guardarStorage(id: string, token: string, aula: Aula) {
     localStorage.setItem('id_aula', this.aulaService.aula.id_aula);
-    localStorage.setItem('token', this.usuarioService.token);
+    localStorage.setItem('token', this.token);
     localStorage.setItem('aulaActualizar', JSON.stringify(aula));
 
     this.aula = aula;
@@ -51,7 +52,7 @@ export class ActualizarAulaComponent implements OnInit {
   }
 
   resetStorage() {
-    localStorage.setItem('id', this.aulaService.aula.id_aula);
+    // localStorage.setItem('id', this.aulaService.aula.id_aula);
     localStorage.setItem('token', this.aulaService.token);
     localStorage.setItem('aula', JSON.stringify(this.aulaService.aula));
     this.aula = this.aulaService.aula;
@@ -61,8 +62,8 @@ export class ActualizarAulaComponent implements OnInit {
   guardar(aula: Aula) {
     this.aula.nombre_aula = aula.nombre_aula;
     this.aulaService.token = this.token;
-    console.log(this.aula.nombre_aula)
-    console.log(this.token)
+    console.log(this.aula.nombre_aula);
+    console.log(this.token);
     this.aulaService
       .actualizarAula(this.aula)
       .subscribe((resp: any) => {

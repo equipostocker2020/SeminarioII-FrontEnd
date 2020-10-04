@@ -57,8 +57,8 @@ export class EvaluacionService {
       }),
       catchError((err: any) => {
         console.log(err);
-        Swal.fire('Error al registrar evaluacion', err, 'error');
-        return err.throw(err);
+        Swal.fire('Error al registrar evaluacion', err.error.error.sqlMessage, 'error');
+        return err.throw(err.error.error.sqlMessage);
       }));
 
   }
@@ -74,10 +74,11 @@ export class EvaluacionService {
         }),
         catchError((err: any) => {
           console.log(err);
-          return err.throw(err);
+          Swal.fire('Error al actualizar evaluacion', err.error.error.sqlMessage, 'error' );
+          return err.throw(err.error.error.sqlMessage);
         }));
   }
-  
+
   borrarEvaluacion(id: string) {
     let url = URL_SERVICIOS + '/evaluacion/' + id;
     url += '?token=' + this.token;

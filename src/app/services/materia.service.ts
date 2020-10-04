@@ -57,8 +57,8 @@ export class MateriaService {
       }),
       catchError((err: any) =>{
         console.log(err);
-        Swal.fire('Error al registrar materia', err, 'warning');
-        return err.throw(err);
+        Swal.fire('Error al registrar materia', err.error.error.sqlMessage, 'warning');
+        return err.throw(err.error.error.sqlMessage);
       }));
   }
 
@@ -73,6 +73,7 @@ export class MateriaService {
         }),
         catchError((err: any) => {
           console.log(err);
+          Swal.fire('Error al actualizar materia', err.error.error.sqlMessage, 'error' );
           return err.throw(err);
         }));
   }

@@ -18,7 +18,7 @@ export class AlumnosComponent implements OnInit {
   constructor(
     public tipoUsuario: TipoUsuarioService,
     public usuarioService: UsuarioService
-  ) { 
+  ) {
     this.usuarioService.usuario;
   }
 
@@ -28,7 +28,7 @@ export class AlumnosComponent implements OnInit {
 
   getAlumno(){
     this.tipoUsuario.getAlumno()
-    .subscribe((resp:any)=>{
+    .subscribe((resp: any) => {
       console.log(resp);
       this.usuarios = resp.usuario;
     });

@@ -54,13 +54,13 @@ export class AsignacionService {
     return this.http.post(url, aula_materia)
     .pipe(
       map((resp: any) => {
-        Swal.fire('sarasa creada', 'success');
+        Swal.fire('asignacion creada', 'success');
         return resp.usuario;
       }),
       catchError((err: any) => {
         console.log(err);
-        Swal.fire('Error al registrarse', 'saasa', 'error');
-        return err.throw(err);
+        Swal.fire('Error al registrarse', err.error.error.sqlMessage, 'error');
+        return err.throw(err.error.error.sqlMessage);
       }));
 
   }

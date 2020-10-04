@@ -22,11 +22,11 @@ export class AulaService {
     this.cargarStorage();
    }
 
-   guardarStorage(id: string, token: string, Aula: Aula) {
+   guardarStorage(id: string, token: string, aula: Aula) {
     localStorage.setItem('id_aula', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('aula', JSON.stringify(Aula));
-    this.aula = Aula;
+    localStorage.setItem('aula', JSON.stringify(aula));
+    this.aula = aula;
     this.token = token;
   }
 
@@ -57,8 +57,8 @@ export class AulaService {
       }),
       catchError((err: any) => {
         console.log(err);
-        Swal.fire('Error al registrar aula', err, 'error');
-        return err.throw(err);
+        Swal.fire('Error al registrar aula', err.error.error.sqlMessage, 'error');
+        return err.throw(err.error.error.sqlMessage);
       }));
 
   }
@@ -74,7 +74,8 @@ export class AulaService {
         }),
         catchError((err: any) => {
           console.log(err);
-          return err.throw(err);
+          Swal.fire('Error al actualizar usuario', err.error.error.sqlMessage, 'error' );
+          return err.throw(err.error.error.sqlMessage);
         }));
   }
   borrarUsuario(id: string) {
