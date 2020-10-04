@@ -30,7 +30,7 @@ export class ActualizarEvaluacionComponent implements OnInit {
     //   this.aulaService.aula.id_aula,
     //   this.usuarioService.token,
     //   this.aula
-    // ); 
+    // );
   }
 
   ngOnInit(): void {
@@ -71,10 +71,7 @@ export class ActualizarEvaluacionComponent implements OnInit {
   guardar(evaluacion: Evaluacion) {
     this.evaluacion.id_materia = evaluacion.id_materia;
     this.evaluacion.fecha = evaluacion.fecha;
-    this.evaluacion.final = evaluacion.final;
     this.evaluacionService.token = this.token;
-    console.log(this.evaluacion.final);
-    console.log(this.token);
     this.evaluacionService
       .actualizarEvaluacion(this.evaluacion)
       .subscribe((resp: any) => {

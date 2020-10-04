@@ -14,7 +14,7 @@ export class EvaluacionesComponent implements OnInit {
   evaluacion: Evaluacion;
   token: string;
 
-  constructor(public _evaluacionService: EvaluacionService) { 
+  constructor(public _evaluacionService: EvaluacionService) {
     this._evaluacionService.evaluacion;
   }
 
@@ -26,7 +26,7 @@ export class EvaluacionesComponent implements OnInit {
     this._evaluacionService.getEvaluacion()
     .subscribe((resp:any)=>{
       this.evaluaciones = resp.evaluaciones;
-      console.log(this.evaluaciones);
+      console.log(resp);
     });
   }
 

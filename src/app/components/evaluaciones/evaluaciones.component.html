@@ -66,8 +66,8 @@
                                     <th class="text">#</th>
                                     <th class="text">Nombre de la materia</th>
                                     <th class="text">Fecha</th>
-                                    <th class="text">Final</th>
                                     <th class="text">Estado</th>
+                                    <th class="text">Instancia</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,13 +82,13 @@
                                         {{evaluacion.fecha | date:'dd-MM-yyyy' }}
                                     </td>
                                     <td class="text text-center">
-                                        {{evaluacion.final}}
-                                    </td>
-                                    <td class="text text-center">
                                         {{evaluacion.estado}}
                                     </td>
+                                    <td class="text text-center">
+                                        {{evaluacion.nombre_instancia}}
+                                    </td>
                                     <td>
-                                        <button class="btn btn-success" routerLink="/evaluacion/actualizar-evaluacion"  (click)="guardarStorage(evaluacion.id_evaluacion, evaluacion)">
+                                        <button class="btn btn-success" routerLink="/evaluacion/actualizar-evaluacion" (click)="guardarStorage(evaluacion.id_evaluacion, evaluacion)">
                                             <span class="input-group-addon">
                                                 <i class="material-icons text-center">edit</i>
                                             </span>

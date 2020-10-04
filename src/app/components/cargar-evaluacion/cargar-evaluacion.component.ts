@@ -32,22 +32,19 @@ export class CargarEvaluacionComponent implements OnInit {
 
     this.forma = new FormGroup({
       id_materia: new FormControl(null, Validators.required),
-      fecha: new FormControl(null, Validators.required),
-      final: new FormControl(null, Validators.required)
+      fecha: new FormControl(null, Validators.required)
     });
 
     this.forma.setValue({
       id_materia: '',
-      fecha: '',
-      final: ''
+      fecha: ''
     });
 
   }
   registrarEvaluacion(){
     const evaluacion = new Evaluacion (
       this.forma.value.id_materia,
-      this.forma.value.fecha,
-      this.forma.value.final
+      this.forma.value.fecha
     );
     this.evaluacionService.postEvaluacion(evaluacion)
     .subscribe(resp => {

@@ -51,7 +51,7 @@ export class CargarAsignacionComponent implements OnInit {
     this.materiasService.getMateria()
     .subscribe(( resp: any) =>{
       console.log(resp);
-      this.materias = resp.materias;
+      this.materias = resp.materia;
     });
     this.forma = new FormGroup({
       id_aula: new FormControl(null, Validators.required),
