@@ -46,6 +46,12 @@ export class EvaluacionService {
     return this.http.get(url);
   }
 
+  getInstanciaEvaluacion(){
+    let url = URL_SERVICIOS + '/instancia_evaluacion';
+    url += '?token=' + this.token;
+    return this.http.get(url);
+  }
+
   postEvaluacion(evaluacion: Evaluacion){
     let url = URL_SERVICIOS + '/evaluacion';
     url += '?token=' + this.token;
