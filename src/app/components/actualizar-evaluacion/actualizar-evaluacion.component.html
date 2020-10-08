@@ -60,6 +60,15 @@
                                     </option>
                                 </select>
                             <br>
+                            <label class="form-label">Instancia</label>
+                            <select name="id_instancia" [ngModel]="evaluacion.id_instancia" class="form-control">
+                                    <option value="">Seleccione una Instancia</option>
+                                    <option class="form-control" *ngFor="let instancia of instancias"
+                                        value={{instancia.id_instancia}}>
+                                        {{instancia.nombre_instancia}}
+                                    </option>
+                                </select>
+                            <br>
                             <div class="form-group form-float">
                                 <label class="form-label">Fecha</label>
                                 <div class="form-line">
