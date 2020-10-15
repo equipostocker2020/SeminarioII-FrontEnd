@@ -1,11 +1,9 @@
 export class Materia {
-
-    constructor(
-        public nombre_materia?: string,
-        public dia?: string,
-        public horario?: string,
-        public estado?: string,
-        public id_materia?: string,
-        // public ID_USUARIO?: string,
-    ) { }
+  constructor(
+    public nombre_materia?: string,
+    public dia?: string,
+    public horario?: string,
+    public estado?: string,
+    public id_materia?: string
+  ) {}
 }

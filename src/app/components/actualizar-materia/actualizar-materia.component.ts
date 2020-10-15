@@ -6,29 +6,19 @@ import { MateriaService } from '../../services/materia.service';
 @Component({
   selector: 'app-actualizar-materia',
   templateUrl: './actualizar-materia.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ActualizarMateriaComponent implements OnInit {
-
   token: string;
   materia: Materia;
 
-  constructor(
-    public materiaService: MateriaService,
-    public router: Router,
-  ) {
-    //this.materia = this.materiaService.materia;
+  constructor(public materiaService: MateriaService, public router: Router) {
     this.cargarStorage();
     console.log(this.materia);
-    /*this.guardarStorage(
-      this.materiaService.materia.id_materia,
-      this.materiaService.token,
-      this.materia
-    ); */
   }
 
   ngOnInit(): void {}
-  
+
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
@@ -44,14 +34,16 @@ export class ActualizarMateriaComponent implements OnInit {
     localStorage.setItem('token', this.materiaService.token);
     localStorage.setItem('materiaActualizar', JSON.stringify(materia));
 
-    this.materia = materia
+    this.materia = materia;
     this.token = token;
   }
 
   resetStorage() {
-    //localStorage.setItem('id', this.materiaService.materia.id_materia);
     localStorage.setItem('token', this.materiaService.token);
-    localStorage.setItem('materia', JSON.stringify(this.materiaService.materia));
+    localStorage.setItem(
+      'materia',
+      JSON.stringify(this.materiaService.materia)
+    );
     this.materia = this.materiaService.materia;
     this.token = this.token;
   }
@@ -61,7 +53,6 @@ export class ActualizarMateriaComponent implements OnInit {
     this.materia.dia = materia.dia;
     this.materia.horario = materia.horario;
     this.materiaService.token = this.token;
-    console.log(this.token)
     this.materiaService
       .actualizarMateria(this.materia)
       .subscribe((resp: any) => {
@@ -69,5 +60,4 @@ export class ActualizarMateriaComponent implements OnInit {
         this.resetStorage();
       });
   }
-
 }

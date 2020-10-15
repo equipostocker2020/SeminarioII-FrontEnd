@@ -6,17 +6,13 @@ import { UsuarioService } from '../../services/usuario.service';
 @Component({
   selector: 'app-actualizar-docente',
   templateUrl: './actualizar-docente.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ActualizarDocenteComponent implements OnInit {
-
   token: string;
   usuario: Usuario;
 
-  constructor(
-    public usuarioService: UsuarioService,
-    public router: Router,
-  ) {
+  constructor(public usuarioService: UsuarioService, public router: Router) {
     this.usuario = this.usuarioService.usuario;
     console.log(this.usuario);
     this.cargarStorage();
@@ -25,7 +21,7 @@ export class ActualizarDocenteComponent implements OnInit {
       this.usuarioService.token,
       this.usuario
     );
-   }
+  }
 
   ngOnInit(): void {}
 
@@ -40,10 +36,12 @@ export class ActualizarDocenteComponent implements OnInit {
   }
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
-    localStorage.setItem('idActualizar', this.usuarioService.usuario.id_usuario);
+    localStorage.setItem(
+      'idActualizar',
+      this.usuarioService.usuario.id_usuario
+    );
     localStorage.setItem('token', this.usuarioService.token);
     localStorage.setItem('usuarioActualizar', JSON.stringify(usuario));
-
     this.usuario = usuario;
     this.token = token;
   }
@@ -76,5 +74,4 @@ export class ActualizarDocenteComponent implements OnInit {
         this.resetStorage();
       });
   }
-
 }

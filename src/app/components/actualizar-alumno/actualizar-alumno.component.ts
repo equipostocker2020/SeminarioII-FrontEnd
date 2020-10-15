@@ -6,26 +6,22 @@ import { UsuarioService } from '../../services/usuario.service';
 @Component({
   selector: 'app-actualizar-alumno',
   templateUrl: './actualizar-alumno.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ActualizarAlumnoComponent implements OnInit {
-
   token: string;
   usuario: Usuario;
 
-  constructor(
-    public usuarioService: UsuarioService,
-    public router: Router,
-  ) {
+  constructor(public usuarioService: UsuarioService, public router: Router) {
     this.usuario = this.usuarioService.usuario;
-    console.log('->',this.usuario);
+    console.log('->', this.usuario);
     this.cargarStorage();
     this.guardarStorage(
       this.usuarioService.usuario.id_usuario,
       this.usuarioService.token,
       this.usuario
     );
-   }
+  }
 
   ngOnInit(): void {}
 
@@ -40,10 +36,12 @@ export class ActualizarAlumnoComponent implements OnInit {
   }
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
-    localStorage.setItem('idActualizar', this.usuarioService.usuario.id_usuario);
+    localStorage.setItem(
+      'idActualizar',
+      this.usuarioService.usuario.id_usuario
+    );
     localStorage.setItem('token', this.usuarioService.token);
     localStorage.setItem('usuarioActualizar', JSON.stringify(usuario));
-
     this.usuario = usuario;
     this.token = token;
   }
@@ -66,7 +64,6 @@ export class ActualizarAlumnoComponent implements OnInit {
     this.usuario.email = usuario.email;
     this.usuario.dni = usuario.dni;
     this.usuario.cuit_cuil = usuario.cuit_cuil;
-    // this.usuario.rol = usuario.rol;
     this.usuario.fecha_nac = usuario.fecha_nac;
     this.usuario.edad = usuario.edad;
     this.usuarioService.token = this.token;
@@ -77,5 +74,4 @@ export class ActualizarAlumnoComponent implements OnInit {
         this.resetStorage();
       });
   }
-
 }

@@ -6,61 +6,62 @@ import { Evaluacion } from 'src/app/models/evaluacion.models';
 import { MateriaService } from 'src/app/services/materia.service';
 import { Materia } from 'src/app/models/materia.models';
 import { Instancia } from 'src/app/models/instancia.models';
+import { AsignacionService } from '../../services/asignacion.service';
 
 @Component({
   selector: 'app-cargar-evaluacion',
   templateUrl: './cargar-evaluacion.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class CargarEvaluacionComponent implements OnInit {
-
   forma: FormGroup;
-  materias: Materia [] = [];
-  instancias: Instancia [] = [];
+  materias: Materia[] = [];
+  instancias: Instancia[] = [];
+  get_aulas_materia: {
+    anho: string;
+    apellido: string;
+    dia: string;
+    horario: string;
+    nombre: string;
+    nombre_aula: string;
+    nombre_materia: string;
+  };
 
   constructor(
     public evaluacionService: EvaluacionService,
     public materiaService: MateriaService,
+    public asignacionService: AsignacionService,
     public router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.materiaService.getMateria().subscribe((resp: any) => {
+      this.materias = resp.materia;
+    });
 
-    this.materiaService.getMateria()
-    .subscribe((resp:any) => {
-      this.materias =  resp.materia;
-      console.log(this.materias)
-    })
-
-    this.evaluacionService.getInstanciaEvaluacion()
-    .subscribe((resp:any)=> {
-      this.instancias = resp.instancia_evaluacion;
-      console.log(this.instancias);
-    })
+    this.asignacionService.getTodo().subscribe((resp: any) => {
+      this.get_aulas_materia = resp.aulas_materias;
+    });
 
     this.forma = new FormGroup({
       id_materia: new FormControl(null, Validators.required),
       id_instancia: new FormControl(null, Validators.required),
-      fecha: new FormControl(null, Validators.required)
+      fecha: new FormControl(null, Validators.required),
     });
-
     this.forma.setValue({
       id_materia: '',
       id_instancia: '',
-      fecha: ''
+      fecha: '',
     });
-
   }
-  registrarEvaluacion(){
-    console.log("id_materia",this.forma.value.id_materia)
-    console.log("id_instancia",this.forma.value.id_instancia)
-    const evaluacion = new Evaluacion (
+
+  registrarEvaluacion() {
+    const evaluacion = new Evaluacion(
       this.forma.value.id_materia,
       this.forma.value.id_instancia,
       this.forma.value.fecha
     );
-    this.evaluacionService.postEvaluacion(evaluacion)
-    .subscribe(resp => {
+    this.evaluacionService.postEvaluacion(evaluacion).subscribe((resp) => {
       this.router.navigate(['/evaluaciones']);
     });
   }

@@ -5,21 +5,17 @@ import { URL_SERVICIOS } from '../config/config';
 import { Inscripcion } from '../models/inscripcion.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InscripcionService {
-
   token: string;
   inscripcion: Inscripcion;
 
-  constructor(
-    public http: HttpClient,
-    public router: Router
-  ) {
+  constructor(public http: HttpClient, public router: Router) {
     this.cargarStorage();
-   }
+  }
 
-   guardarStorage(id: string, token: string, Inscripcion: Inscripcion) {
+  guardarStorage(id: string, token: string, Inscripcion: Inscripcion) {
     localStorage.setItem('id_inscripcion', id);
     localStorage.setItem('token', token);
     localStorage.setItem('inscripcion', JSON.stringify(Inscripcion));
@@ -42,5 +38,4 @@ export class InscripcionService {
     url += '?token=' + this.token;
     return this.http.get(url);
   }
-
 }

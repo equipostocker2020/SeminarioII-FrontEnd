@@ -14,19 +14,18 @@ import { MateriaService } from '../../services/materia.service';
 @Component({
   selector: 'app-cargar-asignacion',
   templateUrl: './cargar-asignacion.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class CargarAsignacionComponent implements OnInit {
-
   forma: FormGroup;
   materias: Materia[] = [];
   materia: Materia;
-  docentes: Usuario [] = [];
+  docentes: Usuario[] = [];
   docente: Usuario;
-  aulas: Aula [] = [];
+  aulas: Aula[] = [];
   aula: Aula;
   usuario: Usuario;
-  usuarios: Usuario [] = []
+  usuarios: Usuario[] = [];
 
   constructor(
     public aulaService: AulaService,
@@ -35,21 +34,18 @@ export class CargarAsignacionComponent implements OnInit {
     public router: Router,
     public usuarioService: UsuarioService,
     public materiasService: MateriaService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.aulaService.getAula()
-    .subscribe(( resp: any) =>{
+    this.aulaService.getAula().subscribe((resp: any) => {
       console.log(resp);
       this.aulas = resp.aula;
     });
-    this.tipoUsuarioService.getDocente()
-    .subscribe(( resp: any) =>{
+    this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
       console.log(resp);
       this.usuarios = resp.usuario;
     });
-    this.materiasService.getMateria()
-    .subscribe(( resp: any) =>{
+    this.materiasService.getMateria().subscribe((resp: any) => {
       console.log(resp);
       this.materias = resp.materia;
     });
@@ -65,12 +61,11 @@ export class CargarAsignacionComponent implements OnInit {
       id_materia: '',
       anho: '',
       id_instancia: '',
-      id_docente: ''
-
+      id_docente: '',
     });
   }
 
-  registrarAsignacion(){
+  registrarAsignacion() {
     const asignacion = new Aula_materia(
       this.forma.value.id_aula,
       this.forma.value.id_materia,
@@ -78,10 +73,8 @@ export class CargarAsignacionComponent implements OnInit {
       this.forma.value.id_instancia,
       this.forma.value.id_docente
     );
-    this.asignacionService.postTodo(asignacion)
-    .subscribe(resp=>{
+    this.asignacionService.postTodo(asignacion).subscribe((resp) => {
       console.log(resp);
     });
   }
-
 }

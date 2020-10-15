@@ -21,8 +21,7 @@ export class AulasComponent implements OnInit {
   }
 
   getAula() {
-    this.aulaService.getAula()
-    .subscribe((resp: any) => {
+    this.aulaService.getAula().subscribe((resp: any) => {
       console.log(resp.aula);
       this.aulas = resp.aula;
     });
@@ -37,10 +36,8 @@ export class AulasComponent implements OnInit {
 
   guardarStorage(id: string, aula: Aula) {
     localStorage.setItem('idActualizar', id);
-    // localStorage.setItem('token', token);
     localStorage.setItem('aulaActualizar', JSON.stringify(aula));
     this.aula = aula;
-    // this.token = token;
   }
 
   eliminarStorage() {

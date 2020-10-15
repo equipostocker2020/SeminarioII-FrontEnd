@@ -5,20 +5,17 @@ import { URL_SERVICIOS } from '../config/config';
 import { Usuario } from '../models/usuario.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TipoUsuarioService {
   token: string;
   usuario: Usuario;
 
-  constructor(
-    public http: HttpClient,
-    public router: Router
-  ) {
+  constructor(public http: HttpClient, public router: Router) {
     this.cargarStorage();
-   }
+  }
 
-   guardarStorage(id: string, token: string, usuario: Usuario) {
+  guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem('ID_USUARIO', id);
     localStorage.setItem('token', token);
     localStorage.setItem('usuario', JSON.stringify(usuario));
@@ -41,6 +38,7 @@ export class TipoUsuarioService {
     url += '?token=' + this.token;
     return this.http.get(url);
   }
+
   getDocente() {
     let url = URL_SERVICIOS + '/tipo/docente';
     url += '?token=' + this.token;

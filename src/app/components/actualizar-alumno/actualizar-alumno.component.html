@@ -1,8 +1,8 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item ">
@@ -28,6 +28,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/asignaciones">Asignacion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/asignacion">Crear Asignacion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/inscripciones">Inscripcion</a>
@@ -86,16 +92,9 @@
                                     <input [ngModel]="usuario.cuit_cuil" type="text" class="form-control" name="cuit_cuil" required>
                                 </div>
                             </div>
-                            <!-- <div class="form-group form-float">
-                                <label class="form-label">ROL</label>
-                                <div class="form-line">
-                                    <input [ngModel]="usuario.rol" type="text" class="form-control" name="rol" required disabled>
-                                </div>
-                            </div> -->
                             <div class="form-group form-float">
                                 <label class="form-label">Fecha Nacimiento</label>
                                 <div class="form-line">
-                                    <!-- <input [ngModel]="usuario.fecha_nac" type="date" class="form-control " name="fecha_nac " value="2020-01-01" min="1900-01-01" max="2018-12-31" required> -->
                                     <input [ngModel]="usuario.fecha_nac" type="date" class="form-control " name="fecha_nac" required>
                                 </div>
                             </div>

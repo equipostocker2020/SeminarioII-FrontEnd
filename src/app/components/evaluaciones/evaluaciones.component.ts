@@ -5,47 +5,42 @@ import { Evaluacion } from '../../models/evaluacion.models';
 @Component({
   selector: 'app-evaluaciones',
   templateUrl: './evaluaciones.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class EvaluacionesComponent implements OnInit {
-
-  evaluaciones: Evaluacion [] = [];
+  evaluaciones: Evaluacion[] = [];
   evaluacion: Evaluacion;
   token: string;
 
-  constructor(public _evaluacionService: EvaluacionService) {
-    this._evaluacionService.evaluacion;
+  constructor(public evaluacionService: EvaluacionService) {
+    this.evaluacionService.evaluacion;
   }
 
   ngOnInit(): void {
     this.getEvaluacion();
   }
 
-  getEvaluacion(){
-    this._evaluacionService.getEvaluacion()
-    .subscribe((resp:any)=>{
+  getEvaluacion() {
+    this.evaluacionService.getEvaluacion().subscribe((resp: any) => {
       this.evaluaciones = resp.evaluaciones;
       console.log(resp);
     });
   }
 
-  updateAula(evaluacion: Evaluacion){
-    this._evaluacionService.actualizarEvaluacion(evaluacion)
-    .subscribe((resp: any) => {
-     console.log(resp);
-     this.eliminarStorage();
-    });
+  updateAula(evaluacion: Evaluacion) {
+    this.evaluacionService
+      .actualizarEvaluacion(evaluacion)
+      .subscribe((resp: any) => {
+        console.log(resp);
+        this.eliminarStorage();
+      });
   }
 
   guardarStorage(id: string, evaluacion: Evaluacion) {
     localStorage.setItem('id_evaluacion', id);
-    //localStorage.setItem('token', token);
     localStorage.setItem('evaluacionActualizar', JSON.stringify(evaluacion));
     this.evaluacion = evaluacion;
-    //this.token = token;
   }
-
 
   eliminarStorage() {
     localStorage.removeItem('id');

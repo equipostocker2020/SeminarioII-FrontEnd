@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {TipoUsuarioService} from '../../services/tipo-usuario.service'
+import { TipoUsuarioService } from '../../services/tipo-usuario.service';
 import { Usuario } from '../../models/usuario.models';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class AlumnosComponent implements OnInit {
-
-  usuarios: Usuario [] = [];
+  usuarios: Usuario[] = [];
   usuario: Usuario;
   token: string;
 
@@ -26,21 +24,20 @@ export class AlumnosComponent implements OnInit {
     this.getAlumno();
   }
 
-  getAlumno(){
-    this.tipoUsuario.getAlumno()
-    .subscribe((resp: any) => {
+  getAlumno() {
+    this.tipoUsuario.getAlumno().subscribe((resp: any) => {
       console.log(resp);
       this.usuarios = resp.usuario;
     });
   }
 
-  updateUsuario(usuario: Usuario){
-    this.usuarioService.actualizarUsuario(usuario)
-    .subscribe((resp: any) => {
-     console.log(resp);
-     this.eliminarStorage();
+  updateUsuario(usuario: Usuario) {
+    this.usuarioService.actualizarUsuario(usuario).subscribe((resp: any) => {
+      console.log(resp);
+      this.eliminarStorage();
     });
   }
+  
   guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem('idActualizar', id);
     localStorage.setItem('token', token);

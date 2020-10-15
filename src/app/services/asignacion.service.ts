@@ -22,7 +22,7 @@ export class AsignacionService {
     public http: HttpClient
   ) {
     this.cargarStorage();
-   }
+  }
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem('ID_USUARIO', id);
@@ -48,20 +48,20 @@ export class AsignacionService {
     console.log(url);
     return this.http.get(url);
   }
+
   postTodo(aula_materia: Aula_materia) {
     let url = URL_SERVICIOS + '/aulas_materias';
     url += '?token=' + this.token;
     return this.http.post(url, aula_materia)
-    .pipe(
-      map((resp: any) => {
-        Swal.fire('asignacion creada', 'success');
-        return resp.usuario;
-      }),
-      catchError((err: any) => {
-        console.log(err);
-        Swal.fire('Error al registrarse', err.error.error.sqlMessage, 'error');
-        return err.throw(err.error.error.sqlMessage);
-      }));
-
+      .pipe(
+        map((resp: any) => {
+          Swal.fire('Se registro una nueva Asignacion', 'success');
+          return resp.usuario;
+        }),
+        catchError((err: any) => {
+          console.log(err);
+          Swal.fire('Error al registrarse', err.error.error.sqlMessage, 'error');
+          return err.throw(err.error.error.sqlMessage);
+        }));
   }
 }

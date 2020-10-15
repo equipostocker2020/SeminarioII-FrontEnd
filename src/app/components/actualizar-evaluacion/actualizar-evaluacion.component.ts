@@ -10,14 +10,13 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'app-actualizar-evaluacion',
   templateUrl: './actualizar-evaluacion.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ActualizarEvaluacionComponent implements OnInit {
-
   token: string;
   evaluacion: Evaluacion;
-  materias: Materia [] = [];
-  instancias: Instancia [] = [];
+  materias: Materia[] = [];
+  instancias: Instancia[] = [];
 
   constructor(
     public evaluacionService: EvaluacionService,
@@ -25,34 +24,27 @@ export class ActualizarEvaluacionComponent implements OnInit {
     public usuarioService: UsuarioService,
     public router: Router
   ) {
-    // this.aula = this.aulaService.aula; // explota
     this.cargarStorage();
-    console.log(this.evaluacion);
-    // this.guardarStorage(
-    //   this.aulaService.aula.id_aula,
-    //   this.usuarioService.token,
-    //   this.aula
-    // );
   }
 
   ngOnInit(): void {
-    this.materiaService.getMateria()
-    .subscribe((resp:any) => {
-      this.materias =  resp.materia;
-      console.log(this.materias)
-    })
-    
-    this.evaluacionService.getInstanciaEvaluacion()
-    .subscribe((resp:any)=> {
+    this.materiaService.getMateria().subscribe((resp: any) => {
+      this.materias = resp.materia;
+      console.log(this.materias);
+    });
+
+    this.evaluacionService.getInstanciaEvaluacion().subscribe((resp: any) => {
       this.instancias = resp.instancia_evaluacion;
       console.log(this.instancias);
-    })
+    });
   }
 
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.evaluacion = JSON.parse(localStorage.getItem('evaluacionActualizar'));
+      this.evaluacion = JSON.parse(
+        localStorage.getItem('evaluacionActualizar')
+      );
     } else {
       this.token = '';
       this.evaluacion = null;
@@ -60,7 +52,10 @@ export class ActualizarEvaluacionComponent implements OnInit {
   }
 
   guardarStorage(id: string, token: string, evaluacion: Evaluacion) {
-    localStorage.setItem('id_evaluacion', this.evaluacionService.evaluacion.id_evaluacion);
+    localStorage.setItem(
+      'id_evaluacion',
+      this.evaluacionService.evaluacion.id_evaluacion
+    );
     localStorage.setItem('token', this.token);
     localStorage.setItem('evaluacionActualizar', JSON.stringify(evaluacion));
 
@@ -69,9 +64,11 @@ export class ActualizarEvaluacionComponent implements OnInit {
   }
 
   resetStorage() {
-    // localStorage.setItem('id', this.aulaService.aula.id_aula);
     localStorage.setItem('token', this.evaluacionService.token);
-    localStorage.setItem('aula', JSON.stringify(this.evaluacionService.evaluacion));
+    localStorage.setItem(
+      'aula',
+      JSON.stringify(this.evaluacionService.evaluacion)
+    );
     this.evaluacion = this.evaluacionService.evaluacion;
     this.token = this.token;
   }

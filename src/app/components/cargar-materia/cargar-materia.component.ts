@@ -7,16 +7,12 @@ import { Materia } from '../../models/materia.models';
 @Component({
   selector: 'app-cargar-materia',
   templateUrl: './cargar-materia.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class CargarMateriaComponent implements OnInit {
-
   forma: FormGroup;
 
-  constructor(
-    public materiaService: MateriaService,
-    public router: Router
-  ) { }
+  constructor(public materiaService: MateriaService, public router: Router) {}
 
   ngOnInit(): void {
     this.forma = new FormGroup({
@@ -32,14 +28,13 @@ export class CargarMateriaComponent implements OnInit {
     });
   }
 
-  registrarMateria(){
+  registrarMateria() {
     const materia = new Materia(
       this.forma.value.nombre_materia,
       this.forma.value.dia,
       this.forma.value.horario
     );
-    this.materiaService.postMateria(materia)
-    .subscribe(resp =>{
+    this.materiaService.postMateria(materia).subscribe((resp) => {
       this.router.navigate(['/materias']);
     });
   }

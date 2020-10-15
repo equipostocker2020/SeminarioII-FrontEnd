@@ -5,23 +5,17 @@ import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario.models';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class LoginComponent implements OnInit {
-
   usuario: Usuario;
   email: string;
   recuerdame = false;
 
-  constructor(
-    public router: Router,
-    public usuarioService: UsuarioService
-  ) { }
+  constructor(public router: Router, public usuarioService: UsuarioService) {}
 
   ngOnInit() {
     // this.email = localStorage.getItem('email') || '';
@@ -34,15 +28,28 @@ export class LoginComponent implements OnInit {
     if (forma.invalid) {
       return;
     }
-    const usuario = new Usuario(null, null, null, forma.value.email, null,  forma.value.contraseña, null, null, null, null, null);
-    console.log(usuario)
-    this.usuarioService.login(usuario, forma.value.recuerdame)
-      .subscribe((resp: any) => {
+    const usuario = new Usuario(
+      null,
+      null,
+      null,
+      forma.value.email,
+      null,
+      forma.value.contraseña,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
+    console.log(usuario);
+    this.usuarioService.login(usuario, forma.value.recuerdame).subscribe(
+      (resp: any) => {
         this.router.navigate(['/dashboard']);
-        console.log(resp)
-      }, (err) => {
+        console.log(resp);
+      },
+      (err) => {
         console.log(err);
-      });
+      }
+    );
   }
-
 }

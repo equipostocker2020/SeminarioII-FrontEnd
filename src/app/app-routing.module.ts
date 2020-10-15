@@ -49,8 +49,8 @@ const routes: Routes = [
   { path: 'evaluacion/actualizar-evaluacion', component: ActualizarEvaluacionComponent, data: {titulo: 'Actualizar Evalucion'}},
   { path: 'inscripcion/actualizar-inscripcion', component: ActualizarInscripcionComponent, data: {titulo: 'Actualizar Inscripcion'}},
   { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard'}},
-  { path: 'asignacion', component: AsignacionComponent , data: {titulo: 'Dashboard'}},
-  { path: 'asignaciones', component: CargarAsignacionComponent , data: {titulo: 'Dashboard'}},
+  { path: 'asignaciones', component: AsignacionComponent , data: {titulo: 'Ver Asignaciones '}},
+  { path: 'asignacion', component: CargarAsignacionComponent , data: {titulo: 'Crear Asignacion'}},
   { path: '**', redirectTo: '/login' }
 ];
 

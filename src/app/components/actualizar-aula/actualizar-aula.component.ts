@@ -4,14 +4,12 @@ import { Aula } from '../../models/aula.models';
 import { UsuarioService } from '../../services/usuario.service';
 import { AulaService } from 'src/app/services/aula.service';
 
-
 @Component({
   selector: 'app-actualizar-aula',
   templateUrl: './actualizar-aula.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ActualizarAulaComponent implements OnInit {
-
   token: string;
   aula: Aula;
 
@@ -20,14 +18,8 @@ export class ActualizarAulaComponent implements OnInit {
     public router: Router,
     public usuarioService: UsuarioService
   ) {
-    // this.aula = this.aulaService.aula; // explota
     this.cargarStorage();
     console.log(this.aula);
-    // this.guardarStorage(
-    //   this.aulaService.aula.id_aula,
-    //   this.usuarioService.token,
-    //   this.aula
-    // ); 
   }
 
   ngOnInit(): void {}
@@ -52,7 +44,6 @@ export class ActualizarAulaComponent implements OnInit {
   }
 
   resetStorage() {
-    // localStorage.setItem('id', this.aulaService.aula.id_aula);
     localStorage.setItem('token', this.aulaService.token);
     localStorage.setItem('aula', JSON.stringify(this.aulaService.aula));
     this.aula = this.aulaService.aula;
@@ -64,12 +55,9 @@ export class ActualizarAulaComponent implements OnInit {
     this.aulaService.token = this.token;
     console.log(this.aula.nombre_aula);
     console.log(this.token);
-    this.aulaService
-      .actualizarAula(this.aula)
-      .subscribe((resp: any) => {
-        this.router.navigate(['/aulas']);
-        this.resetStorage();
-      });
+    this.aulaService.actualizarAula(this.aula).subscribe((resp: any) => {
+      this.router.navigate(['/aulas']);
+      this.resetStorage();
+    });
   }
-
 }

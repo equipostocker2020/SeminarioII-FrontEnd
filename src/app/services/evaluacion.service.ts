@@ -20,9 +20,9 @@ export class EvaluacionService {
     public router: Router
   ) {
     this.cargarStorage();
-   }
+  }
 
-   guardarStorage(id: string, token: string, Evaluacion: Evaluacion) {
+  guardarStorage(id: string, token: string, Evaluacion: Evaluacion) {
     localStorage.setItem('id_evaluacion', id);
     localStorage.setItem('token', token);
     localStorage.setItem('Evaluacion', JSON.stringify(Evaluacion));
@@ -46,27 +46,26 @@ export class EvaluacionService {
     return this.http.get(url);
   }
 
-  getInstanciaEvaluacion(){
+  getInstanciaEvaluacion() {
     let url = URL_SERVICIOS + '/instancia_evaluacion';
     url += '?token=' + this.token;
     return this.http.get(url);
   }
 
-  postEvaluacion(evaluacion: Evaluacion){
+  postEvaluacion(evaluacion: Evaluacion) {
     let url = URL_SERVICIOS + '/evaluacion';
     url += '?token=' + this.token;
     return this.http.post(url, evaluacion)
-    .pipe(
-      map((resp: any) => {
-        Swal.fire('Aula creada', 'success');
-        return resp.evaluacion;
-      }),
-      catchError((err: any) => {
-        console.log(err);
-        Swal.fire('Error al registrar evaluacion', err.error.error.sqlMessage, 'error');
-        return err.throw(err.error.error.sqlMessage);
-      }));
-
+      .pipe(
+        map((resp: any) => {
+          Swal.fire('Aula creada', 'success');
+          return resp.evaluacion;
+        }),
+        catchError((err: any) => {
+          console.log(err);
+          Swal.fire('Error al registrar evaluacion', err.error.error.sqlMessage, 'error');
+          return err.throw(err.error.error.sqlMessage);
+        }));
   }
 
   actualizarEvaluacion(evaluacion: Evaluacion) {
@@ -80,7 +79,7 @@ export class EvaluacionService {
         }),
         catchError((err: any) => {
           console.log(err);
-          Swal.fire('Error al actualizar evaluacion', err.error.error.sqlMessage, 'error' );
+          Swal.fire('Error al actualizar evaluacion', err.error.error.sqlMessage, 'error');
           return err.throw(err.error.error.sqlMessage);
         }));
   }

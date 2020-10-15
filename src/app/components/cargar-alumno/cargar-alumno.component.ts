@@ -5,20 +5,15 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario.models';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-cargar-alumno',
   templateUrl: './cargar-alumno.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class CargarAlumnoComponent implements OnInit {
-
   forma: FormGroup;
 
-  constructor(
-    public usuarioService: UsuarioService,
-    public router: Router
-  ) { }
+  constructor(public usuarioService: UsuarioService, public router: Router) {}
 
   sonInguales(campo1: string, campo2: string) {
     return (group: FormGroup) => {
@@ -28,25 +23,28 @@ export class CargarAlumnoComponent implements OnInit {
         return null;
       }
       return {
-        sonIguales: true
+        sonIguales: true,
       };
     };
   }
 
   ngOnInit(): void {
-    this.forma = new FormGroup({
-      nombre: new FormControl(null, Validators.required),
-      apellido: new FormControl(null, Validators.required),
-      direccion: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      dni: new FormControl(null, Validators.required),
-      cuit_cuil: new FormControl(null, Validators.required),
-      rol: new FormControl(null, Validators.required),
-      fecha_nac: new FormControl(null, Validators.required),
-      edad: new FormControl(null, Validators.required),
-      contraseña: new FormControl(null, Validators.required),
-      contraseña2: new FormControl(null, Validators.required),
-    }, { validators: this.sonInguales('contraseña', 'contraseña2') });
+    this.forma = new FormGroup(
+      {
+        nombre: new FormControl(null, Validators.required),
+        apellido: new FormControl(null, Validators.required),
+        direccion: new FormControl(null, Validators.required),
+        email: new FormControl(null, [Validators.required, Validators.email]),
+        dni: new FormControl(null, Validators.required),
+        cuit_cuil: new FormControl(null, Validators.required),
+        rol: new FormControl(null, Validators.required),
+        fecha_nac: new FormControl(null, Validators.required),
+        edad: new FormControl(null, Validators.required),
+        contraseña: new FormControl(null, Validators.required),
+        contraseña2: new FormControl(null, Validators.required),
+      },
+      { validators: this.sonInguales('contraseña', 'contraseña2') }
+    );
 
     this.forma.setValue({
       nombre: '',
@@ -63,9 +61,9 @@ export class CargarAlumnoComponent implements OnInit {
     });
   }
 
-  registrarUsuario(){
+  registrarUsuario() {
     console.log(this.forma.value);
-    const usuario = new Usuario (
+    const usuario = new Usuario(
       this.forma.value.nombre,
       this.forma.value.apellido,
       this.forma.value.direccion,
@@ -77,8 +75,7 @@ export class CargarAlumnoComponent implements OnInit {
       this.forma.value.fecha_nac,
       this.forma.value.edad
     );
-    this.usuarioService.crearUsuario(usuario)
-    .subscribe(resp => {
+    this.usuarioService.crearUsuario(usuario).subscribe((resp) => {
       this.router.navigate(['/alumnos']);
     });
   }
@@ -88,6 +85,4 @@ export class CargarAlumnoComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
-
-
 }
