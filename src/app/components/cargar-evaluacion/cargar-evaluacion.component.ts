@@ -39,9 +39,14 @@ export class CargarEvaluacionComponent implements OnInit {
       this.materias = resp.materia;
     });
 
-    this.asignacionService.getTodo().subscribe((resp: any) => {
-      this.get_aulas_materia = resp.aulas_materias;
-    });
+    this.evaluacionService.getInstanciaEvaluacion().subscribe((resp:any)=>{
+
+  this.get_aulas_materia = resp.instancia_evaluacion;
+  console.log(this.get_aulas_materia);
+});
+    // this.asignacionService.getTodo().subscribe((resp: any) => {
+    //   this.get_aulas_materia = resp.aulas_materias;
+    // });
 
     this.forma = new FormGroup({
       id_materia: new FormControl(null, Validators.required),
