@@ -53,14 +53,12 @@ export class CargarAsignacionComponent implements OnInit {
       id_aula: new FormControl(null, Validators.required),
       id_materia: new FormControl(null, Validators.required),
       anho: new FormControl(null, Validators.required),
-      id_instancia: new FormControl(null, Validators.required),
       id_docente: new FormControl(null, Validators.required),
     });
     this.forma.setValue({
       id_aula: '',
       id_materia: '',
       anho: '',
-      id_instancia: null,
       id_docente: '',
     });
   }
@@ -70,11 +68,10 @@ export class CargarAsignacionComponent implements OnInit {
       this.forma.value.id_aula,
       this.forma.value.id_materia,
       this.forma.value.anho,
-      this.forma.value.id_instancia,
       this.forma.value.id_docente
     );
     this.asignacionService.postTodo(asignacion).subscribe((resp) => {
-      console.log(resp);
+      this.router.navigate(['/asignaciones']);
     });
   }
 }
