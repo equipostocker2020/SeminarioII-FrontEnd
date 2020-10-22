@@ -60,7 +60,7 @@ export class CargarAsignacionComponent implements OnInit {
       id_aula: '',
       id_materia: '',
       anho: '',
-      id_instancia: '',
+      id_instancia: null,
       id_docente: '',
     });
   }

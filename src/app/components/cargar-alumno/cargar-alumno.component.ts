@@ -53,7 +53,7 @@ export class CargarAlumnoComponent implements OnInit {
       email: '',
       dni: '',
       cuit_cuil: '',
-      rol: 'Estudiante',
+      rol: 'ESTUDIANTE',
       edad: '',
       contraseña: '',
       contraseña2: '',

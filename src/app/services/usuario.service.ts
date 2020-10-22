@@ -64,7 +64,7 @@ export class UsuarioService {
   }
 
   crearUsuario(usuario: Usuario) {
-    const url = URL_SERVICIOS + '/usuario';
+    let url = URL_SERVICIOS + '/usuario';
     return this.http.post(url, usuario).pipe(
       map((resp: any) => {
         Swal.fire('Usuario creado', usuario.email, 'success');
@@ -80,7 +80,6 @@ export class UsuarioService {
 
   actualizarUsuario(usuario: Usuario) {
     let url = URL_SERVICIOS + '/usuario/' + usuario.id_usuario;
-    url += '?token=' + this.token;
     return this.http.put(url, usuario).pipe(
       map((resp: any) => {
         Swal.fire('Usuario actualizado', usuario.email, 'success');

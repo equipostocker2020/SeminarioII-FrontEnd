@@ -14,12 +14,14 @@ export class EvaluacionService {
 
   token: string;
   evaluacion: Evaluacion;
+  idUsuario: string;
 
   constructor(
     public http: HttpClient,
     public router: Router
   ) {
     this.cargarStorage();
+    this.getIdUsuarioLocalStorage();
   }
 
   guardarStorage(id: string, token: string, Evaluacion: Evaluacion) {
@@ -40,6 +42,13 @@ export class EvaluacionService {
     }
   }
 
+  getIdUsuarioLocalStorage(){
+    if (localStorage.getItem('id_usuario')){
+      this.idUsuario = localStorage.getItem('id_usuario');
+      return this.idUsuario;
+    }
+  }
+
   getEvaluacion() {
     let url = URL_SERVICIOS + '/evaluacion';
     url += '?token=' + this.token;
@@ -54,7 +63,7 @@ export class EvaluacionService {
 
   postEvaluacion(evaluacion: Evaluacion) {
     let url = URL_SERVICIOS + '/evaluacion';
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.post(url, evaluacion)
       .pipe(
         map((resp: any) => {
@@ -70,7 +79,7 @@ export class EvaluacionService {
 
   actualizarEvaluacion(evaluacion: Evaluacion) {
     let url = URL_SERVICIOS + '/evaluacion/' + evaluacion.id_evaluacion;
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.put(url, evaluacion)
       .pipe(
         map((resp: any) => {
@@ -86,7 +95,7 @@ export class EvaluacionService {
 
   borrarEvaluacion(id: string) {
     let url = URL_SERVICIOS + '/evaluacion/' + id;
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.delete(url)
       .map(resp => {
         Swal.fire('Evaluacion Borrada', 'La evaluacion fue eliminada correctamente', 'success');

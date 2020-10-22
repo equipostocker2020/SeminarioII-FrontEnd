@@ -53,7 +53,7 @@ export class CargarDocenteComponent implements OnInit {
       email: '',
       dni: '',
       cuit_cuil: '',
-      rol: 'Docente',
+      rol: 'DOCENTE',
       edad: '',
       contraseña: '',
       contraseña2: '',

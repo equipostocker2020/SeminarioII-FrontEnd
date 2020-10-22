@@ -16,12 +16,14 @@ export class AsignacionService {
   token: string;
   usuario: Usuario;
   aula_materia: Aula_materia;
+  idUsuario: string;
 
   constructor(
     public router: Router,
     public http: HttpClient
   ) {
     this.cargarStorage();
+    this.getIdUsuarioLocalStorage();
   }
 
   guardarStorage(id: string, token: string, usuario: Usuario) {
@@ -42,6 +44,13 @@ export class AsignacionService {
     }
   }
 
+  getIdUsuarioLocalStorage(){
+    if (localStorage.getItem('id_usuario')){
+      this.idUsuario = localStorage.getItem('id_usuario');
+      return this.idUsuario;
+    }
+  }
+
   getTodo() {
     let url = URL_SERVICIOS + '/aulas_materias';
     url += '?token=' + this.token;
@@ -51,16 +60,16 @@ export class AsignacionService {
 
   postTodo(aula_materia: Aula_materia) {
     let url = URL_SERVICIOS + '/aulas_materias';
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.post(url, aula_materia)
       .pipe(
         map((resp: any) => {
-          Swal.fire('Se registro una nueva Asignacion', 'success');
+          Swal.fire('Se Registro una nueva Asignacion', 'success');
           return resp.usuario;
         }),
         catchError((err: any) => {
           console.log(err);
-          Swal.fire('Error al registrarse', err.error.error.sqlMessage, 'error');
+          Swal.fire('Error al Registrar Asignacion', err.error.error.sqlMessage, 'error');
           return err.throw(err.error.error.sqlMessage);
         }));
   }

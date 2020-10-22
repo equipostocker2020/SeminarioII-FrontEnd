@@ -10,9 +10,11 @@ import { Inscripcion } from '../models/inscripcion.models';
 export class InscripcionService {
   token: string;
   inscripcion: Inscripcion;
+  idUsuario: string;
 
   constructor(public http: HttpClient, public router: Router) {
     this.cargarStorage();
+    this.getIdUsuarioLocalStorage();
   }
 
   guardarStorage(id: string, token: string, Inscripcion: Inscripcion) {
@@ -21,6 +23,13 @@ export class InscripcionService {
     localStorage.setItem('inscripcion', JSON.stringify(Inscripcion));
     this.inscripcion = Inscripcion;
     this.token = token;
+  }
+
+  getIdUsuarioLocalStorage(){
+    if (localStorage.getItem('id_usuario')){
+      this.idUsuario = localStorage.getItem('id_usuario');
+      return this.idUsuario;
+    }
   }
 
   cargarStorage() {

@@ -6,6 +6,7 @@ import { Materia } from '../models/materia.models';
 import Swal from 'sweetalert2';
 import { map, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
+import { Usuario } from '../models/usuario.models';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +14,11 @@ import 'rxjs/add/operator/map';
 export class MateriaService {
   token: string;
   materia: Materia;
+  idUsuario: string;
 
   constructor(public http: HttpClient, public router: Router) {
     this.cargarStorage();
+    this.getIdUsuarioLocalStorage();
   }
 
   guardarStorage(id: string, token: string, Materia: Materia) {
@@ -42,9 +45,16 @@ export class MateriaService {
     return this.http.get(url);
   }
 
+  getIdUsuarioLocalStorage(){
+    if (localStorage.getItem('id_usuario')){
+      this.idUsuario = localStorage.getItem('id_usuario');
+      return this.idUsuario;
+    }
+  }
+
   postMateria(materia: Materia) {
     let url = URL_SERVICIOS + '/materia';
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.post(url, materia).pipe(
       map((resp: any) => {
         Swal.fire('Materia creada', materia.nombre_materia, 'success');
@@ -64,7 +74,7 @@ export class MateriaService {
 
   actualizarMateria(materia: Materia) {
     let url = URL_SERVICIOS + '/materia/' + materia.id_materia;
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.put(url, materia).pipe(
       map((resp: any) => {
         Swal.fire('Materia actualizada', materia.nombre_materia, 'success');
@@ -81,10 +91,10 @@ export class MateriaService {
       })
     );
   }
-  
+
   borrarMateria(id: string) {
     let url = URL_SERVICIOS + '/materia/' + id;
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.delete(url).map((resp) => {
       Swal.fire(
         'Materia Borrada',

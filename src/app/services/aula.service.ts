@@ -14,12 +14,14 @@ export class AulaService {
 
   token: string;
   aula: Aula;
+  idUsuario: string;
 
   constructor(
     public http: HttpClient,
     public router: Router
   ) {
     this.cargarStorage();
+    this.getIdUsuarioLocalStorage();
    }
 
    guardarStorage(id: string, token: string, aula: Aula) {
@@ -40,6 +42,13 @@ export class AulaService {
     }
   }
 
+  getIdUsuarioLocalStorage(){
+    if (localStorage.getItem('id_usuario')){
+      this.idUsuario = localStorage.getItem('id_usuario');
+      return this.idUsuario;
+    }
+  }
+
   getAula() {
     let url = URL_SERVICIOS + '/aula';
     url += '?token=' + this.token;
@@ -48,7 +57,7 @@ export class AulaService {
 
   postAula(aula: Aula){
     let url = URL_SERVICIOS + '/aula';
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.post(url, aula)
     .pipe(
       map((resp: any) => {
@@ -65,7 +74,7 @@ export class AulaService {
 
   actualizarAula(aula: Aula) {
     let url = URL_SERVICIOS + '/aula/' + aula.id_aula;
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.put(url, aula)
       .pipe(
         map((resp: any) => {
@@ -80,7 +89,7 @@ export class AulaService {
   }
   borrarUsuario(id: string) {
     let url = URL_SERVICIOS + '/usuario/' + id;
-    url += '?token=' + this.token;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.delete(url)
       .map(resp => {
         Swal.fire('Usuario Borrado', 'El usuario fue eliminado correctamente', 'success');
