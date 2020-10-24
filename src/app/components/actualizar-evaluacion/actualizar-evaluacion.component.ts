@@ -74,8 +74,9 @@ export class ActualizarEvaluacionComponent implements OnInit {
   }
 
   guardar(evaluacion: Evaluacion) {
-    this.evaluacion.id_materia = evaluacion.id_materia;
-    this.evaluacion.id_instancia = evaluacion.id_instancia;
+    this.evaluacion.id_evaluacion = evaluacion.id_instancia;
+    this.evaluacion.nombre_materia = evaluacion.nombre_materia;
+    this.evaluacion.nombre_instancia = evaluacion.nombre_instancia;
     this.evaluacion.fecha = evaluacion.fecha;
     this.evaluacionService.token = this.token;
     this.evaluacionService
