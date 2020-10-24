@@ -72,17 +72,15 @@
                                     <th class="text">#</th>
                                     <th class="text">Nombre Alumno</th>
                                     <th class="text">Apellido Alumno</th>
-                                    <th class="text">Aula</th>
                                     <th class="text">Materia</th>
-                                    <th class="text">Día</th>
-                                    <th class="text">Horario</th>
-                                    <th class="text">Año</th>
-                                    <th class="text">Estado</th>
-                                    <th class="text">Editar</th>
+                                    <th class="text">Año Materia</th>
+                                    <th class="text">Aula</th>
+
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-cyan text-center" *ngFor="let inscripcion of inscripciones">
+                                <tr class="bg-cyan text-center" *ngFor="let inscripcion of get_inscripcion">
                                     <td class="text text-center">
                                         {{inscripcion.id_inscripcion}}
                                     </td>
@@ -93,22 +91,13 @@
                                         {{inscripcion.apellido}}
                                     </td>
                                     <td class="text text-center">
-                                        {{inscripcion.nombre_aula}}
-                                    </td>
-                                    <td class="text text-center">
                                         {{inscripcion.nombre_materia}}
-                                    </td>
-                                    <td class="text text-center">
-                                        {{inscripcion.dia}}
-                                    </td>
-                                    <td class="text text-center">
-                                        {{inscripcion.horario}}
                                     </td>
                                     <td class="text text-center">
                                         {{inscripcion.anho}}
                                     </td>
                                     <td class="text text-center">
-                                        {{inscripcion.estado}}
+                                        {{inscripcion.nombre_aula}}
                                     </td>
                                     <td>
                                         <button class="btn btn-success" routerLink="/inscripcion/actualizar-inscripcion">

@@ -13,13 +13,24 @@ export class InscripcionComponent implements OnInit {
 
   constructor(public inscripcionService: InscripcionService) {}
 
+  get_inscripcion: {
+    anho: string,
+    apellido: string,
+    dia: string,
+    horario: string,
+    id_inscripcion: string,
+    nombre: string,
+    nombre_aula: string,
+    nombre_materia: string,
+  }
+
   ngOnInit(): void {
     this.getInscripcion();
   }
 
   getInscripcion() {
     this.inscripcionService.getInscripcion().subscribe((resp: any) => {
-      this.inscripciones = resp.inscripciones;
+      this.get_inscripcion = resp.inscripciones;
     });
   }
 }
