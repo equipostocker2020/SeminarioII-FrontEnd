@@ -9,10 +9,10 @@ import { AsignacionService } from 'src/app/services/asignacion.service';
 
 @Component({
   selector: 'app-actualizar-inscripcion',
-  templateUrl: './actualizar-inscripcion.component.html',
+  templateUrl: './actualizar-aulaMateria.component.html',
   styleUrls: []
 })
-export class ActualizarInscripcionComponent implements OnInit {
+export class ActualizarAulaMateriaComponent implements OnInit {
 
   token: string;
   inscripcion: Inscripcion;

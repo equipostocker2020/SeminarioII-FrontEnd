@@ -26,12 +26,12 @@ import { ActualizarDocenteComponent } from './components/actualizar-docente/actu
 import { ActualizarAulaComponent } from './components/actualizar-aula/actualizar-aula.component';
 import { ActualizarEvaluacionComponent } from './components/actualizar-evaluacion/actualizar-evaluacion.component';
 import { ActualizarMateriaComponent } from './components/actualizar-materia/actualizar-materia.component';
-import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
 import { CargarInscripcionComponent } from './components/cargar-inscripcion/cargar-inscripcion.component';
 import { InscripcionComponent } from './components/inscripcion/inscripcion.component';
 import { AsignacionComponent } from './components/asignacion/asignacion.component';
 import { CargarAsignacionComponent } from './components/cargar-asignacion/cargar-asignacion.component';
 import { ActualizarAsignacionComponent } from './components/actualizar-asignacion/actualizar-asignacion.component';
+import { ActualizarAulaMateriaComponent } from './components/actualizar-aulaMateria/actualizar-aulaMateria.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,7 @@ import { ActualizarAsignacionComponent } from './components/actualizar-asignacio
     ActualizarAulaComponent,
     ActualizarEvaluacionComponent,
     ActualizarMateriaComponent,
-    ActualizarInscripcionComponent,
+    ActualizarAulaMateriaComponent,
     CargarInscripcionComponent,
     InscripcionComponent,
     AsignacionComponent,

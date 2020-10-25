@@ -21,10 +21,10 @@ import { ActualizarMateriaComponent } from './components/actualizar-materia/actu
 import { ActualizarEvaluacionComponent } from './components/actualizar-evaluacion/actualizar-evaluacion.component';
 import { InscripcionComponent } from './components/inscripcion/inscripcion.component';
 import { CargarInscripcionComponent } from './components/cargar-inscripcion/cargar-inscripcion.component';
-import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
 import { AsignacionComponent } from './components/asignacion/asignacion.component';
 import { CargarAsignacionComponent } from './components/cargar-asignacion/cargar-asignacion.component';
 import { ActualizarAsignacionComponent } from './components/actualizar-asignacion/actualizar-asignacion.component';
+import { ActualizarAulaMateriaComponent } from './components/actualizar-aulaMateria/actualizar-aulaMateria.component';
 
 
 const routes: Routes = [
@@ -48,7 +48,7 @@ const routes: Routes = [
   { path: 'aula/actualizar-aula', component: ActualizarAulaComponent, data: {titulo: 'Actualizar Aula'}},
   { path: 'materia/actualizar-materia', component: ActualizarMateriaComponent, data: {titulo: 'Actualizar Materia'}},
   { path: 'evaluacion/actualizar-evaluacion', component: ActualizarEvaluacionComponent, data: {titulo: 'Actualizar Evalucion'}},
-  { path: 'inscripcion/actualizar-inscripcion', component: ActualizarInscripcionComponent, data: {titulo: 'Actualizar Inscripcion'}},
+  { path: 'inscripcion/actualizar-inscripcion', component: ActualizarAulaMateriaComponent, data: {titulo: 'Actualizar Inscripcion'}},
   { path: 'asignacion/actualizar-asignacion', component: ActualizarAsignacionComponent, data: {titulo: 'Actualizar Asignacion'}},
   { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard'}},
   { path: 'asignaciones', component: AsignacionComponent , data: {titulo: 'Ver Asignaciones '}},
