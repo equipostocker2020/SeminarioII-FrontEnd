@@ -89,7 +89,7 @@
                             <div class="form-group form-float">
                                 <label class="form-label">Fecha Nacimiento</label>
                                 <div class="form-line">
-                                    <input [ngModel]="usuario.fecha_nac" type="date" class="form-control " name="fecha_nac" required>
+                                    <input [ngModel]="usuario.fecha_nac | date: 'yyyy-MM-dd'" type="text" class="form-control " name="fecha_nac" required>
                                 </div>
                             </div>
                             <div class="form-group form-float">

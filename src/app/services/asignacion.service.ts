@@ -74,7 +74,7 @@ export class AsignacionService {
         }));
   }
 
-  
+
   actualizarAulaMateria(aula_materia: Aula_materia) {
     let url = URL_SERVICIOS + '/aulas_materias/' + aula_materia.id_rel;
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
