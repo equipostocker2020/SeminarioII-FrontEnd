@@ -6,8 +6,8 @@ import { Usuario } from '../../models/usuario.models';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { TipoUsuarioService } from '../../services/tipo-usuario.service';
 import { UsuarioService } from '../../services/usuario.service';
-import { AsignacionService } from '../../services/aulaMateria.service';
 import { Aula_materia } from '../../models/aula_materia.models';
+import { AulaMateriaService } from '../../services/aulaMateria.service';
 
 @Component({
   selector: 'app-cargar-inscripcion',
@@ -37,7 +37,7 @@ export class CargarAulaMateriaComponent implements OnInit {
     public tipoUsuarioService: TipoUsuarioService,
     public router: Router,
     public usuarioService: UsuarioService,
-    public aulaMateriaService: AsignacionService,
+    public aulaMateriaService: AulaMateriaService,
   ) { }
 
   ngOnInit(): void {
@@ -65,12 +65,12 @@ export class CargarAulaMateriaComponent implements OnInit {
     });
   }
   registrarInscripcion() {
-    const inscripcion = new Inscripcion (
+    const inscripcion = new Aula_materia (
       this.forma.value.id_inscripcion,
       this.forma.value.id_alumno,
       this.forma.value.id_aula_materia
     );
-    this.inscripcionService.postInscripcion(inscripcion).subscribe((resp: any) =>{
+    this.aulaMateriaService.postAulaMateria(inscripcion).subscribe((resp: any) =>{
       this.router.navigate(['/inscripciones']);
     });
 
