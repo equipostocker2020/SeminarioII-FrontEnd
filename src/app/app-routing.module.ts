@@ -24,6 +24,7 @@ import { CargarInscripcionComponent } from './components/cargar-inscripcion/carg
 import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
 import { AsignacionComponent } from './components/asignacion/asignacion.component';
 import { CargarAsignacionComponent } from './components/cargar-asignacion/cargar-asignacion.component';
+import { ActualizarAsignacionComponent } from './components/actualizar-asignacion/actualizar-asignacion.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'materia/actualizar-materia', component: ActualizarMateriaComponent, data: {titulo: 'Actualizar Materia'}},
   { path: 'evaluacion/actualizar-evaluacion', component: ActualizarEvaluacionComponent, data: {titulo: 'Actualizar Evalucion'}},
   { path: 'inscripcion/actualizar-inscripcion', component: ActualizarInscripcionComponent, data: {titulo: 'Actualizar Inscripcion'}},
+  { path: 'asignacion/actualizar-asignacion', component: ActualizarAsignacionComponent, data: {titulo: 'Actualizar Asignacion'}},
   { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard'}},
   { path: 'asignaciones', component: AsignacionComponent , data: {titulo: 'Ver Asignaciones '}},
   { path: 'asignacion', component: CargarAsignacionComponent , data: {titulo: 'Crear Asignacion'}},

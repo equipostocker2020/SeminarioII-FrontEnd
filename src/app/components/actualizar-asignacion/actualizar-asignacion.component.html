@@ -53,37 +53,61 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2 class="text-center">Actualizar Inscripcion</h2>
+                        <h2 class="text-center">Actualizar Asignaciones</h2>
                     </div>
                     <div class="body">
                         <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
 
                             <div class="form-group form-float">
-                                <label class="form-label">Nombre de Alumno</label>
+                                <label class="form-label">Nombre de la Aula</label>
                                 <div class="form-group">
-                                    <select name="id_alumno" [ngModel]="inscripcion" class="form-group">
-                                        <option class="form-control" *ngFor="let alumno of alumnos"
-                                            value={{alumno.id_usuario}}>
-                                            {{alumno.nombre}}
+                                    <select name="id_aula" [ngModel]="aula_materia.id_aula" class="form-group">
+                                        <option class="form-control" *ngFor="let aula of aulas"
+                                            value={{aula.id_aula}}>
+                                            {{aula.nombre_aula}}
                                         </option>
                                     </select>
                                 </div>
                             </div>
-
+                            
+                            <br>
                             <div class="form-group form-float">
-                                <label class="form-label">Asignación</label>
+                                <label class="form-label">Nombre de la Materia</label>
                                 <div class="form-group">
-                                    <select name="id_rel" [ngModel]="inscripcion" class="form-group">
-                                        <option class="form-control" *ngFor="let aula_materia of aulas_materias"
-                                            value={{aula_materia.id_rel}}>
-                                            {{aula_materia.anho}}
+                                    <select name="id_materia" [ngModel]="aula_materia.id_materia" class="form-group">
+                                        <option class="form-control" *ngFor="let materia of materias"
+                                            value={{materia.id_materia}}>
+                                            {{materia.nombre_materia}}
                                         </option>
                                     </select>
                                 </div>
                             </div>
-
-
-                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                            <br>
+                            <div class="form-group form-float">
+                                <label class="form-label">Nombre de la Docente</label>
+                                <div class="form-group">
+                                    <select name="id_docente" [ngModel]="aula_materia.id_docente" class="form-group">
+                                        <option class="form-control" *ngFor="let docente of docentes"
+                                            value={{docente.id_usuario}}>
+                                            {{docente.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group form-float">
+                                <label class="form-label">Fecha</label>
+                                <div class="form-line">
+                                    <input [ngModel]="evaluacion.fecha | date: 'dd/MM/yyyy'" class="form-control"
+                                        name="fecha">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2"
+                                    type="submit">Actualizar</button>
+                                <button type="submit" routerLink="/evaluaciones"
+                                    class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+                            </div>
                         </form>
                     </div>
                 </div>

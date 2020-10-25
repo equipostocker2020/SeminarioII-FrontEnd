@@ -31,6 +31,7 @@ import { CargarInscripcionComponent } from './components/cargar-inscripcion/carg
 import { InscripcionComponent } from './components/inscripcion/inscripcion.component';
 import { AsignacionComponent } from './components/asignacion/asignacion.component';
 import { CargarAsignacionComponent } from './components/cargar-asignacion/cargar-asignacion.component';
+import { ActualizarAsignacionComponent } from './components/actualizar-asignacion/actualizar-asignacion.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { CargarAsignacionComponent } from './components/cargar-asignacion/cargar
     CargarInscripcionComponent,
     InscripcionComponent,
     AsignacionComponent,
-    CargarAsignacionComponent
+    CargarAsignacionComponent,
+    ActualizarAsignacionComponent
   ],
   imports: [
     BrowserModule,

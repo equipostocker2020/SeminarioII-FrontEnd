@@ -1,6 +1,7 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -55,30 +56,44 @@
                         <h2 class="text-center">Actualizar Evaluacion</h2>
                     </div>
                     <div class="body">
-                        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)">
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
+
                             <div class="form-group form-float">
-                                <label class="form-label">Nombre de la materia</label>
-                                <div class="form-line">
-                                    <input [ngModel]="evaluacion.nombre_materia" type="text" class="form-control" name="id_instancia" required>
+                                <label class="form-label">Nombre de la Materia</label>
+                                <div class="form-group">
+                                    <select name="id_materia" [ngModel]="evaluacion.id_materia" class="form-group">
+                                        <option class="form-control" *ngFor="let materia of materias"
+                                            value={{materia.id_materia}}>
+                                            {{materia.nombre_materia}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <br>
                             <div class="form-group form-float">
-                                <label class="form-label">Instancia</label>
-                                <div class="form-line">
-                                    <input [ngModel]="evaluacion.nombre_instancia" type="text" class="form-control" name="nombre_instancia" required>
+                                <label class="form-label">Nombre de la Materia</label>
+                                <div class="form-group">
+                                    <select name="id_instancia" [ngModel]="evaluacion.id_instancia" class="form-group">
+                                        <option class="form-control" *ngFor="let instancia of instancias"
+                                            value={{instancia.id_instancia}}>
+                                            {{instancia.nombre_instancia}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <br>
                             <div class="form-group form-float">
                                 <label class="form-label">Fecha</label>
                                 <div class="form-line">
-                                    <input type="date" [ngModel]="evaluacion.fecha | date: 'dd/MM/yyyy'" class="form-control" name="fecha">
+                                    <input [ngModel]="evaluacion.fecha | date: 'dd/MM/yyyy'" class="form-control"
+                                        name="fecha">
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Actualizar</button>
-                                <button type="submit" routerLink="/evaluaciones" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2"
+                                    type="submit">Actualizar</button>
+                                <button type="submit" routerLink="/evaluaciones"
+                                    class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
                             </div>
                         </form>
                     </div>
