@@ -45,4 +45,10 @@ export class AulasComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('aula');
   }
+
+  cambiarEstado(aula: Aula){
+    this.aulaService.actualizarAula(aula)
+    .subscribe ((resp: any) => {
+    });
+  }
 }

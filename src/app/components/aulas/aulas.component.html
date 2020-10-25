@@ -77,9 +77,10 @@
                                     <td class="text text-center">
                                         {{aula.nombre_aula}}
                                     </td>
-                                    <td class="text text-center">
-                                        {{aula.estado}}
-                                    </td>
+                                    <select [(ngModel)]="aula.estado" name="role" class="form-control" (change)="cambiarEstado(aula)">
+                                      <option value="ACTIVO">ACTIVO</option>
+                                      <option value="INACTIVO">INACTIVO</option>
+                                    </select>
                                     <td>
                                         <button class="btn btn-success" routerLink="/aula/actualizar-aula" (click)="guardarStorage(aula.id_aula, aula)">
                                             <span class="input-group-addon">

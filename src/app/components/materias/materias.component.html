@@ -85,9 +85,10 @@
                                     <td class="text text-center">
                                         {{materia.horario}}
                                     </td>
-                                    <td class="text text-center">
-                                        {{materia.estado}}
-                                    </td>
+                                    <select [(ngModel)]="materia.estado" name="role" class="form-control" (change)="cambiarEstado(materia)">
+                                      <option value="ACTIVO">ACTIVO</option>
+                                      <option value="INACTIVO">INACTIVO</option>
+                                    </select>
                                     <td>
                                         <button class="btn btn-success" routerLink="/materia/actualizar-materia" (click)="guardarStorage(materia.id_materia, materia)">
                                             <span class="input-group-addon">

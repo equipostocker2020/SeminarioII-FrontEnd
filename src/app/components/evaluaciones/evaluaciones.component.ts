@@ -47,4 +47,10 @@ export class EvaluacionesComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('evaluacion');
   }
+
+  cambiarEstado(evaluacion: Evaluacion){
+    this.evaluacionService.actualizarEvaluacion(evaluacion)
+    .subscribe ((resp: any) => {
+    });
+  }
 }

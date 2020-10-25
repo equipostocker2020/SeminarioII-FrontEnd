@@ -81,9 +81,10 @@
                                     <td class="text text-center">
                                         {{evaluacion.fecha | date:'dd-MM-yyyy' }}
                                     </td>
-                                    <td class="text text-center">
-                                        {{evaluacion.estado}}
-                                    </td>
+                                    <select [(ngModel)]="evaluacion.estado" name="role" class="form-control" (change)="cambiarEstado(evaluacion)">
+                                      <option value="ACTIVO">ACTIVO</option>
+                                      <option value="INACTIVO">INACTIVO</option>
+                                    </select>
                                     <td class="text text-center">
                                         {{evaluacion.nombre_instancia}}
                                     </td>

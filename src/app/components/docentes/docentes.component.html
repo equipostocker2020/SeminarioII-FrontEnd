@@ -70,6 +70,7 @@
                                     <th class="text">Email</th>
                                     <th class="text">DNI</th>
                                     <th class="text">ROL</th>
+                                    <th class="text">Estado</th>
                                     <th class="text">Editar</th>
                                 </tr>
                             </thead>
@@ -96,6 +97,10 @@
                                     <td class="text text-center">
                                         {{usuario.rol}}
                                     </td>
+                                    <select [(ngModel)]="usuario.estado" name="role" class="form-control" (change)="cambiarEstado(usuario)">
+                                      <option value="ACTIVO">ACTIVO</option>
+                                      <option value="INACTIVO">INACTIVO</option>
+                                    </select>
                                     <td>
                                         <button class="btn btn-success" routerLink="/docente/actualizar-docente" (click)="guardarStorage(usuario.id_usuario, token, usuario)">
                                             <span class="input-group-addon">
