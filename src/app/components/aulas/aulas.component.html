@@ -33,13 +33,7 @@
                     <a class="nav-link" href="/asignaciones">Asignacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/asignacion">Crear Asignacion</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/inscripciones">Inscripcion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile">Perfil</a>
                 </li>
             </ul>
         </div>
@@ -83,9 +77,10 @@
                                     <td class="text text-center">
                                         {{aula.nombre_aula}}
                                     </td>
-                                    <td class="text text-center">
-                                        {{aula.estado}}
-                                    </td>
+                                    <select [(ngModel)]="aula.estado" name="role" class="form-control" (change)="cambiarEstado(aula)">
+                                      <option value="ACTIVO">ACTIVO</option>
+                                      <option value="INACTIVO">INACTIVO</option>
+                                    </select>
                                     <td>
                                         <button class="btn btn-success" routerLink="/aula/actualizar-aula" (click)="guardarStorage(aula.id_aula, aula)">
                                             <span class="input-group-addon">

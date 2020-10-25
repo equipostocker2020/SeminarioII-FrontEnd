@@ -41,4 +41,10 @@ export class MateriasComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('materia');
   }
+
+  cambiarEstado(materia: Materia){
+    this.materiaService.actualizarMateria(materia)
+    .subscribe ((resp: any) => {
+    });
+  }
 }

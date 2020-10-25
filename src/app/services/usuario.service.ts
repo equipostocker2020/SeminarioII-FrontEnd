@@ -13,6 +13,7 @@ import { Usuario } from '../models/usuario.models';
 export class UsuarioService {
   usuario: Usuario;
   token: string;
+  idUsuario: string;
 
   constructor(public http: HttpClient, public router: Router) {
     this.cargarStorage();
@@ -78,8 +79,16 @@ export class UsuarioService {
     );
   }
 
+  getIdUsuarioLocalStorage(){
+    if (localStorage.getItem('id_usuario')){
+      this.idUsuario = localStorage.getItem('id_usuario');
+      return this.idUsuario;
+    }
+  }
+
   actualizarUsuario(usuario: Usuario) {
     let url = URL_SERVICIOS + '/usuario/' + usuario.id_usuario;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.put(url, usuario).pipe(
       map((resp: any) => {
         Swal.fire('Usuario actualizado', usuario.email, 'success');
@@ -96,7 +105,7 @@ export class UsuarioService {
       })
     );
   }
-  
+
   borrarUsuario(id: string) {
     let url = URL_SERVICIOS + '/usuario/' + id;
     url += '?token=' + this.token;

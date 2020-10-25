@@ -37,7 +37,7 @@ export class AlumnosComponent implements OnInit {
       this.eliminarStorage();
     });
   }
-  
+
   guardarStorage(id: string, token: string, usuario: Usuario) {
     localStorage.setItem('idActualizar', id);
     localStorage.setItem('token', token);
@@ -50,5 +50,11 @@ export class AlumnosComponent implements OnInit {
     localStorage.removeItem('id');
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
+  }
+
+  cambiarEstado(usuario: Usuario){
+    this.usuarioService.actualizarUsuario(usuario)
+    .subscribe ((resp: any) => {
+    });
   }
 }

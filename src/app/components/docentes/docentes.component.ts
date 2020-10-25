@@ -50,4 +50,10 @@ export class DocentesComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
+
+  cambiarEstado(usuario: Usuario){
+    this.usuarioService.actualizarUsuario(usuario)
+    .subscribe ((resp: any) => {
+    });
+  }
 }
