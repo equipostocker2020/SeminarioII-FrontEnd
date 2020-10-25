@@ -8,8 +8,6 @@ import { AsignacionService } from 'src/app/services/asignacion.service';
 import { AulaService } from 'src/app/services/aula.service';
 import { MateriaService } from 'src/app/services/materia.service';
 import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
-import { UsuarioService } from 'src/app/services/usuario.service';
-import { AulasComponent } from '../aulas/aulas.component';
 
 @Component({
   selector: 'app-actualizar-asignacion',
@@ -86,9 +84,14 @@ export class ActualizarAsignacionComponent implements OnInit {
   }
 
   guardar(aula_materia: Aula_materia) {
-    this.aula_materia.id_materia = aula_materia.id_materia;
+    console.log(aula_materia.id_aula)
+    console.log(aula_materia.id_materia)
+    console.log(aula_materia.id_docente)
+    console.log(aula_materia.anho)
     this.aula_materia.id_aula = aula_materia.id_aula;
+    this.aula_materia.id_materia = aula_materia.id_materia;
     this.aula_materia.id_docente =aula_materia.id_docente;
+    this.aula_materia.anho = aula_materia.anho;
     this.asignacionService.token = this.token;
     this.asignacionService
       .actualizarAulaMateria(this.aula_materia)

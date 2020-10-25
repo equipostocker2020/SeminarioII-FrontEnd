@@ -61,7 +61,7 @@
                             <div class="form-group form-float">
                                 <label class="form-label">Nombre de la Aula</label>
                                 <div class="form-group">
-                                    <select name="id_aula" [ngModel]="aula_materia.id_aula" class="form-group">
+                                    <select name="id_aula" [ngModel]="aula_materia" class="form-group">
                                         <option class="form-control" *ngFor="let aula of aulas"
                                             value={{aula.id_aula}}>
                                             {{aula.nombre_aula}}
@@ -74,7 +74,7 @@
                             <div class="form-group form-float">
                                 <label class="form-label">Nombre de la Materia</label>
                                 <div class="form-group">
-                                    <select name="id_materia" [ngModel]="aula_materia.id_materia" class="form-group">
+                                    <select name="id_materia" [ngModel]="aula_materia" class="form-group">
                                         <option class="form-control" *ngFor="let materia of materias"
                                             value={{materia.id_materia}}>
                                             {{materia.nombre_materia}}
@@ -86,7 +86,7 @@
                             <div class="form-group form-float">
                                 <label class="form-label">Nombre de la Docente</label>
                                 <div class="form-group">
-                                    <select name="id_docente" [ngModel]="aula_materia.id_docente" class="form-group">
+                                    <select name="id_docente" [ngModel]="aula_materia" class="form-group">
                                         <option class="form-control" *ngFor="let docente of docentes"
                                             value={{docente.id_usuario}}>
                                             {{docente.nombre}}
@@ -98,7 +98,7 @@
                             <div class="form-group form-float">
                                 <label class="form-label">Año</label>
                                 <div class="form-line">
-                                    <input [ngModel]="aula_materia.anho | date: 'dd/MM/yyyy'" class="form-control"
+                                    <input [ngModel]="aula_materia | date: 'dd/MM/yyyy'" class="form-control"
                                         name="anho">
                                 </div>
                             </div>
