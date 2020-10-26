@@ -90,8 +90,8 @@ export class ActualizarAulaMateriaComponent implements OnInit {
     console.log(aula_materia.anho)
     this.aula_materia.id_aula = aula_materia.id_aula;
     this.aula_materia.id_materia = aula_materia.id_materia;
-    this.aula_materia.id_docente =aula_materia.id_docente;
     this.aula_materia.anho = aula_materia.anho;
+    this.aula_materia.id_docente =aula_materia.id_docente;
     this.aulaMateriaService.token = this.token;
     this.aulaMateriaService
       .actualizarAulaMateria(this.aula_materia)
