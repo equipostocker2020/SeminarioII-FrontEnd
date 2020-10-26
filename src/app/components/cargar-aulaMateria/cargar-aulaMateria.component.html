@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/asignaciones">Asignacion</a>
+                    <a class="nav-link" href="/aulasMaterias">Asignacion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/inscripciones">Inscripcion</a>
@@ -46,28 +46,48 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2 class="text-center">Cargar Inscripcion</h2>
+                        <h2 class="text-center">Registrar asignacion de docente con una materia y aula</h2>
                     </div>
                     <div class="body">
-                        <form ngNativeValidate ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarInscripcion()" id="loginform">
-                            <select formControlName="id_alumno" class="form-control" required>
-                                <option value="">Seleccione Alumno</option>
-                                <option class="form-control" *ngFor="let usuario of usuarios" [value]="usuario.id_usuario">
+                        <form ngNativeValidate ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarAsignacion()" id="loginform">
+
+                            <select formControlName="id_aula" class="form-control" required>
+                                <option value="">Seleccione Aula</option>
+                                <option class="form-control" *ngFor="let aula of aulas" [value]="aula.id_aula">
+                                    {{aula.nombre_aula}}
+                                </option>
+                            </select>
+
+                            <br>
+
+                            <select formControlName="id_materia" class="form-control">
+                                <option value="">Seleccione Materia</option>
+                                <option class="form-control" *ngFor="let materia of materias"
+                                    [value]="materia.id_materia">
+                                    {{materia.nombre_materia}}
+                                </option>
+                            </select>
+                            <br>
+                            <div class="form-group form-float">
+                                <label class="form-label">Año</label>
+                                <div class="form-line">
+                                    <input formControlName="anho" name="anho" class="form-control" type="text" required>
+                                </div>
+                            </div>
+                            <br>
+                            <select formControlName="id_docente" class="form-control">
+                                <option value="">Seleccione Docente</option>
+                                <option class="form-control" *ngFor="let usuario of usuarios"
+                                    [value]="usuario.id_usuario">
                                     {{usuario.nombre}}
                                 </option>
                             </select>
                             <br>
-                            <select formControlName="id_aula_materia" class="form-control" required>
-                                <option value="">Seleccione Instancia</option>
-                                <option class="form-control" *ngFor="let aulaMateria of aulasMaterias" [value]="aulaMateria.id_rel">
-                                    {{'Nombre Materia: ' + aulaMateria.nombre_materia +' Docente: ' +aulaMateria.apellido + ' Aula:' +aulaMateria.nombre_aula }}
-                                </option>
-                            </select>
-                            <br>
                             <div class="text-center">
-                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Registar Inscripcion </button>
-                                <button type="submit" routerLink="/inscripciones" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Registar Asignacion </button>
+                                <button type="submit" routerLink="/aulasMaterias" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
                             </div>
+
                         </form>
                     </div>
                 </div>

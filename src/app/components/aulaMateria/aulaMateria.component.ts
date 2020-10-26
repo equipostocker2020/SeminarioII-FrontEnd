@@ -4,10 +4,10 @@ import { Aula_materia } from '../../models/aula_materia.models';
 
 @Component({
   selector: 'app-asignacion',
-  templateUrl: './asignacion.component.html',
+  templateUrl: './aulaMateria.component.html',
   styleUrls: [],
 })
-export class AsignacionComponent implements OnInit {
+export class AulaMateriaComponent implements OnInit {
   aulas_materia: Aula_materia;
 
   get_aulas_materia: {

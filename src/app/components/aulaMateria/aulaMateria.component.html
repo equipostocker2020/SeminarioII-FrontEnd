@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/asignaciones">Asignacion</a>
+                    <a class="nav-link" href="/aulasMaterias">Asignacion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/inscripciones">Inscripcion</a>
@@ -52,7 +52,7 @@
                         </h2>
                     </div>
                     <div class="container text-center">
-                        <button class="btn btn-lg bg-cyan text-center m-1" routerLink="/asignacion">
+                        <button class="btn btn-lg bg-cyan text-center m-1" routerLink="/aulaMateria/cargar-aulaMateria">
                             <span class="input-group-addon">
                                 <i class="material-icons">control_point</i>
                                 Agregar Asignacion
@@ -72,7 +72,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-cyan text-center" *ngFor=" let aulas_materia of aulas_materias ">
+                                <tr class="bg-cyan text-center" *ngFor=" let aulas_materia of get_aulas_materia ">
                                     <td class="text text-center">
                                         {{aulas_materia.id_rel}}
                                     </td>
@@ -92,7 +92,7 @@
                                         {{aulas_materia.nombre}} {{aulas_materia.apellido}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-success" routerLink="">
+                                        <button class="btn btn-success" routerLink="/aulaMateria/actualizar-aulaMateria">
                                             <span class="input-group-addon">
                                                 <i class="material-icons text-center">edit</i>
                                             </span>

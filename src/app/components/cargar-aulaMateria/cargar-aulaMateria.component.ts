@@ -1,78 +1,77 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Inscripcion } from '../../models/inscripcion.models';
-import { Usuario } from '../../models/usuario.models';
-import { InscripcionService } from '../../services/inscripcion.service';
+import { AulaService } from '../../services/aula.service';
 import { TipoUsuarioService } from '../../services/tipo-usuario.service';
+import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Aula_materia } from '../../models/aula_materia.models';
-import { AulaMateriaService } from '../../services/aulaMateria.service';
+import { Materia } from '../../models/materia.models';
+import { Usuario } from '../../models/usuario.models';
+import { Aula } from '../../models/aula.models';
+import { MateriaService } from '../../services/materia.service';
+import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 
 @Component({
-  selector: 'app-cargar-inscripcion',
+  selector: 'app-cargar-asignacion',
   templateUrl: './cargar-aulaMateria.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class CargarAulaMateriaComponent implements OnInit {
   forma: FormGroup;
-  inscripcion: Inscripcion;
-  inscripciones: Inscripcion[] = [];
+  materias: Materia[] = [];
+  materia: Materia;
+  docentes: Usuario[] = [];
+  docente: Usuario;
+  aulas: Aula[] = [];
+  aula: Aula;
   usuario: Usuario;
   usuarios: Usuario[] = [];
-  aulasMaterias: Aula_materia [] = [];
-  aulaMateria: {
-    anho: string;
-    apellido: string;
-    dia: string;
-    horario: string;
-    id_rel: string;
-    nombre: string;
-    nombre_aula: string;
-    nombre_materia: string;
-  };
 
   constructor(
-    public inscripcionService: InscripcionService,
+    public aulaService: AulaService,
     public tipoUsuarioService: TipoUsuarioService,
+    public aulaMateriaService: AulaMateriaService,
     public router: Router,
     public usuarioService: UsuarioService,
-    public aulaMateriaService: AulaMateriaService,
-  ) { }
+    public materiasService: MateriaService
+  ) {}
 
   ngOnInit(): void {
-    this.inscripcionService.getInscripcion().subscribe((resp: any) =>{
-    console.log(resp);
-    this.inscripciones = resp.inscripciones;
+    this.aulaService.getAula().subscribe((resp: any) => {
+      console.log(resp);
+      this.aulas = resp.aula;
     });
-    this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
-    console.log(resp);
-    this.usuarios = resp.usuario;
+    this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
+      console.log(resp);
+      this.usuarios = resp.usuario;
     });
-    this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
-    console.log(resp);
-    this.aulasMaterias = resp.aulas_materias;
+    this.materiasService.getMateria().subscribe((resp: any) => {
+      console.log(resp);
+      this.materias = resp.materia;
     });
     this.forma = new FormGroup({
-      id_inscripcion: new FormControl(null, Validators.required),
-      id_alumno: new FormControl(null, Validators.required),
-      id_aula_materia: new FormControl(null, Validators.required),
+      id_aula: new FormControl(null, Validators.required),
+      id_materia: new FormControl(null, Validators.required),
+      anho: new FormControl(null, Validators.required),
+      id_docente: new FormControl(null, Validators.required),
     });
     this.forma.setValue({
-      id_inscripcion: '',
-      id_alumno: '',
-      id_aula_materia: '',
+      id_aula: '',
+      id_materia: '',
+      anho: '',
+      id_docente: '',
     });
   }
-  registrarInscripcion() {
-    const inscripcion = new Aula_materia (
-      this.forma.value.id_inscripcion,
-      this.forma.value.id_alumno,
-      this.forma.value.id_aula_materia
-    );
-    this.aulaMateriaService.postAulaMateria(inscripcion).subscribe((resp: any) =>{
-      this.router.navigate(['/inscripciones']);
-    });
 
-}
+  registrarAsignacion() {
+    const aulaMateria = new Aula_materia(
+      this.forma.value.id_aula,
+      this.forma.value.id_materia,
+      this.forma.value.anho,
+      this.forma.value.id_docente
+    );
+    this.aulaMateriaService.postAulaMateria(aulaMateria).subscribe((resp) => {
+      this.router.navigate(['/aulasMaterias']);
+    });
+  }
 }

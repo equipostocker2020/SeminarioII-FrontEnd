@@ -1,6 +1,7 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -46,39 +47,37 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2 class="text-center">Cargar Docente</h2>
+                        <h2 class="text-center">Actualizar Inscripcion</h2>
                     </div>
                     <div class="body">
-                        <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarEvaluacion()" id="loginform">
-                            <label class="form-label">Materias</label>
-                            <select formControlName="id_materia" class="form-control" required>
-                                <option value="">Seleccione una Materia</option>
-                                <option class="form-control" *ngFor="let materia of materias"
-                                    [value]="materia.id_materia">
-                                    {{materia.nombre_materia}}
-                                </option>
-                            </select>
-                            <br>
-                            <label class="form-label">Instancia evaluación</label>
-                            <select formControlName="id_instancia" class="form-control" required>
-                                <option value="">Seleccione una Instancia</option>
-                                <option class="form-control" *ngFor="let instancia of get_aulas_materia"
-                                    [value]="instancia.id_instancia">
-                                    {{instancia.nombre_instancia}}
-                                </option>
-                            </select>
-                            <br>
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
+
                             <div class="form-group form-float">
-                                <label class="form-label">Fecha</label>
-                                <div class="form-line">
-                                    <input formControlName="fecha" type="date" class="form-control" name="fecha" required>
+                                <label class="form-label">Nombre de Alumno</label>
+                                <div class="form-group">
+                                    <select name="id_alumno" [ngModel]="inscripcion" class="form-group">
+                                        <option class="form-control" *ngFor="let alumno of alumnos"
+                                            value={{alumno.id_usuario}}>
+                                            {{alumno.nombre}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Registrar
-                                    Aula</button>
-                                <button type="submit" routerLink="/evaluaciones" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+
+                            <div class="form-group form-float">
+                                <label class="form-label">Asignación</label>
+                                <div class="form-group">
+                                    <select name="id_rel" [ngModel]="inscripcion" class="form-group">
+                                        <option class="form-control" *ngFor="let aula_materia of aulas_materias"
+                                            value={{aula_materia.id_rel}}>
+                                            {{aula_materia.anho}}
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
+
+
+                            <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
                         </form>
                     </div>
                 </div>

@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Inscripcion } from 'src/app/models/inscripcion.models';
-import { Usuario } from 'src/app/models/usuario.models';
-import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
+import { Aula } from 'src/app/models/aula.models';
 import { Aula_materia } from 'src/app/models/aula_materia.models';
-import { InscripcionService } from 'src/app/services/inscripcion.service';
-import { AulaMateriaService } from '../../services/aulaMateria.service';
+import { Materia } from 'src/app/models/materia.models';
+import { Usuario } from 'src/app/models/usuario.models';
+import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
+import { AulaService } from 'src/app/services/aula.service';
+import { MateriaService } from 'src/app/services/materia.service';
+import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
 
 @Component({
-  selector: 'app-actualizar-inscripcion',
+  selector: 'app-actualizar-aulaMateria',
   templateUrl: './actualizar-aulaMateria.component.html',
   styleUrls: []
 })
 export class ActualizarAulaMateriaComponent implements OnInit {
 
   token: string;
-  inscripcion: Inscripcion;
-  alumnos: Usuario[] = [];
-  aulas_materias: Aula_materia[] = [];
+  aula_materia: Aula_materia;
+  aulas: Aula [] = [];
+  materias: Materia [] = [];
+  docentes: Usuario [] = [];
 
   constructor(
+    public aulaService: AulaService,
+    public materiaService: MateriaService,
     public tipoUsuarioService: TipoUsuarioService,
-    public inscripcionService: InscripcionService,
     public aulaMateriaService: AulaMateriaService,
     public router: Router
   ) {
@@ -29,60 +33,72 @@ export class ActualizarAulaMateriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
-      this.alumnos = resp.usuario;
-      console.log(this.alumnos);
+    this.materiaService.getMateria().subscribe((resp: any) => {
+      this.materias = resp.materia;
+      console.log(this.materias);
     });
 
-    this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
-      this.aulas_materias = resp.aulas_materias;
-      console.log(this.aulas_materias);
+    this.aulaService.getAula().subscribe((resp: any) => {
+      this.aulas = resp.aula;
+      console.log( this.aulas);
+    });
+
+    this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
+      this.docentes = resp.usuario;
+      console.log( this.docentes);
     });
   }
 
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.inscripcion = JSON.parse(
-        localStorage.getItem('inscripcionActualizar')
+      this.aula_materia = JSON.parse(
+        localStorage.getItem('aula_materiaActualizar')
       );
     } else {
       this.token = '';
-      this.inscripcion = null;
+      this.aula_materia = null;
     }
   }
 
-  guardarStorage(id: string, token: string, inscripcion: Inscripcion) {
+  guardarStorage(id: string, token: string, aula_materia: Aula_materia) {
     localStorage.setItem(
-      'id_inscripcion',
-      this.inscripcionService.inscripcion.id_inscripcion
+      'aula_materia',
+      this.aulaMateriaService.aula_materia.id_rel
     );
     localStorage.setItem('token', this.token);
-    localStorage.setItem('inscripcionActualizar', JSON.stringify(inscripcion));
+    localStorage.setItem('aula_materiaActualizar', JSON.stringify(aula_materia));
 
-    this.inscripcion = inscripcion;
+    this.aula_materia = aula_materia;
     this.token = token;
   }
 
   resetStorage() {
-    localStorage.setItem('token', this.inscripcionService.token);
+    localStorage.setItem('token', this.aulaMateriaService.token);
     localStorage.setItem(
-      'inscripcion',
-      JSON.stringify(this.inscripcionService.inscripcion)
+      'aula_materia',
+      JSON.stringify(this.aulaMateriaService.aula_materia)
     );
-    this.inscripcion = this.inscripcionService.inscripcion;
+    this.aula_materia= this.aulaMateriaService.aula_materia;
     this.token = this.token;
   }
 
-  guardar(inscripcion: Inscripcion) {
-    this.inscripcion.id_alumno = inscripcion.id_alumno;
-    this.inscripcion.id_aula_materia = inscripcion.id_aula_materia;
-    this.inscripcionService.token = this.token;
-    this.inscripcionService
-      .actualizarInscripcion(this.inscripcion)
+  guardar(aula_materia: Aula_materia) {
+    console.log(aula_materia.id_aula)
+    console.log(aula_materia.id_materia)
+    console.log(aula_materia.id_docente)
+    console.log(aula_materia.anho)
+    this.aula_materia.id_aula = aula_materia.id_aula;
+    this.aula_materia.id_materia = aula_materia.id_materia;
+    this.aula_materia.id_docente =aula_materia.id_docente;
+    this.aula_materia.anho = aula_materia.anho;
+    this.aulaMateriaService.token = this.token;
+    this.aulaMateriaService
+      .actualizarAulaMateria(this.aula_materia)
       .subscribe((resp: any) => {
-        this.router.navigate(['/inscripciones']);
+        this.router.navigate(['/aulasMaterias']);
         this.resetStorage();
       });
   }
+
 }

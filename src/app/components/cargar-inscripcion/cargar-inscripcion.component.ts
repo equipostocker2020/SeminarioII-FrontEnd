@@ -20,7 +20,7 @@ export class CargarInscripcionComponent implements OnInit {
   inscripciones: Inscripcion[] = [];
   usuario: Usuario;
   usuarios: Usuario[] = [];
-  aulasMaterias: Aula_materia [] = [];
+  aulasMaterias: Aula_materia[] = [];
   aulaMateria: {
     anho: string;
     apellido: string;
@@ -41,17 +41,17 @@ export class CargarInscripcionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.inscripcionService.getInscripcion().subscribe((resp: any) =>{
-    console.log(resp);
-    this.inscripciones = resp.inscripciones;
+    this.inscripcionService.getInscripcion().subscribe((resp: any) => {
+      console.log(resp);
+      this.inscripciones = resp.inscripciones;
     });
     this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
-    console.log(resp);
-    this.usuarios = resp.usuario;
+      console.log(resp);
+      this.usuarios = resp.usuario;
     });
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
-    console.log(resp);
-    this.aulasMaterias = resp.aulas_materias;
+      console.log(resp);
+      this.aulasMaterias = resp.aulas_materias;
     });
     this.forma = new FormGroup({
       id_inscripcion: new FormControl(null, Validators.required),
@@ -65,14 +65,14 @@ export class CargarInscripcionComponent implements OnInit {
     });
   }
   registrarInscripcion() {
-    const inscripcion = new Inscripcion (
+    const inscripcion = new Inscripcion(
       this.forma.value.id_inscripcion,
       this.forma.value.id_alumno,
       this.forma.value.id_aula_materia
     );
-    this.inscripcionService.postInscripcion(inscripcion).subscribe((resp: any) =>{
+    this.inscripcionService.postInscripcion(inscripcion).subscribe((resp: any) => {
       this.router.navigate(['/inscripciones']);
     });
 
-}
+  }
 }
