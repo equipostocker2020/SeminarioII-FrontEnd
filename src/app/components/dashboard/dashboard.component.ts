@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../models/usuario.models';
+import { TipoUsuarioService } from '../../services/tipo-usuario.service';
+import { Aula } from '../../models/aula.models';
+import { AulaService } from '../../services/aula.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,7 +11,31 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class DashboardComponent implements OnInit {
-  constructor() {}
+  usuario: Usuario;
+  usuarios: Usuario [] = [];
+  docentes: Usuario [] = [];
+  docente: Usuario;
+  alumno: Usuario;
+  alumnos: Usuario [] = [];
+  aula: Aula;
+  aulas: Aula [] = [];
+
+  constructor(
+    public usuarioService: UsuarioService,
+    public tipoUsuarioService: TipoUsuarioService,
+    public aulaService: AulaService,
+  ) {
+    this.usuario = usuarioService.usuario;
+    this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
+    this.docentes = resp.usuario;
+    });
+    this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
+    this.alumnos = resp.usuario;
+    });
+    this.aulaService.getAula().subscribe((resp: any) =>{
+    this.aulas = resp.aula;
+    });
+  }
 
   public barChartOptions = {
     scaleShowVerticalLines: false,

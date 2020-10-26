@@ -40,87 +40,185 @@
     </nav>
 </section>
 <br><br><br><br><br>
-<section class="">
-    <div class="container-fluid">
-        <div class="block-header">
-            <h1 class="text-center">
-                Dashboard
-            </h1>
-        </div>
-        <div class="row clearfix">
-            <!-- Line Chart -->
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2 class="text-center">Promedio edad Alumnos</h2>
-                    </div>
-                    <div class="body">
-                        <div>
-                            <div style="display: block">
-                                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                                </canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Line Chart -->
-            <!-- Bar Chart -->
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2 class="text-center">Promedio de notas</h2>
-
-                    </div>
-                    <div class="body">
-                        <div>
-                            <div style="display: block">
-                                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                                </canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Bar Chart -->
-        </div>
-
-        <div class="row clearfix">
-            <!-- Radar Chart -->
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2 class="text-center">Promedio edad Docentes</h2>
-                    </div>
-                    <div class="body">
-                        <div>
-                            <div style="display: block">
-                                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                                </canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Radar Chart -->
-            <!-- Pie Chart -->
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2 class="text-center">Promedio aprobados por cursada</h2>
-                    </div>
-                    <div class="body">
-                        <div>
-                            <div style="display: block">
-                                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                                </canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Pie Chart -->
+<section class="container">
+    <div class="card mt-3 bg-light-green">
+        <div classs="card-body">
+            <br><br>
+            <h4 class="card-title text-center">Bienvenido <b>{{usuario.nombre}} {{usuario.apellido}}</b>
+            </h4>
+            <p class="card-text text-center">La direccion de correo electronico registrada es <b>{{usuario.email}}</b></p>
+            <p class="card-text text-center">Usted tiene el rol <b>{{usuario.rol}}</b></p>
+            <button routerLink="/login" type="button" class="btn btn-block btn-lg text-uppercase btn-success waves-effect">
+                                    <i class="material-icons">settings</i>
+                                    <span>Actualizar tu Perfil</span>
+                                </button>
         </div>
     </div>
+    <br> <br>
+
+    <h4 class="card-title text-center" style="color: blue gray;">Docentes Registrados</h4>
+    <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="text-center bg-green">
+                    <th class="text">#</th>
+                    <th class="text">Nombre</th>
+                    <th class="text">Apellido</th>
+                    <th class="text">Email</th>
+                </tr>
+            </thead>
+            <tbody class="table-striped">
+                <tr class="text-center bg-light-green" *ngFor=" let docente of docentes ">
+                    <td class="text text-center">
+                        {{docente.id_usuario}}
+                    </td>
+                    <td class="text text-center">
+                        {{docente.nombre}}
+                    </td>
+                    <td class="text text-center">
+                        {{docente.apellido}}
+                    </td>
+                    <td class="text text-center">
+                        {{docente.email}}
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <h4 class="card-title text-center">Alumnos Registrados</h4>
+    <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="text-center bg-green">
+                    <th class="text">#</th>
+                    <th class="text">Nombre</th>
+                    <th class="text">Apellido</th>
+                    <th class="text">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-light-green text-center" *ngFor=" let alumno of alumnos ">
+                    <td class="text text-center">
+                        {{alumno.id_usuario}}
+                    </td>
+                    <td class="text text-center">
+                        {{alumno.nombre}}
+                    </td>
+                    <td class="text text-center">
+                        {{alumno.apellido}}
+                    </td>
+                    <td class="text text-center">
+                        {{alumno.email}}
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <h4 class="card-title text-center" style="color: blue gray;">Aulas Registradas</h4>
+    <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="text-center bg-green">
+                    <th class="text">#</th>
+                    <th class="text">Nombre</th>
+                    <th class="text">Estado del aula</th>
+                </tr>
+            </thead>
+            <tbody class="table-striped">
+                <tr class="text-center bg-light-green" *ngFor=" let aula of aulas ">
+                    <td class="text text-center">
+                        {{aula.id_aula}}
+                    </td>
+                    <td class="text text-center">
+                        {{aula.nombre_aula}}
+                    </td>
+                    <td class="text text-center">
+                        {{aula.estado}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <div class="row clearfix">
+        <!-- Line Chart -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2 class="text-center">Promedio edad Alumnos</h2>
+                </div>
+                <div class="body">
+                    <div>
+                        <div style="display: block">
+                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                                </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Line Chart -->
+        <!-- Bar Chart -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2 class="text-center">Promedio de notas</h2>
+
+                </div>
+                <div class="body">
+                    <div>
+                        <div style="display: block">
+                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                                </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Bar Chart -->
+    </div>
+
+    <div class="row clearfix">
+        <!-- Radar Chart -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2 class="text-center">Promedio edad Docentes</h2>
+                </div>
+                <div class="body">
+                    <div>
+                        <div style="display: block">
+                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                                </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Radar Chart -->
+        <!-- Pie Chart -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2 class="text-center">Promedio aprobados por cursada</h2>
+                </div>
+                <div class="body">
+                    <div>
+                        <div style="display: block">
+                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                                </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Pie Chart -->
+    </div>
+    <!-- </div> -->
+
 
 </section>
