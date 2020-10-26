@@ -4,7 +4,7 @@ import { Aula } from 'src/app/models/aula.models';
 import { Aula_materia } from 'src/app/models/aula_materia.models';
 import { Materia } from 'src/app/models/materia.models';
 import { Usuario } from 'src/app/models/usuario.models';
-import { AsignacionService } from 'src/app/services/asignacion.service';
+import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 import { AulaService } from 'src/app/services/aula.service';
 import { MateriaService } from 'src/app/services/materia.service';
 import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
@@ -26,7 +26,7 @@ export class ActualizarAsignacionComponent implements OnInit {
     public aulaService: AulaService,
     public materiaService: MateriaService,
     public tipoUsuarioService: TipoUsuarioService,
-    public asignacionService: AsignacionService,
+    public aulaMateriaService: AulaMateriaService,
     public router: Router
   ) {
     this.cargarStorage();
@@ -64,7 +64,7 @@ export class ActualizarAsignacionComponent implements OnInit {
   guardarStorage(id: string, token: string, aula_materia: Aula_materia) {
     localStorage.setItem(
       'aula_materia',
-      this.asignacionService.aula_materia.id_rel
+      this.aulaMateriaService.aula_materia.id_rel
     );
     localStorage.setItem('token', this.token);
     localStorage.setItem('aula_materiaActualizar', JSON.stringify(aula_materia));
@@ -74,12 +74,12 @@ export class ActualizarAsignacionComponent implements OnInit {
   }
 
   resetStorage() {
-    localStorage.setItem('token', this.asignacionService.token);
+    localStorage.setItem('token', this.aulaMateriaService.token);
     localStorage.setItem(
       'aula_materia',
-      JSON.stringify(this.asignacionService.aula_materia)
+      JSON.stringify(this.aulaMateriaService.aula_materia)
     );
-    this.aula_materia= this.asignacionService.aula_materia;
+    this.aula_materia= this.aulaMateriaService.aula_materia;
     this.token = this.token;
   }
 
@@ -92,8 +92,8 @@ export class ActualizarAsignacionComponent implements OnInit {
     this.aula_materia.id_materia = aula_materia.id_materia;
     this.aula_materia.id_docente =aula_materia.id_docente;
     this.aula_materia.anho = aula_materia.anho;
-    this.asignacionService.token = this.token;
-    this.asignacionService
+    this.aulaMateriaService.token = this.token;
+    this.aulaMateriaService
       .actualizarAulaMateria(this.aula_materia)
       .subscribe((resp: any) => {
         this.router.navigate(['/asignaciones']);

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AulaService } from '../../services/aula.service';
 import { TipoUsuarioService } from '../../services/tipo-usuario.service';
-import { AsignacionService } from '../../services/asignacion.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -10,6 +9,7 @@ import { Materia } from '../../models/materia.models';
 import { Usuario } from '../../models/usuario.models';
 import { Aula } from '../../models/aula.models';
 import { MateriaService } from '../../services/materia.service';
+import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 
 @Component({
   selector: 'app-cargar-asignacion',
@@ -30,7 +30,7 @@ export class CargarAsignacionComponent implements OnInit {
   constructor(
     public aulaService: AulaService,
     public tipoUsuarioService: TipoUsuarioService,
-    public asignacionService: AsignacionService,
+    public aulaMateriaService: AulaMateriaService,
     public router: Router,
     public usuarioService: UsuarioService,
     public materiasService: MateriaService
@@ -64,13 +64,13 @@ export class CargarAsignacionComponent implements OnInit {
   }
 
   registrarAsignacion() {
-    const asignacion = new Aula_materia(
+    const aulaMateria = new Aula_materia(
       this.forma.value.id_aula,
       this.forma.value.id_materia,
       this.forma.value.anho,
       this.forma.value.id_docente
     );
-    this.asignacionService.postTodo(asignacion).subscribe((resp) => {
+    this.aulaMateriaService.postAulaMateria(aulaMateria).subscribe((resp) => {
       this.router.navigate(['/asignaciones']);
     });
   }

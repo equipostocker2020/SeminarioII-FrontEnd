@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AsignacionService } from '../../services/asignacion.service';
+import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 
 @Component({
@@ -22,14 +22,14 @@ export class AsignacionComponent implements OnInit {
   aulas_materias: Aula_materia[] = [];
   token: string;
 
-  constructor(public asignacionService: AsignacionService) {}
+  constructor(public aulaMateriaService: AulaMateriaService) {}
 
   ngOnInit(): void {
     this.getTodo();
   }
 
   getTodo() {
-    this.asignacionService.getTodo().subscribe((resp: any) => {
+    this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       console.log(resp);
       this.get_aulas_materia = resp.aulas_materias;
       console.log(this.get_aulas_materia);

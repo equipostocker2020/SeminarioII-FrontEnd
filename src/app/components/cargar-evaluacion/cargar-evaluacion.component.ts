@@ -6,7 +6,7 @@ import { Evaluacion } from 'src/app/models/evaluacion.models';
 import { MateriaService } from 'src/app/services/materia.service';
 import { Materia } from 'src/app/models/materia.models';
 import { Instancia } from 'src/app/models/instancia.models';
-import { AsignacionService } from '../../services/asignacion.service';
+import { AulaMateriaService } from '../../services/aulaMateria.service';
 
 @Component({
   selector: 'app-cargar-evaluacion',
@@ -30,7 +30,7 @@ export class CargarEvaluacionComponent implements OnInit {
   constructor(
     public evaluacionService: EvaluacionService,
     public materiaService: MateriaService,
-    public asignacionService: AsignacionService,
+    public aulaMateriaService: AulaMateriaService,
     public router: Router
   ) {}
 

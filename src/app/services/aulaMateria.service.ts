@@ -73,4 +73,21 @@ export class AulaMateriaService {
           return err.throw(err.error.error.sqlMessage);
         }));
   }
+
+  actualizarAulaMateria(aula_materia: Aula_materia) {
+    let url = URL_SERVICIOS + '/aulas_materias/' + aula_materia.id_rel;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
+    return this.http.put(url, aula_materia)
+      .pipe(
+        map((resp: any) => {
+          Swal.fire('Aula materia actualizada', aula_materia.anho, 'success');
+          return resp.aula_materia;
+        }),
+        catchError((err: any) => {
+          console.log(err);
+          Swal.fire('Error al actualizar Aula Materia', err.error.error.sqlMessage, 'error' );
+          return err.throw(err.error.error.sqlMessage);
+        }));
+  }
 }
+

@@ -6,7 +6,7 @@ import { Usuario } from '../../models/usuario.models';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { TipoUsuarioService } from '../../services/tipo-usuario.service';
 import { UsuarioService } from '../../services/usuario.service';
-import { AsignacionService } from '../../services/asignacion.service';
+import { AulaMateriaService } from '../../services/aulaMateria.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 
 @Component({
@@ -37,7 +37,7 @@ export class CargarInscripcionComponent implements OnInit {
     public tipoUsuarioService: TipoUsuarioService,
     public router: Router,
     public usuarioService: UsuarioService,
-    public aulaMateriaService: AsignacionService,
+    public aulaMateriaService: AulaMateriaService,
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +49,7 @@ export class CargarInscripcionComponent implements OnInit {
     console.log(resp);
     this.usuarios = resp.usuario;
     });
-    this.aulaMateriaService.getTodo().subscribe((resp: any) => {
+    this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
     console.log(resp);
     this.aulasMaterias = resp.aulas_materias;
     });
