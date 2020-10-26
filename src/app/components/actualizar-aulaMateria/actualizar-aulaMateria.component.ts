@@ -5,7 +5,7 @@ import { Usuario } from 'src/app/models/usuario.models';
 import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
 import { Aula_materia } from 'src/app/models/aula_materia.models';
 import { InscripcionService } from 'src/app/services/inscripcion.service';
-import { AsignacionService } from 'src/app/services/asignacion.service';
+import { AulaMateriaService } from '../../services/aulaMateria.service';
 
 @Component({
   selector: 'app-actualizar-inscripcion',
@@ -22,7 +22,7 @@ export class ActualizarAulaMateriaComponent implements OnInit {
   constructor(
     public tipoUsuarioService: TipoUsuarioService,
     public inscripcionService: InscripcionService,
-    public asignacionServices: AsignacionService,
+    public aulaMateriaService: AulaMateriaService,
     public router: Router
   ) {
     this.cargarStorage();
@@ -34,7 +34,7 @@ export class ActualizarAulaMateriaComponent implements OnInit {
       console.log(this.alumnos);
     });
 
-    this.asignacionServices.getTodo().subscribe((resp: any) => {
+    this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       this.aulas_materias = resp.aulas_materias;
       console.log(this.aulas_materias);
     });
