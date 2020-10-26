@@ -66,7 +66,7 @@ export class ActualizarEvaluacionComponent implements OnInit {
   resetStorage() {
     localStorage.setItem('token', this.evaluacionService.token);
     localStorage.setItem(
-      'aula',
+      'evaluacionActualizar',
       JSON.stringify(this.evaluacionService.evaluacion)
     );
     this.evaluacion = this.evaluacionService.evaluacion;

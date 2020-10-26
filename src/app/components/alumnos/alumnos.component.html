@@ -67,8 +67,7 @@
                                     <th class="text">Nombre</th>
                                     <th class="text">Apellido</th>
                                     <th class="text">Email</th>
-                                    <th class="text">Edad</th>
-                                    <th class="text">DNI</th>
+                                    <th class="text">Dirección</th>
                                     <th class="text">Estado</th>
                                     <th class="text">Editar</th>
                                 </tr>
@@ -88,10 +87,7 @@
                                         {{usuario.email}}
                                     </td>
                                     <td class="text text-center">
-                                        {{usuario.edad}}
-                                    </td>
-                                    <td class="text text-center">
-                                        {{usuario.dni}}
+                                        {{usuario.direccion}}
                                     </td>
                                     <select [(ngModel)]="usuario.estado" name="role" class="form-control" (change)="cambiarEstado(usuario)">
                                       <option value="ACTIVO">ACTIVO</option>

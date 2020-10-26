@@ -61,7 +61,7 @@
                             <div class="form-group form-float">
                                 <label class="form-label">Nombre de la Aula</label>
                                 <div class="form-group">
-                                    <select name="id_aula" [ngModel]="aula_materia" class="form-group">
+                                    <select name="id_aula" [ngModel]="aula_materia" value ="aula_materia.id_aula" class="form-group">
                                         <option class="form-control" *ngFor="let aula of aulas"
                                             value={{aula.id_aula}}>
                                             {{aula.nombre_aula}}
