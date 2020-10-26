@@ -52,33 +52,23 @@
                         <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
 
                             <div class="form-group form-float">
-                                <label class="form-label">Nombre de la Materia</label>
+                                <label class="form-label">Materia</label>
                                 <div class="form-group">
-                                    <select name="id_materia" [ngModel]="evaluacion.id_materia" class="form-group">
-                                        <option class="form-control" *ngFor="let materia of materias"
-                                            value={{materia.id_materia}}>
-                                            {{materia.nombre_materia}}
-                                        </option>
-                                    </select>
+                                    <input [ngModel]="evaluacion.nombre_materia" type="text"class="form-control" name="nombreMateria" disabled>
                                 </div>
                             </div>
                             <br>
                             <div class="form-group form-float">
-                                <label class="form-label">Nombre de la Materia</label>
+                                <label class="form-label">Instancia</label>
                                 <div class="form-group">
-                                    <select name="id_instancia" [ngModel]="evaluacion.id_instancia" class="form-group">
-                                        <option class="form-control" *ngFor="let instancia of instancias"
-                                            value={{instancia.id_instancia}}>
-                                            {{instancia.nombre_instancia}}
-                                        </option>
-                                    </select>
+                                    <input [ngModel]="evaluacion.nombre_instancia" type="text"class="form-control" name="nombreInstancia" disabled>
                                 </div>
                             </div>
                             <br>
                             <div class="form-group form-float">
                                 <label class="form-label">Fecha</label>
                                 <div class="form-line">
-                                    <input [ngModel]="evaluacion.fecha | date: 'yyyy-MM-dd'" class="form-control" name="fecha">
+                                    <input [ngModel]="evaluacion.fecha | date: 'yyyy-MM-dd'" type="date"class="form-control" name="fecha">
                                 </div>
                             </div>
                             <div class="text-center">
