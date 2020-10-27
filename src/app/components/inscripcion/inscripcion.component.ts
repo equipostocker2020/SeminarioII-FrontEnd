@@ -44,6 +44,7 @@ export class InscripcionComponent implements OnInit {
   }
 
   cambiarEstado(inscripcion: Inscripcion){
+    inscripcion.id_aula_materia = inscripcion.id_rel;
     this.inscripcionService.actualizarInscripcion(inscripcion)
     .subscribe ((resp: any) => {
     });

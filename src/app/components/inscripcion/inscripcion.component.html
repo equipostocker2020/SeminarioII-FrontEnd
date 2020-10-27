@@ -90,7 +90,7 @@
                                         {{inscripcion.anho}}
                                     </td>
                                     <td class="text text-center">
-                                        {{inscripcion.nombre_aula}}
+                                        {{inscripcion.estado}}
                                     </td>
                                     <select [(ngModel)]="inscripcion.estado" name="estado" class="form-control" (change)="cambiarEstado(inscripcion)">
                                         <option value="ACTIVO">ACTIVO</option>
