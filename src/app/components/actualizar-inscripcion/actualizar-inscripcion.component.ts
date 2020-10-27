@@ -18,6 +18,8 @@ export class ActualizarInscripcionComponent implements OnInit {
   inscripcion: Inscripcion;
   alumnos: Usuario[] = [];
   aulas_materias: Aula_materia[] = [];
+  alumno: Usuario;
+  aula_materia: Aula_materia;
 
   constructor(
     public tipoUsuarioService: TipoUsuarioService,
@@ -26,13 +28,14 @@ export class ActualizarInscripcionComponent implements OnInit {
     public router: Router
   ) {
     this.cargarStorage();
+    this.guardarStorage(
+      this.tipoUsuarioService.usuario.id_usuario,
+      this.tipoUsuarioService.token,
+      this.inscripcion
+    );
   }
 
   ngOnInit(): void {
-    this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
-      this.alumnos = resp.usuario;
-      console.log(this.alumnos);
-    });
 
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       this.aulas_materias = resp.aulas_materias;
@@ -48,15 +51,13 @@ export class ActualizarInscripcionComponent implements OnInit {
       );
     } else {
       this.token = '';
-      this.inscripcion = null;
+      this.inscripcion =   null;
     }
   }
 
   guardarStorage(id: string, token: string, inscripcion: Inscripcion) {
     localStorage.setItem(
-      'id_inscripcion',
-      this.inscripcionService.inscripcion.id_inscripcion
-    );
+      'id_inscripcion', inscripcion.id_inscripcion);
     localStorage.setItem('token', this.token);
     localStorage.setItem('inscripcionActualizar', JSON.stringify(inscripcion));
 
@@ -76,11 +77,12 @@ export class ActualizarInscripcionComponent implements OnInit {
 
   guardar(inscripcion: Inscripcion) {
     this.inscripcion.id_alumno = inscripcion.id_alumno;
-    this.inscripcion.id_aula_materia = inscripcion.id_aula_materia;
+    this.inscripcion.id_aula_materia = inscripcion.id_rel;
     this.inscripcionService.token = this.token;
     this.inscripcionService
       .actualizarInscripcion(this.inscripcion)
       .subscribe((resp: any) => {
+        console.log(resp);
         this.router.navigate(['/inscripciones']);
         this.resetStorage();
       });

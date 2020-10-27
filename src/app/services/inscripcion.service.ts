@@ -20,11 +20,11 @@ export class InscripcionService {
     this.getIdUsuarioLocalStorage();
   }
 
-  guardarStorage(id: string, token: string, Inscripcion: Inscripcion) {
+  guardarStorage(id: string, token: string, inscripcion: Inscripcion) {
     localStorage.setItem('id_inscripcion', id);
     localStorage.setItem('token', token);
-    localStorage.setItem('inscripcion', JSON.stringify(Inscripcion));
-    this.inscripcion = Inscripcion;
+    localStorage.setItem('inscripcion', JSON.stringify(inscripcion));
+    this.inscripcion = inscripcion;
     this.token = token;
   }
 
@@ -67,7 +67,7 @@ export class InscripcionService {
   }
 
   actualizarInscripcion(inscripcion: Inscripcion) {
-    let url = URL_SERVICIOS + '/inscripcion';
+    let url = URL_SERVICIOS + '/inscripcion/' + inscripcion.id_inscripcion;
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.put(url, inscripcion)
     .pipe(

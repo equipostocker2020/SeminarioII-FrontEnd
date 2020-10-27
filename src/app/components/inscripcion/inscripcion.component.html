@@ -94,7 +94,7 @@
                                         {{inscripcion.nombre_aula}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-success" routerLink="/inscripcion/actualizar-inscripcion">
+                                        <button class="btn btn-success" routerLink="/inscripcion/actualizar-inscripcion" (click)="guardarStorage(inscripcion.id_inscripcion, inscripcion)">
                                             <span class="input-group-addon">
                                                 <i class="material-icons text-center">edit</i>
                                             </span>

@@ -35,4 +35,10 @@ export class InscripcionComponent implements OnInit {
       console.log(resp.inscripciones)
     });
   }
+
+  guardarStorage(id: string, evaluacion: Inscripcion) {
+    localStorage.setItem('id_inscripcion', id);
+    localStorage.setItem('inscripcionActualizar', JSON.stringify(evaluacion));
+    this.inscripcion = evaluacion;
+  }
 }
