@@ -23,6 +23,7 @@ export class InscripcionComponent implements OnInit {
     nombre: string,
     nombre_aula: string,
     nombre_materia: string,
+    estado: string,
   }
 
   ngOnInit(): void {
@@ -36,9 +37,15 @@ export class InscripcionComponent implements OnInit {
     });
   }
 
-  guardarStorage(id: string, evaluacion: Inscripcion) {
+  guardarStorage(id: string, inscripcion: Inscripcion) {
     localStorage.setItem('id_inscripcion', id);
-    localStorage.setItem('inscripcionActualizar', JSON.stringify(evaluacion));
-    this.inscripcion = evaluacion;
+    localStorage.setItem('inscripcionActualizar', JSON.stringify(inscripcion));
+    this.inscripcion = inscripcion;
+  }
+
+  cambiarEstado(inscripcion: Inscripcion){
+    this.inscripcionService.actualizarInscripcion(inscripcion)
+    .subscribe ((resp: any) => {
+    });
   }
 }

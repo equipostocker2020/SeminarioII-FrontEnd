@@ -7,7 +7,8 @@ export class Inscripcion {
     public id_alumno?: string,
     public id_aula_materia?: string,
     public id_rel?: string,
-    public nombre?: string
+    public nombre?: string,
+    public estado?: string,
     // public estado?: string
   ) {}
 }
