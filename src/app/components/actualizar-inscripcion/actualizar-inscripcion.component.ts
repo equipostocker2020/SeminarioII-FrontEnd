@@ -78,6 +78,7 @@ export class ActualizarInscripcionComponent implements OnInit {
   guardar(inscripcion: Inscripcion) {
     this.inscripcion.id_alumno = this.inscripcion.id_alumno;
     this.inscripcion.id_aula_materia = inscripcion.id_rel;
+    this.inscripcion.estado = this.inscripcion.estado;
     this.inscripcionService.token = this.token;
     this.inscripcionService
       .actualizarInscripcion(this.inscripcion)
