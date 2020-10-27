@@ -68,9 +68,8 @@
                                 <label class="form-label">Asignación</label>
                                 <div class="form-group">
                                     <select name="id_rel" [ngModel]="inscripcion" class="form-group">
-                                        <option class="form-control" *ngFor="let aula_materia of aulas_materias"
-                                            value={{aula_materia.id_rel}}>
-                                            {{aula_materia.anho}}
+                                        <option class="form-control" *ngFor="let aulaMateria of aulas_materias" [value]="aulaMateria.id_rel">
+                                            {{'Nombre Materia: ' + aulaMateria.nombre_materia +' Docente: ' +aulaMateria.apellido + ' Aula:' +aulaMateria.nombre_aula }}
                                         </option>
                                     </select>
                                 </div>

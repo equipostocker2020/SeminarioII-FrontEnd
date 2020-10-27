@@ -14,6 +14,7 @@ export class InscripcionComponent implements OnInit {
   constructor(public inscripcionService: InscripcionService) {}
 
   get_inscripcion: {
+    id_alumno: string,
     anho: string,
     apellido: string,
     dia: string,
@@ -31,6 +32,7 @@ export class InscripcionComponent implements OnInit {
   getInscripcion() {
     this.inscripcionService.getInscripcion().subscribe((resp: any) => {
       this.get_inscripcion = resp.inscripciones;
+      console.log(resp.inscripciones)
     });
   }
 }
