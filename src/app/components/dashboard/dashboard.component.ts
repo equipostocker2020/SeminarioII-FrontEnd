@@ -4,6 +4,12 @@ import { Usuario } from '../../models/usuario.models';
 import { TipoUsuarioService } from '../../services/tipo-usuario.service';
 import { Aula } from '../../models/aula.models';
 import { AulaService } from '../../services/aula.service';
+import { Materia } from '../../models/materia.models';
+import { MateriaService } from '../../services/materia.service';
+import { Inscripcion } from '../../models/inscripcion.models';
+import { InscripcionService } from '../../services/inscripcion.service';
+import { Aula_materia } from '../../models/aula_materia.models';
+import { AulaMateriaService } from '../../services/aulaMateria.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,50 +18,84 @@ import { AulaService } from '../../services/aula.service';
 })
 export class DashboardComponent implements OnInit {
   usuario: Usuario;
-  usuarios: Usuario [] = [];
-  docentes: Usuario [] = [];
+  usuarios: Usuario[] = [];
+  docentes: Usuario[] = [];
   docente: Usuario;
   alumno: Usuario;
-  alumnos: Usuario [] = [];
+  alumnos: Usuario[] = [];
   aula: Aula;
-  aulas: Aula [] = [];
+  aulas: Aula[] = [];
+  materia: Materia;
+  materias: Materia[] = [];
+  inscripcion: Inscripcion;
+  inscripciones: Inscripcion[] = [];
+  asignacion: Aula_materia;
+  asignaciones: Aula_materia[] = [];
 
   constructor(
     public usuarioService: UsuarioService,
     public tipoUsuarioService: TipoUsuarioService,
     public aulaService: AulaService,
+    public materiaService: MateriaService,
+    public inscripcionService: InscripcionService,
+    public aulaMateriaService: AulaMateriaService
   ) {
     this.usuario = usuarioService.usuario;
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
-    this.docentes = resp.usuario;
+      this.docentes = resp.usuario;
     });
     this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
-    this.alumnos = resp.usuario;
+      this.alumnos = resp.usuario;
     });
-    this.aulaService.getAula().subscribe((resp: any) =>{
-    this.aulas = resp.aula;
+    this.aulaService.getAula().subscribe((resp: any) => {
+      this.aulas = resp.aula;
     });
+    this.materiaService.getMateria().subscribe((resp: any) => {
+      this.materias = resp.materia;
+    });
+    this.inscripcionService.getInscripcion().subscribe((resp: any) => {
+      this.inscripciones = resp.inscripciones;
+      console.log(this.inscripciones);
+    });
+    this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
+      this.asignaciones = resp.aulas_materias;
+    });
+    this.verInscripciones();
   }
 
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true,
-  };
-  public barChartLabels = [
-    '2006',
-    '2007',
-    '2008',
-    '2009',
-    '2010',
-    '2011',
-    '2012',
-  ];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-  ];
+  // public barChartOptions = {
+  //   scaleShowVerticalLines: false,
+  //   responsive: true,
+  // };
+  // public barChartLabels = [
+  //   '2006',
+  //   '2007',
+  //   '2008',
+  //   '2009',
+  //   '2010',
+  //   '2011',
+  //   '2012',
+  // ];
+  // public barChartType = 'bar';
+  // public barChartLegend = true;
+  // public barChartData = [
+  //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+  //   { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
+  // ];
 
   ngOnInit(): void {}
+
+  verInscripciones() {
+    this.inscripcionService.getInscripcion().subscribe((resp: any) => {
+      for (let resultado of resp.inscripciones) {
+        console.log(resultado);
+        if (resultado.id_alumno === this.usuario.id_usuario) {
+          return true;
+        } else{
+          return false;
+        }
+      }
+      return;
+    });
+  }
 }
