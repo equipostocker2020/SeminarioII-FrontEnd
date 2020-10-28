@@ -25,10 +25,22 @@ export class AulaMateriaComponent implements OnInit {
   constructor(public aulaMateriaService: AulaMateriaService) {}
 
   ngOnInit(): void {
-    this.getTodo();
+    this.getAulaMateria();
   }
 
-  getTodo() {
+  guardarStorage(id: string, aulas_materia: Aula_materia) {
+    localStorage.setItem('id_rel', id);
+    localStorage.setItem('aulas_materiaActualizar', JSON.stringify(aulas_materia));
+    this.aulas_materia = aulas_materia;
+  }
+
+  eliminarStorage() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
+    localStorage.removeItem('aulas_materia');
+  }
+
+  getAulaMateria() {
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       console.log(resp);
       this.get_aulas_materia = resp.aulas_materias;

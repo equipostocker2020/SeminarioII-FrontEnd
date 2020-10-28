@@ -21,6 +21,14 @@ export class ActualizarAulaMateriaComponent implements OnInit {
   aulas: Aula [] = [];
   materias: Materia [] = [];
   docentes: Usuario [] = [];
+  json_aulas_materia: {
+    id_aula: string;
+    id_materia: string;
+    anho: string;
+    id_usuario: string;
+    id_rel: string;
+
+  };
 
   constructor(
     public aulaService: AulaService,
@@ -30,6 +38,7 @@ export class ActualizarAulaMateriaComponent implements OnInit {
     public router: Router
   ) {
     this.cargarStorage();
+    console.log(this.aula_materia);
   }
 
   ngOnInit(): void {
@@ -52,9 +61,14 @@ export class ActualizarAulaMateriaComponent implements OnInit {
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.aula_materia = JSON.parse(
-        localStorage.getItem('aula_materiaActualizar')
+
+      this.json_aulas_materia = JSON.parse(
+        localStorage.getItem('aulas_materiaActualizar')
       );
+      this.aula_materia = JSON.parse(
+        localStorage.getItem('aulas_materiaActualizar')
+      );
+      this.aula_materia.id_docente = this.json_aulas_materia.id_usuario;
     } else {
       this.token = '';
       this.aula_materia = null;
@@ -63,8 +77,8 @@ export class ActualizarAulaMateriaComponent implements OnInit {
 
   guardarStorage(id: string, token: string, aula_materia: Aula_materia) {
     localStorage.setItem(
-      'aula_materia',
-      this.aulaMateriaService.aula_materia.id_rel
+      'id_rel',
+      this.aulaService.aula.id_aula
     );
     localStorage.setItem('token', this.token);
     localStorage.setItem('aula_materiaActualizar', JSON.stringify(aula_materia));
@@ -91,7 +105,7 @@ export class ActualizarAulaMateriaComponent implements OnInit {
     this.aula_materia.id_aula = aula_materia.id_aula;
     this.aula_materia.id_materia = aula_materia.id_materia;
     this.aula_materia.anho = aula_materia.anho;
-    this.aula_materia.id_docente =aula_materia.id_docente;
+    this.aula_materia.id_docente = aula_materia.id_docente;
     this.aulaMateriaService.token = this.token;
     this.aulaMateriaService
       .actualizarAulaMateria(this.aula_materia)
