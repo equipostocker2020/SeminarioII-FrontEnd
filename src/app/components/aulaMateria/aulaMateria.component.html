@@ -69,6 +69,7 @@
                                     <th class="text">Horario</th>
                                     <th class="text">Año</th>
                                     <th class="text">Nombre Docente</th>
+                                    <th class="text">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -91,6 +92,10 @@
                                     <td class="text text-center">
                                         {{aulas_materia.nombre}} {{aulas_materia.apellido}}
                                     </td>
+                                    <select [(ngModel)]="aulas_materia.estado" name="estado" class="form-control" (change)="cambiarEstado(aulas_materia)">
+                                        <option value="ACTIVO">ACTIVO</option>
+                                        <option value="INACTIVO">INACTIVO</option>
+                                    </select>
                                     <td>
                                         <button class="btn btn-success" routerLink="/aulaMateria/actualizar-aulaMateria" (click)="guardarStorage(aulas_materia.id_rel, aulas_materia)">
                                             <span class="input-group-addon">

@@ -18,6 +18,7 @@ export class AulaMateriaComponent implements OnInit {
     nombre: string;
     nombre_aula: string;
     nombre_materia: string;
+    estado: string;
   };
   aulas_materias: Aula_materia[] = [];
   token: string;
@@ -45,6 +46,13 @@ export class AulaMateriaComponent implements OnInit {
       console.log(resp);
       this.get_aulas_materia = resp.aulas_materias;
       console.log(this.get_aulas_materia);
+    });
+  }
+
+  cambiarEstado(aula_materia: Aula_materia){
+    aula_materia.id_docente = aula_materia.id_usuario;
+    this.aulaMateriaService.actualizarAulaMateria(aula_materia)
+    .subscribe ((resp: any) => {
     });
   }
 }
