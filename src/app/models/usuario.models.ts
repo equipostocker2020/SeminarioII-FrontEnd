@@ -8,7 +8,7 @@ export class Usuario {
     public contraseña?: string,
     public cuit_cuil?: string,
     public rol?: string,
-    public fecha_nac?: Date,
+    public fecha_nac?: string,
     public edad?: string,
     public id_usuario?: string,
     public estado?: string

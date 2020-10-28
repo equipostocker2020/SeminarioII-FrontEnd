@@ -53,8 +53,19 @@ export class AlumnosComponent implements OnInit {
   }
 
   cambiarEstado(usuario: Usuario){
+    usuario.fecha_nac = this.transformarFecha(usuario.fecha_nac);
     this.usuarioService.actualizarUsuario(usuario)
     .subscribe ((resp: any) => {
     });
+  }
+
+  transformarFecha(params: string){
+    if (params.indexOf('T') !== -1){
+      const fecha = params.split('T');
+      const fechaTransformada = fecha[0];
+      return fechaTransformada;
+    } else {
+      return;
+    }
   }
 }

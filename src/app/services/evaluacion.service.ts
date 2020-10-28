@@ -83,7 +83,7 @@ export class EvaluacionService {
     return this.http.put(url, evaluacion)
       .pipe(
         map((resp: any) => {
-          Swal.fire('Evaluacion actualizada', 'success');
+          Swal.fire('Evaluacion actualizada', evaluacion.nombre_materia, 'success');
           return resp.evaluacion;
         }),
         catchError((err: any) => {

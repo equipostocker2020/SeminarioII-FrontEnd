@@ -72,7 +72,7 @@ export class InscripcionService {
     return this.http.put(url, inscripcion)
     .pipe(
       map((resp: any) => {
-        Swal.fire('La inscripcion ha sido actualizada', 'success');
+        Swal.fire('La inscripcion ha sido actualizada', inscripcion.id_rel , 'success');
         return resp.inscripcion;
       }),
      catchError((err: any) =>{

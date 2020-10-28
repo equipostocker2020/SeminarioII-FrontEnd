@@ -49,8 +49,19 @@ export class EvaluacionesComponent implements OnInit {
   }
 
   cambiarEstado(evaluacion: Evaluacion){
+    evaluacion.fecha = this.transformarFecha(evaluacion.fecha);
     this.evaluacionService.actualizarEvaluacion(evaluacion)
     .subscribe ((resp: any) => {
     });
+  }
+
+  transformarFecha(params: string){
+    if (params.indexOf('T') !== -1){
+      const fecha = params.split('T');
+      const fechaTransformada = fecha[0];
+      return fechaTransformada;
+    } else {
+      return;
+    }
   }
 }
