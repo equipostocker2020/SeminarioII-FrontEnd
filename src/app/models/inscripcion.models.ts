@@ -9,5 +9,9 @@ export class Inscripcion {
     public estado?: string,
     public id_rel?: string,
     public nombre?: string,
+    public nombre_materia?: string,
+    public nombre_aula?: string,
+    public dia?: string,
+    public horario?: string,
   ) {}
 }

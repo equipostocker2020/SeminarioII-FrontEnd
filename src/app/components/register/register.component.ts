@@ -71,7 +71,6 @@ export class RegisterComponent implements OnInit {
       Swal.fire('Importante', 'Debe aceptar las condiciones', 'warning');
       return;
     }
-    console.log(this.forma.value);
     const usuario = new Usuario(
       this.forma.value.nombre,
       this.forma.value.apellido,

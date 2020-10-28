@@ -31,6 +31,12 @@ export class DashboardComponent implements OnInit {
   inscripciones: Inscripcion[] = [];
   asignacion: Aula_materia;
   asignaciones: Aula_materia[] = [];
+  //user role alumno
+  inscripcionAlumno: Inscripcion;
+  inscripcionesAlumno: Inscripcion [] = [];
+  // user rol docente
+  asignacionDocente: Aula_materia;
+  asignacionesDocente: Aula_materia [] = [];
 
   constructor(
     public usuarioService: UsuarioService,
@@ -60,7 +66,8 @@ export class DashboardComponent implements OnInit {
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       this.asignaciones = resp.aulas_materias;
     });
-    this.verInscripciones();
+    this.verInscripcionesAlumno();
+    this.verAsignacionesDocente();
   }
 
   // public barChartOptions = {
@@ -85,17 +92,24 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  verInscripciones() {
-    this.inscripcionService.getInscripcion().subscribe((resp: any) => {
-      for (let resultado of resp.inscripciones) {
-        console.log(resultado);
-        if (resultado.id_alumno === this.usuario.id_usuario) {
-          return true;
-        } else{
-          return false;
-        }
-      }
-      return;
-    });
+  verInscripcionesAlumno(){
+    if (this.usuario.rol === 'ESTUDIANTE'){
+      this.tipoUsuarioService.getInscripcionesAlumno(this.usuario.id_usuario).subscribe((resp: any) => {
+        console.log('Respusta al alumno', resp);
+        this.inscripcionesAlumno = resp.inscripciones;
+      });
+    }
   }
+  verAsignacionesDocente(){
+    if (this.usuario.rol === 'DOCENTE'){
+    this.tipoUsuarioService.getAsignacionesDocente(this.usuario.id_usuario).subscribe((resp: any) => {
+    console.log('Respusta al docente', resp);
+    this.asignacionesDocente = resp.aulas_materias;
+    });
+    }
+  }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

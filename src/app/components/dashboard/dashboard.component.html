@@ -1,5 +1,5 @@
 <section>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,6 +35,9 @@
                 <li *ngIf="usuario.rol == 'ADMIN' || usuario.rol == 'ESTUDIANTE'" class="nav-item">
                     <a class="nav-link" href="/inscripciones">Inscripcion</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" (click)="eliminarStorage()">Salir</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -54,8 +57,7 @@
                                 </button>
         </div>
     </div>
-    <br> <br>
-
+    <br>
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Docentes Registrados</h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
@@ -86,7 +88,7 @@
             </tbody>
         </table>
     </div>
-    <br>
+    <!-- <br> -->
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center">Alumnos Registrados</h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless">
         <table class="table table-condensed">
@@ -117,7 +119,7 @@
             </tbody>
         </table>
     </div>
-    <br>
+    <!-- <br> -->
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Aulas Registradas</h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
@@ -143,7 +145,7 @@
             </tbody>
         </table>
     </div>
-    <br>
+    <!-- <br> -->
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Materias Registradas</h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
@@ -173,7 +175,7 @@
             </tbody>
         </table>
     </div>
-    <br>
+    <!-- <br> -->
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Asignaciones Registradas</h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
@@ -211,45 +213,79 @@
             </tbody>
         </table>
     </div>
-    <br><br>
-    <h4 *ngIf="usuario.rol=='ALUMNO'" class="card-title text-center" style="color: blue gray;">Mis Inscripciones Registradas</h4>
-    <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
+    <!-- <br><br> -->
+    <h4 *ngIf="usuario.rol =='ESTUDIANTE'" class="card-title text-center" style="color: blue gray;">Mis Inscripciones Registradas</h4>
+    <div *ngIf="usuario.rol=='ESTUDIANTE'" class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
                 <tr class="text-center bg-green">
                     <th class="text">#</th>
                     <th class="text">Nombre Materia</th>
                     <th class="text">Aula</th>
-                    <th class="text">Apellido Docente</th>
+                    <!-- <th class="text">Apellido Docente</th> -->
                     <th class="text">Dia</th>
                     <th class="text">Horario</th>
                 </tr>
             </thead>
             <tbody class="table-striped">
-                <tr class="text-center bg-light-green" *ngFor=" let asignacion of asignaciones ">
+                <tr class="text-center bg-light-green" *ngFor=" let inscripcionAlumno of inscripcionesAlumno ">
                     <td class="text text-center">
-                        {{asignacion.id_rel}}
+                        {{inscripcionAlumno.id_rel}}
                     </td>
                     <td class="text text-center">
-                        {{asignacion.nombre_materia}}
+                        {{inscripcionAlumno.nombre_materia}}
                     </td>
                     <td class="text text-center">
-                        {{asignacion.nombre_aula}}
+                        {{inscripcionAlumno.nombre_aula}}
+                    </td>
+                    <!-- <td class="text text-center">
+                        {{inscripcionAlumno.apellido}}
+                    </td> -->
+                    <td class="text text-center">
+                        {{inscripcionAlumno.dia}}
                     </td>
                     <td class="text text-center">
-                        {{asignacion.apellido}}
-                    </td>
-                    <td class="text text-center">
-                        {{asignacion.dia}}
-                    </td>
-                    <td class="text text-center">
-                        {{asignacion.horario}}
+                        {{inscripcionAlumno.horario}}
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <br><br>
+    <!-- <br><br> -->
+    <h4 *ngIf="usuario.rol =='DOCENTE'" class="card-title text-center" style="color: blue gray;">Mis Asignaciones Registradas</h4>
+    <div *ngIf="usuario.rol=='DOCENTE'" class="body table-responsive table-borderless table-striped">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="text-center bg-green">
+                    <th class="text">#</th>
+                    <th class="text">Dia</th>
+                    <th class="text">Nombre de la Materia</th>
+                    <th class="text">Horario</th>
+                    <th class="text">Aula</th>
+                    <!-- <th class="text">Apellido Docente</th> -->
+                </tr>
+            </thead>
+            <tbody class="table-striped">
+                <tr class="text-center bg-light-green" *ngFor=" let asignacionDocente of asignacionesDocente ">
+                    <td class="text text-center">
+                        {{asignacionDocente.id_rel}}
+                    </td>
+                    <td class="text text-center">
+                        {{asignacionDocente.dia}}
+                    </td>
+                    <td class="text text-center">
+                        {{asignacionDocente.nombre_materia}}
+                    </td>
+                    <td class="text text-center">
+                        {{asignacionDocente.horario}}
+                    </td>
+                    <td class="text text-center">
+                        {{asignacionDocente.nombre_aula}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <!-- <div class="row clearfix"> -->
     <!-- Line Chart -->
     <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -326,5 +362,5 @@
     <!-- </div> -->
     <!-- </div> -->
 
-
+    <br><br>
 </section>
