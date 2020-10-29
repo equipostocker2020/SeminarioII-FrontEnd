@@ -8,6 +8,7 @@ import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 import { AulaService } from 'src/app/services/aula.service';
 import { MateriaService } from 'src/app/services/materia.service';
 import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-actualizar-aulaMateria',
@@ -27,16 +28,18 @@ export class ActualizarAulaMateriaComponent implements OnInit {
     anho: string;
     id_usuario: string;
     id_rel: string;
-
   };
+  usuario: Usuario;
 
   constructor(
     public aulaService: AulaService,
     public materiaService: MateriaService,
     public tipoUsuarioService: TipoUsuarioService,
     public aulaMateriaService: AulaMateriaService,
-    public router: Router
+    public router: Router,
+    public usuarioService : UsuarioService,
   ) {
+    this.usuario = this.usuarioService.usuario;
     this.cargarStorage();
     console.log(this.aula_materia);
   }
@@ -114,5 +117,9 @@ export class ActualizarAulaMateriaComponent implements OnInit {
         this.resetStorage();
       });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 
 }

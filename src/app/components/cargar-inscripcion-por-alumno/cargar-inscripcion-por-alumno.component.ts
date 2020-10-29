@@ -9,12 +9,14 @@ import { UsuarioService } from '../../services/usuario.service';
 import { AulaMateriaService } from '../../services/aulaMateria.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 
+
 @Component({
-  selector: 'app-cargar-inscripcion',
-  templateUrl: './cargar-inscripcion.component.html',
-  styleUrls: []
+  selector: 'app-cargar-inscripcion-por-alumno',
+  templateUrl: './cargar-inscripcion-por-alumno.component.html',
+  styles: [
+  ]
 })
-export class CargarInscripcionComponent implements OnInit {
+export class CargarInscripcionPorAlumnoComponent implements OnInit {
   forma: FormGroup;
   inscripcion: Inscripcion;
   inscripciones: Inscripcion[] = [];
@@ -31,7 +33,6 @@ export class CargarInscripcionComponent implements OnInit {
     nombre_aula: string;
     nombre_materia: string;
   };
-  usuarioLogOut: Usuario;
 
   constructor(
     public inscripcionService: InscripcionService,
@@ -39,9 +40,10 @@ export class CargarInscripcionComponent implements OnInit {
     public router: Router,
     public usuarioService: UsuarioService,
     public aulaMateriaService: AulaMateriaService,
-  ) { 
-    this.usuarioLogOut = this.usuarioService.usuario;
-  }
+  ) {
+    this.usuario = this.usuarioService.usuario;
+    console.log(this.usuario);
+   }
 
   ngOnInit(): void {
     this.inscripcionService.getInscripcion().subscribe((resp: any) => {
@@ -63,10 +65,11 @@ export class CargarInscripcionComponent implements OnInit {
     });
     this.forma.setValue({
       id_inscripcion: '',
-      id_alumno: '',
+      id_alumno: this.usuario.id_usuario,
       id_aula_materia: '',
     });
   }
+  
   registrarInscripcion() {
     const inscripcion = new Inscripcion(
       this.forma.value.id_inscripcion,
@@ -74,7 +77,7 @@ export class CargarInscripcionComponent implements OnInit {
       this.forma.value.id_aula_materia
     );
     this.inscripcionService.postInscripcion(inscripcion).subscribe((resp: any) => {
-      this.router.navigate(['/inscripciones']);
+      this.router.navigate(['/dashboard']);
     });
   }
 

@@ -12,11 +12,12 @@ import { MateriaService } from '../../services/materia.service';
 import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 
 @Component({
-  selector: 'app-cargar-asignacion',
-  templateUrl: './cargar-aulaMateria.component.html',
-  styleUrls: [],
+  selector: 'app-cargar-aula-materia-por-docente',
+  templateUrl: './cargar-aula-materia-por-docente.component.html',
+  styles: [
+  ]
 })
-export class CargarAulaMateriaComponent implements OnInit {
+export class CargarAulaMateriaPorDocenteComponent implements OnInit {
   forma: FormGroup;
   materias: Materia[] = [];
   materia: Materia;
@@ -26,7 +27,6 @@ export class CargarAulaMateriaComponent implements OnInit {
   aula: Aula;
   usuario: Usuario;
   usuarios: Usuario[] = [];
-  usuarioLog: Usuario;
 
   constructor(
     public aulaService: AulaService,
@@ -36,7 +36,7 @@ export class CargarAulaMateriaComponent implements OnInit {
     public usuarioService: UsuarioService,
     public materiasService: MateriaService
   ) {
-    this.usuarioLog = this.usuarioService.usuario;
+    this.usuario = this.usuarioService.usuario;
   }
 
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class CargarAulaMateriaComponent implements OnInit {
       id_aula: '',
       id_materia: '',
       anho: '',
-      id_docente: '',
+      id_docente: this.usuario.id_usuario,
     });
   }
 
@@ -74,7 +74,7 @@ export class CargarAulaMateriaComponent implements OnInit {
       this.forma.value.id_docente
     );
     this.aulaMateriaService.postAulaMateria(aulaMateria).subscribe((resp) => {
-      this.router.navigate(['/aulasMaterias']);
+      this.router.navigate(['/dashboard']);
     });
   }
   eliminarStorage() {

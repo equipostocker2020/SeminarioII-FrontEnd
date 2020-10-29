@@ -12,12 +12,14 @@ export class DocentesComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuario: Usuario;
   token: string;
+  usuarioLog: Usuario;
 
   constructor(
     public tipoUsuario: TipoUsuarioService,
     public usuarioService: UsuarioService
   ) {
     this.usuarioService.usuario;
+    this.usuarioLog = this.usuarioService.usuario
   }
   ngOnInit(): void {
     this.getDocente();

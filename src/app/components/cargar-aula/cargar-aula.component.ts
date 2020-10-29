@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Aula } from 'src/app/models/aula.models';
 import { AulaService } from '../../services/aula.service';
+import { Usuario } from '../../models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-cargar-aula',
@@ -11,8 +13,15 @@ import { AulaService } from '../../services/aula.service';
 })
 export class CargarAulaComponent implements OnInit {
   forma: FormGroup;
+  usuario: Usuario;
 
-  constructor(public aulaService: AulaService, public router: Router) {}
+  constructor(
+    public aulaService: AulaService, 
+    public router: Router,
+    public usuarioService: UsuarioService
+    ) {
+      this.usuario = this.usuarioService.usuario;
+    }
 
   ngOnInit(): void {
     this.forma = new FormGroup({
@@ -30,4 +39,8 @@ export class CargarAulaComponent implements OnInit {
       this.router.navigate(['/aulas']);
     });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

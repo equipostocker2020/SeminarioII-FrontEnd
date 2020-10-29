@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Aula } from '../../models/aula.models';
 import { UsuarioService } from '../../services/usuario.service';
 import { AulaService } from 'src/app/services/aula.service';
+import { Usuario } from '../../models/usuario.models';
 
 @Component({
   selector: 'app-actualizar-aula',
@@ -12,12 +13,13 @@ import { AulaService } from 'src/app/services/aula.service';
 export class ActualizarAulaComponent implements OnInit {
   token: string;
   aula: Aula;
-
+  usuario: Usuario;
   constructor(
     public aulaService: AulaService,
     public router: Router,
     public usuarioService: UsuarioService
   ) {
+    this.usuario = this.usuarioService.usuario;
     this.cargarStorage();
     console.log(this.aula);
   }
@@ -60,4 +62,8 @@ export class ActualizarAulaComponent implements OnInit {
       this.resetStorage();
     });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

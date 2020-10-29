@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EvaluacionService } from 'src/app/services/evaluacion.service';
 import { Evaluacion } from '../../models/evaluacion.models';
+import { Usuario } from '../../models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-evaluaciones',
@@ -11,8 +13,13 @@ export class EvaluacionesComponent implements OnInit {
   evaluaciones: Evaluacion[] = [];
   evaluacion: Evaluacion;
   token: string;
+  usuario: Usuario;
 
-  constructor(public evaluacionService: EvaluacionService) {
+  constructor(
+    public evaluacionService: EvaluacionService,
+    public usuarioService: UsuarioService
+    ) {
+    this.usuario = this.usuarioService.usuario;
     this.evaluacionService.evaluacion;
   }
 
@@ -64,4 +71,8 @@ export class EvaluacionesComponent implements OnInit {
       return;
     }
   }
+
+  eliminarStorageLogOut() {
+    localStorage.clear();
+}
 }

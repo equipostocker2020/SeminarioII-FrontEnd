@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 import { Aula_materia } from '../../models/aula_materia.models';
+import { Usuario } from '../../models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-asignacion',
@@ -8,8 +10,8 @@ import { Aula_materia } from '../../models/aula_materia.models';
   styleUrls: [],
 })
 export class AulaMateriaComponent implements OnInit {
-  aulas_materia: Aula_materia;
 
+  aulas_materia: Aula_materia;
   get_aulas_materia: {
     anho: string;
     apellido: string;
@@ -22,8 +24,14 @@ export class AulaMateriaComponent implements OnInit {
   };
   aulas_materias: Aula_materia[] = [];
   token: string;
+  usuario: Usuario;
 
-  constructor(public aulaMateriaService: AulaMateriaService) {}
+  constructor(
+    public aulaMateriaService: AulaMateriaService,
+    public usuarioService: UsuarioService
+    ) {
+      this.usuario = this.usuarioService.usuario;
+    }
 
   ngOnInit(): void {
     this.getAulaMateria();
@@ -55,4 +63,8 @@ export class AulaMateriaComponent implements OnInit {
     .subscribe ((resp: any) => {
     });
   }
+
+  eliminarStorageLogOut() {
+    localStorage.clear();
+}
 }

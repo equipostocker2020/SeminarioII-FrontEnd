@@ -25,6 +25,9 @@ import { AulaMateriaComponent } from './components/aulaMateria/aulaMateria.compo
 import { CargarAulaMateriaComponent } from './components/cargar-aulaMateria/cargar-aulaMateria.component';
 import { ActualizarAulaMateriaComponent } from './components/actualizar-aulaMateria/actualizar-aulaMateria.component';
 import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
+import { CargarInscripcionPorAlumnoComponent } from './components/cargar-inscripcion-por-alumno/cargar-inscripcion-por-alumno.component';
+import { CargarAulaMateriaPorDocenteComponent } from './components/cargar-aula-materia-por-docente/cargar-aula-materia-por-docente.component';
+
 
 
 const routes: Routes = [
@@ -43,6 +46,7 @@ const routes: Routes = [
   { path: 'evaluacion/cargar-evaluacion', component: CargarEvaluacionComponent, data: {titulo: 'Cargar Evaluación'}},
   { path: 'materia/cargar-materia', component: CargarMateriaComponent, data: {titulo: 'Cargar Materia'}},
   { path: 'inscripcion/cargar-inscripcion', component: CargarInscripcionComponent, data: {titulo: 'Cargar Inscripcion'}},
+  { path: 'alumno/inscripcion/cargar-inscripcion', component: CargarInscripcionPorAlumnoComponent, data: {titulo: 'Cargar Inscripcion por alumno'}},
   { path: 'alumno/actualizar-alumno', component: ActualizarAlumnoComponent, data: {titulo: 'Actualizar Alumno'}},
   { path: 'docente/actualizar-docente', component: ActualizarDocenteComponent, data: {titulo: 'Actualizar Docente'}},
   { path: 'aula/actualizar-aula', component: ActualizarAulaComponent, data: {titulo: 'Actualizar Aula'}},
@@ -53,6 +57,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard'}},
   { path: 'aulasMaterias', component: AulaMateriaComponent , data: {titulo: 'Ver Aula Materia'}},
   { path: 'aulaMateria/cargar-aulaMateria', component: CargarAulaMateriaComponent , data: {titulo: 'Crear Aula Materia'}},
+  { path: 'docente/aulaMateria/cargar-aulaMateria', component: CargarAulaMateriaPorDocenteComponent , data: {titulo: 'Crear Aula Materia'}},
   { path: '**', redirectTo: '/login' }
 ];
 

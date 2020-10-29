@@ -6,6 +6,7 @@ import { Materia } from 'src/app/models/materia.models';
 import { EvaluacionService } from 'src/app/services/evaluacion.service';
 import { MateriaService } from 'src/app/services/materia.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from '../../models/usuario.models';
 
 @Component({
   selector: 'app-actualizar-evaluacion',
@@ -17,6 +18,7 @@ export class ActualizarEvaluacionComponent implements OnInit {
   evaluacion: Evaluacion;
   materias: Materia[] = [];
   instancias: Instancia[] = [];
+  usuario : Usuario;
 
   constructor(
     public evaluacionService: EvaluacionService,
@@ -24,6 +26,7 @@ export class ActualizarEvaluacionComponent implements OnInit {
     public usuarioService: UsuarioService,
     public router: Router
   ) {
+    this.usuario = this.usuarioService.usuario;
     this.cargarStorage();
   }
 
@@ -85,4 +88,8 @@ export class ActualizarEvaluacionComponent implements OnInit {
         this.resetStorage();
       });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

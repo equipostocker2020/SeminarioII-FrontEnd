@@ -7,6 +7,8 @@ import { MateriaService } from 'src/app/services/materia.service';
 import { Materia } from 'src/app/models/materia.models';
 import { Instancia } from 'src/app/models/instancia.models';
 import { AulaMateriaService } from '../../services/aulaMateria.service';
+import { Usuario } from '../../models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-cargar-evaluacion',
@@ -26,13 +28,17 @@ export class CargarEvaluacionComponent implements OnInit {
     nombre_aula: string;
     nombre_materia: string;
   };
+  usuario: Usuario;
 
   constructor(
     public evaluacionService: EvaluacionService,
     public materiaService: MateriaService,
     public aulaMateriaService: AulaMateriaService,
-    public router: Router
-  ) {}
+    public router: Router,
+    public usuarioService: UsuarioService
+  ) {
+    this.usuario = this.usuarioService.usuario;
+  }
 
   ngOnInit(): void {
     this.materiaService.getMateria().subscribe((resp: any) => {
@@ -67,4 +73,8 @@ export class CargarEvaluacionComponent implements OnInit {
       this.router.navigate(['/evaluaciones']);
     });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

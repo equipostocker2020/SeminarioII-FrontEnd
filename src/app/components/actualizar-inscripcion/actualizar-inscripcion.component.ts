@@ -6,6 +6,7 @@ import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
 import { Aula_materia } from 'src/app/models/aula_materia.models';
 import { InscripcionService } from 'src/app/services/inscripcion.service';
 import { AulaMateriaService } from '../../services/aulaMateria.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-actualizar-inscripcion',
@@ -20,13 +21,16 @@ export class ActualizarInscripcionComponent implements OnInit {
   aulas_materias: Aula_materia[] = [];
   alumno: Usuario;
   aula_materia: Aula_materia;
+  usuario: Usuario
 
   constructor(
     public tipoUsuarioService: TipoUsuarioService,
     public inscripcionService: InscripcionService,
     public aulaMateriaService: AulaMateriaService,
+    public usuarioService: UsuarioService,
     public router: Router
   ) {
+    this.usuario = this.usuarioService.usuario;
     this.cargarStorage();
     this.guardarStorage(
       this.tipoUsuarioService.usuario.id_usuario,
@@ -88,4 +92,8 @@ export class ActualizarInscripcionComponent implements OnInit {
         this.resetStorage();
       });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

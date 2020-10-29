@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario.models';
 import { MateriaService } from 'src/app/services/materia.service';
 import { Materia } from '../../models/materia.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-materias',
@@ -11,8 +13,14 @@ export class MateriasComponent implements OnInit {
   materias: Materia[] = [];
   materia: Materia;
   token: string;
+  usuario: Usuario;
 
-  constructor(public materiaService: MateriaService) {}
+  constructor(
+    public materiaService: MateriaService,
+    public usuarioService: UsuarioService
+    ) {
+      this.usuario = this.usuarioService.usuario;
+    }
 
   ngOnInit(): void {
     this.getMateria();
@@ -47,4 +55,8 @@ export class MateriasComponent implements OnInit {
     .subscribe ((resp: any) => {
     });
   }
+
+  eliminarStorageLogOut() {
+    localStorage.clear();
+}
 }

@@ -11,9 +11,11 @@ import { UsuarioService } from '../../services/usuario.service';
 export class ActualizarAlumnoComponent implements OnInit {
   token: string;
   usuario: Usuario;
+  usuarioLog: Usuario;
 
   constructor(public usuarioService: UsuarioService, public router: Router) {
     this.usuario = this.usuarioService.usuario;
+    this.usuarioLog = this.usuarioService.usuario;
     console.log('->', this.usuario);
     this.cargarStorage();
     this.guardarStorage(
@@ -74,4 +76,8 @@ export class ActualizarAlumnoComponent implements OnInit {
         this.resetStorage();
       });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

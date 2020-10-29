@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Materia } from '../../models/materia.models';
 import { Router } from '@angular/router';
 import { MateriaService } from '../../services/materia.service';
+import { Usuario } from 'src/app/models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-actualizar-materia',
@@ -11,8 +13,14 @@ import { MateriaService } from '../../services/materia.service';
 export class ActualizarMateriaComponent implements OnInit {
   token: string;
   materia: Materia;
+  usuario: Usuario;
 
-  constructor(public materiaService: MateriaService, public router: Router) {
+  constructor(
+    public materiaService: MateriaService,
+    public router: Router,
+    public usuarioService: UsuarioService
+    ) {
+    this.usuario = this.usuarioService.usuario;
     this.cargarStorage();
     console.log(this.materia);
   }
@@ -60,4 +68,8 @@ export class ActualizarMateriaComponent implements OnInit {
         this.resetStorage();
       });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

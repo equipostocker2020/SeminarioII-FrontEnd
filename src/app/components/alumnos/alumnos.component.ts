@@ -11,6 +11,7 @@ import { UsuarioService } from '../../services/usuario.service';
 export class AlumnosComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuario: Usuario;
+  usuarioLog: Usuario;
   token: string;
 
   constructor(
@@ -18,6 +19,7 @@ export class AlumnosComponent implements OnInit {
     public usuarioService: UsuarioService
   ) {
     this.usuarioService.usuario;
+    this.usuarioLog = this.usuarioService.usuario;
   }
 
   ngOnInit(): void {

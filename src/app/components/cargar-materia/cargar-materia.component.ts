@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MateriaService } from '../../services/materia.service';
 import { Materia } from '../../models/materia.models';
+import { Usuario } from '../../models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-cargar-materia',
@@ -11,8 +13,15 @@ import { Materia } from '../../models/materia.models';
 })
 export class CargarMateriaComponent implements OnInit {
   forma: FormGroup;
+  usuario: Usuario;
 
-  constructor(public materiaService: MateriaService, public router: Router) {}
+  constructor(
+    public materiaService: MateriaService,
+    public router: Router,
+    public usuarioService: UsuarioService
+    ) {
+      this.usuario = this.usuarioService.usuario;
+    }
 
   ngOnInit(): void {
     this.forma = new FormGroup({
@@ -38,4 +47,8 @@ export class CargarMateriaComponent implements OnInit {
       this.router.navigate(['/materias']);
     });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

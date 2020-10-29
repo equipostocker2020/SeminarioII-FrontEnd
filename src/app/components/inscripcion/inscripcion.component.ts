@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InscripcionService } from 'src/app/services/inscripcion.service';
 import { Inscripcion } from '../../models/inscripcion.models';
+import { Usuario } from '../../models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-inscripcion',
@@ -10,8 +12,14 @@ import { Inscripcion } from '../../models/inscripcion.models';
 export class InscripcionComponent implements OnInit {
   inscripciones: Inscripcion[] = [];
   inscripcion: Inscripcion;
+  usuario: Usuario;
 
-  constructor(public inscripcionService: InscripcionService) {}
+  constructor(
+    public inscripcionService: InscripcionService,
+    public usuarioService : UsuarioService)
+    {
+      this.usuario = this.usuarioService.usuario;
+    }
 
   get_inscripcion: {
     id_alumno: string,
@@ -49,4 +57,8 @@ export class InscripcionComponent implements OnInit {
     .subscribe ((resp: any) => {
     });
   }
+
+  eliminarStorage() {
+    localStorage.clear();
+}
 }

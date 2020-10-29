@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit {
     public aulaMateriaService: AulaMateriaService
   ) {
     this.usuario = usuarioService.usuario;
+    console.log(this.usuario);
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
       this.docentes = resp.usuario;
     });

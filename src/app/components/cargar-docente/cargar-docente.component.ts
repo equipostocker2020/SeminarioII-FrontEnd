@@ -12,8 +12,13 @@ import { Router } from '@angular/router';
 })
 export class CargarDocenteComponent implements OnInit {
   forma: FormGroup;
+  usuario: Usuario;
 
-  constructor(public usuarioService: UsuarioService, public router: Router) {}
+  constructor(
+    public usuarioService: UsuarioService,
+    public router: Router) {
+      this.usuario = this.usuarioService.usuario;
+    }
 
   sonInguales(campo1: string, campo2: string) {
     return (group: FormGroup) => {
@@ -85,4 +90,8 @@ export class CargarDocenteComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
   }
+
+   eliminarStorageLogOut() {
+    localStorage.clear();
+}
 }

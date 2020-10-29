@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AulaService } from '../../services/aula.service';
 import { Aula } from '../../models/aula.models';
+import { Usuario } from '../../models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-aulas',
@@ -11,8 +13,12 @@ export class AulasComponent implements OnInit {
   aulas: Aula[] = [];
   aula: Aula;
   token: string;
+  usuario: Usuario;
 
-  constructor(public aulaService: AulaService) {
+  constructor(
+    public aulaService: AulaService,
+    public usuarioService: UsuarioService) {
+    this.usuario = this.usuarioService.usuario;
     this.aulaService.aula;
   }
 
@@ -51,4 +57,8 @@ export class AulasComponent implements OnInit {
     .subscribe ((resp: any) => {
     });
   }
+
+  eliminarStorageLogOut() {
+    localStorage.clear();
+}
 }

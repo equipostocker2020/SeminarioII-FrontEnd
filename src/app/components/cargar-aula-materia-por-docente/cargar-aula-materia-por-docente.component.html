@@ -58,58 +58,46 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2 class="text-center">Actualizar Asignaciones</h2>
+                        <h2 class="text-center">Registrar Asignacion para {{usuario.nombre}} {{usuario.apellido}}</h2>
                     </div>
-                    <div class="body">
-                        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20 mt-2s">
+                    <div class="body bg-aqua">
+                        <form ngNativeValidate ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarAsignacion()" id="loginform">
 
-                            <div class="form-group form-float">
-                                <label class="form-label">Nombre de la Aula</label>
-                                <div class="form-group">
-                                    <select name="id_aula" [ngModel]="aula_materia.id_aula" class="form-control input-lg">
-                                        <option class="form-control" *ngFor="let aula of aulas"
-                                            value={{aula.id_aula}}>
-                                            {{aula.nombre_aula}}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-
+                            <select formControlName="id_aula" class="form-control" required>
+                                <option value="">Seleccione Aula</option>
+                                <option class="form-control" *ngFor="let aula of aulas" [value]="aula.id_aula">
+                                    {{aula.nombre_aula}}
+                                </option>
+                            </select>
                             <br>
-                            <div class="form-group form-float">
-                                <label class="form-label">Nombre de la Materia</label>
-                                <div class="form-group">
-                                    <select name="id_materia" [ngModel]="aula_materia.id_materia" class="form-control input-lg">
-                                        <option class="form-control" *ngFor="let materia of materias"
-                                            value={{materia.id_materia}}>
-                                            {{materia.nombre_materia}}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
+                            <select formControlName="id_materia" class="form-control">
+                                <option value="">Seleccione Materia</option>
+                                <option class="form-control" *ngFor="let materia of materias"
+                                    [value]="materia.id_materia">
+                                    {{materia.nombre_materia}}
+                                </option>
+                            </select>
                             <br>
-                            <div class="form-group form-float">
-                                <label class="form-label">Nombre de la Docente</label>
-                                <div class="form-group">
-                                    <select name="id_docente" [ngModel]="aula_materia.id_docente" class="form-control input-lg">
-                                        <option class="form-control" *ngFor="let docente of docentes"
-                                            value={{docente.id_usuario}}>
-                                            {{docente.nombre}}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
+                            <!-- <select formControlName="id_docente" class="form-control">
+                                <option value="">Seleccione Docente</option>
+                                <option class="form-control" *ngFor="let usuario of usuarios"
+                                    [value]="usuario.id_usuario">
+                                    {{usuario.nombre}} {{usuario.apellido}}
+                                </option>
+                            </select> -->
                             <br>
                             <div class="form-group form-float">
                                 <label class="form-label">Año</label>
                                 <div class="form-line">
-                                    <input [ngModel]="aula_materia.anho" class="form-control" name="anho">
+                                    <input formControlName="anho" name="anho" class="form-control" type="text" required>
                                 </div>
                             </div>
+                            <br>
                             <div class="text-center">
-                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Actualizar</button>
-                                <button type="submit" routerLink="/aulasMaterias" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Registar Asignacion </button>
+                                <button type="submit" routerLink="/dashboard" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
                             </div>
+
                         </form>
                     </div>
                 </div>
