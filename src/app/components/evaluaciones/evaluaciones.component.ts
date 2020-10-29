@@ -18,7 +18,7 @@ export class EvaluacionesComponent implements OnInit {
   constructor(
     public evaluacionService: EvaluacionService,
     public usuarioService: UsuarioService
-    ) {
+  ) {
     this.usuario = this.usuarioService.usuario;
     this.evaluacionService.evaluacion;
   }
@@ -30,7 +30,6 @@ export class EvaluacionesComponent implements OnInit {
   getEvaluacion() {
     this.evaluacionService.getEvaluacion().subscribe((resp: any) => {
       this.evaluaciones = resp.evaluaciones;
-      console.log(resp);
     });
   }
 
@@ -38,7 +37,6 @@ export class EvaluacionesComponent implements OnInit {
     this.evaluacionService
       .actualizarEvaluacion(evaluacion)
       .subscribe((resp: any) => {
-        console.log(resp);
         this.eliminarStorage();
       });
   }
@@ -55,15 +53,15 @@ export class EvaluacionesComponent implements OnInit {
     localStorage.removeItem('evaluacion');
   }
 
-  cambiarEstado(evaluacion: Evaluacion){
+  cambiarEstado(evaluacion: Evaluacion) {
     evaluacion.fecha = this.transformarFecha(evaluacion.fecha);
-    this.evaluacionService.actualizarEvaluacion(evaluacion)
-    .subscribe ((resp: any) => {
-    });
+    this.evaluacionService
+      .actualizarEvaluacion(evaluacion)
+      .subscribe((resp: any) => {});
   }
 
-  transformarFecha(params: string){
-    if (params.indexOf('T') !== -1){
+  transformarFecha(params: string) {
+    if (params.indexOf('T') !== -1) {
       const fecha = params.split('T');
       const fechaTransformada = fecha[0];
       return fechaTransformada;
@@ -74,5 +72,5 @@ export class EvaluacionesComponent implements OnInit {
 
   eliminarStorageLogOut() {
     localStorage.clear();
-}
+  }
 }

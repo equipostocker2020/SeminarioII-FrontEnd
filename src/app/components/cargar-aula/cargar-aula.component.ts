@@ -16,12 +16,12 @@ export class CargarAulaComponent implements OnInit {
   usuario: Usuario;
 
   constructor(
-    public aulaService: AulaService, 
+    public aulaService: AulaService,
     public router: Router,
     public usuarioService: UsuarioService
-    ) {
-      this.usuario = this.usuarioService.usuario;
-    }
+  ) {
+    this.usuario = this.usuarioService.usuario;
+  }
 
   ngOnInit(): void {
     this.forma = new FormGroup({
@@ -42,5 +42,5 @@ export class CargarAulaComponent implements OnInit {
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

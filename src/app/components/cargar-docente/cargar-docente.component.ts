@@ -14,11 +14,9 @@ export class CargarDocenteComponent implements OnInit {
   forma: FormGroup;
   usuario: Usuario;
 
-  constructor(
-    public usuarioService: UsuarioService,
-    public router: Router) {
-      this.usuario = this.usuarioService.usuario;
-    }
+  constructor(public usuarioService: UsuarioService, public router: Router) {
+    this.usuario = this.usuarioService.usuario;
+  }
 
   sonInguales(campo1: string, campo2: string) {
     return (group: FormGroup) => {
@@ -91,7 +89,7 @@ export class CargarDocenteComponent implements OnInit {
     localStorage.removeItem('usuario');
   }
 
-   eliminarStorageLogOut() {
+  eliminarStorageLogOut() {
     localStorage.clear();
-}
+  }
 }

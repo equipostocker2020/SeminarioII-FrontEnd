@@ -17,12 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public router: Router, public usuarioService: UsuarioService) {}
 
-  ngOnInit() {
-    // this.email = localStorage.getItem('email') || '';
-    // if (this.email.length > 1) {
-    //   this.recuerdame = true;
-    // }
-  }
+  ngOnInit() {}
 
   ingresar(forma: NgForm) {
     if (forma.invalid) {
@@ -45,10 +40,9 @@ export class LoginComponent implements OnInit {
     this.usuarioService.login(usuario, forma.value.recuerdame).subscribe(
       (resp: any) => {
         this.router.navigate(['/dashboard']);
-        console.log(resp);
       },
       (err) => {
-        console.log(err);
+        throw err;
       }
     );
   }

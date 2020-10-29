@@ -79,5 +79,5 @@ export class ActualizarAlumnoComponent implements OnInit {
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

@@ -11,17 +11,16 @@ import { UsuarioService } from '../../services/usuario.service';
 @Component({
   selector: 'app-actualizar-inscripcion',
   templateUrl: './actualizar-inscripcion.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ActualizarInscripcionComponent implements OnInit {
-
   token: string;
   inscripcion: Inscripcion;
   alumnos: Usuario[] = [];
   aulas_materias: Aula_materia[] = [];
   alumno: Usuario;
   aula_materia: Aula_materia;
-  usuario: Usuario
+  usuario: Usuario;
 
   constructor(
     public tipoUsuarioService: TipoUsuarioService,
@@ -40,10 +39,8 @@ export class ActualizarInscripcionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       this.aulas_materias = resp.aulas_materias;
-      console.log(this.aulas_materias);
     });
   }
 
@@ -55,13 +52,12 @@ export class ActualizarInscripcionComponent implements OnInit {
       );
     } else {
       this.token = '';
-      this.inscripcion =   null;
+      this.inscripcion = null;
     }
   }
 
   guardarStorage(id: string, token: string, inscripcion: Inscripcion) {
-    localStorage.setItem(
-      'id_inscripcion', inscripcion.id_inscripcion);
+    localStorage.setItem('id_inscripcion', inscripcion.id_inscripcion);
     localStorage.setItem('token', this.token);
     localStorage.setItem('inscripcionActualizar', JSON.stringify(inscripcion));
 
@@ -87,7 +83,6 @@ export class ActualizarInscripcionComponent implements OnInit {
     this.inscripcionService
       .actualizarInscripcion(this.inscripcion)
       .subscribe((resp: any) => {
-        console.log(resp);
         this.router.navigate(['/inscripciones']);
         this.resetStorage();
       });
@@ -95,5 +90,5 @@ export class ActualizarInscripcionComponent implements OnInit {
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

@@ -20,8 +20,7 @@ export class ActualizarAulaComponent implements OnInit {
     public usuarioService: UsuarioService
   ) {
     this.usuario = this.usuarioService.usuario;
-    this.cargarStorage();
-    console.log(this.aula);
+    this.cargarStorage()
   }
 
   ngOnInit(): void {}
@@ -55,8 +54,6 @@ export class ActualizarAulaComponent implements OnInit {
   guardar(aula: Aula) {
     this.aula.nombre_aula = aula.nombre_aula;
     this.aulaService.token = this.token;
-    console.log(this.aula.nombre_aula);
-    console.log(this.token);
     this.aulaService.actualizarAula(this.aula).subscribe((resp: any) => {
       this.router.navigate(['/aulas']);
       this.resetStorage();
@@ -65,5 +62,5 @@ export class ActualizarAulaComponent implements OnInit {
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

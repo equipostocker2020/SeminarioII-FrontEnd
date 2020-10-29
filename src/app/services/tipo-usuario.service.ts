@@ -45,13 +45,13 @@ export class TipoUsuarioService {
     return this.http.get(url);
   }
 
-  getInscripcionesAlumno(id: string){
+  getInscripcionesAlumno(id: string) {
     let url = URL_SERVICIOS + '/tipo/alumno/inscripciones/' + id;
     url += '?token=' + this.token;
     return this.http.get(url);
   }
 
-  getAsignacionesDocente(id: string){
+  getAsignacionesDocente(id: string) {
     let url = URL_SERVICIOS + '/tipo/docente/aulas_materias/' + id;
     url += '?token=' + this.token;
     return this.http.get(url);

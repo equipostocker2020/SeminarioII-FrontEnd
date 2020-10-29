@@ -19,10 +19,9 @@ export class ActualizarMateriaComponent implements OnInit {
     public materiaService: MateriaService,
     public router: Router,
     public usuarioService: UsuarioService
-    ) {
+  ) {
     this.usuario = this.usuarioService.usuario;
     this.cargarStorage();
-    console.log(this.materia);
   }
 
   ngOnInit(): void {}
@@ -71,5 +70,5 @@ export class ActualizarMateriaComponent implements OnInit {
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

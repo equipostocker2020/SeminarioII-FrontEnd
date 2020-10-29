@@ -9,12 +9,10 @@ import { UsuarioService } from '../../services/usuario.service';
 import { AulaMateriaService } from '../../services/aulaMateria.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 
-
 @Component({
   selector: 'app-cargar-inscripcion-por-alumno',
   templateUrl: './cargar-inscripcion-por-alumno.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class CargarInscripcionPorAlumnoComponent implements OnInit {
   forma: FormGroup;
@@ -39,11 +37,10 @@ export class CargarInscripcionPorAlumnoComponent implements OnInit {
     public tipoUsuarioService: TipoUsuarioService,
     public router: Router,
     public usuarioService: UsuarioService,
-    public aulaMateriaService: AulaMateriaService,
+    public aulaMateriaService: AulaMateriaService
   ) {
     this.usuario = this.usuarioService.usuario;
-    console.log(this.usuario);
-   }
+  }
 
   ngOnInit(): void {
     this.inscripcionService.getInscripcion().subscribe((resp: any) => {
@@ -69,19 +66,21 @@ export class CargarInscripcionPorAlumnoComponent implements OnInit {
       id_aula_materia: '',
     });
   }
-  
+
   registrarInscripcion() {
     const inscripcion = new Inscripcion(
       this.forma.value.id_inscripcion,
       this.forma.value.id_alumno,
       this.forma.value.id_aula_materia
     );
-    this.inscripcionService.postInscripcion(inscripcion).subscribe((resp: any) => {
-      this.router.navigate(['/dashboard']);
-    });
+    this.inscripcionService
+      .postInscripcion(inscripcion)
+      .subscribe((resp: any) => {
+        this.router.navigate(['/dashboard']);
+      });
   }
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

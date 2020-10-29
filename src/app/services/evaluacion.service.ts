@@ -8,18 +8,14 @@ import 'rxjs/add/operator/map';
 import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EvaluacionService {
-
   token: string;
   evaluacion: Evaluacion;
   idUsuario: string;
 
-  constructor(
-    public http: HttpClient,
-    public router: Router
-  ) {
+  constructor(public http: HttpClient, public router: Router) {
     this.cargarStorage();
     this.getIdUsuarioLocalStorage();
   }
@@ -42,8 +38,8 @@ export class EvaluacionService {
     }
   }
 
-  getIdUsuarioLocalStorage(){
-    if (localStorage.getItem('id_usuario')){
+  getIdUsuarioLocalStorage() {
+    if (localStorage.getItem('id_usuario')) {
       this.idUsuario = localStorage.getItem('id_usuario');
       return this.idUsuario;
     }
@@ -64,43 +60,57 @@ export class EvaluacionService {
   postEvaluacion(evaluacion: Evaluacion) {
     let url = URL_SERVICIOS + '/evaluacion';
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
-    return this.http.post(url, evaluacion)
-      .pipe(
-        map((resp: any) => {
-          Swal.fire('Aula creada', 'success');
-          return resp.evaluacion;
-        }),
-        catchError((err: any) => {
-          console.log(err);
-          Swal.fire('Error al registrar evaluacion', err.error.error.sqlMessage, 'error');
-          return err.throw(err.error.error.sqlMessage);
-        }));
+    return this.http.post(url, evaluacion).pipe(
+      map((resp: any) => {
+        Swal.fire('Aula creada', evaluacion.nombre_materia, 'success');
+        return resp.evaluacion;
+      }),
+      catchError((err: any) => {
+        console.log(err);
+        Swal.fire(
+          'Error al registrar evaluacion',
+          err.error.error.sqlMessage,
+          'error'
+        );
+        return err.throw(err.error.error.sqlMessage);
+      })
+    );
   }
 
   actualizarEvaluacion(evaluacion: Evaluacion) {
     let url = URL_SERVICIOS + '/evaluacion/' + evaluacion.id_evaluacion;
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
-    return this.http.put(url, evaluacion)
-      .pipe(
-        map((resp: any) => {
-          Swal.fire('Evaluacion actualizada', evaluacion.nombre_materia, 'success');
-          return resp.evaluacion;
-        }),
-        catchError((err: any) => {
-          console.log(err);
-          Swal.fire('Error al actualizar evaluacion', err.error.error.sqlMessage, 'error');
-          return err.throw(err.error.error.sqlMessage);
-        }));
+    return this.http.put(url, evaluacion).pipe(
+      map((resp: any) => {
+        Swal.fire(
+          'Evaluacion actualizada',
+          evaluacion.nombre_materia,
+          'success'
+        );
+        return resp.evaluacion;
+      }),
+      catchError((err: any) => {
+        console.log(err);
+        Swal.fire(
+          'Error al actualizar evaluacion',
+          err.error.error.sqlMessage,
+          'error'
+        );
+        return err.throw(err.error.error.sqlMessage);
+      })
+    );
   }
 
   borrarEvaluacion(id: string) {
     let url = URL_SERVICIOS + '/evaluacion/' + id;
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
-    return this.http.delete(url)
-      .map(resp => {
-        Swal.fire('Evaluacion Borrada', 'La evaluacion fue eliminada correctamente', 'success');
-        return true;
-      });
+    return this.http.delete(url).map((resp) => {
+      Swal.fire(
+        'Evaluacion Borrada',
+        'La evaluacion fue eliminada correctamente',
+        'success'
+      );
+      return true;
+    });
   }
-
 }

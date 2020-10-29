@@ -14,8 +14,7 @@ import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 @Component({
   selector: 'app-cargar-aula-materia-por-docente',
   templateUrl: './cargar-aula-materia-por-docente.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class CargarAulaMateriaPorDocenteComponent implements OnInit {
   forma: FormGroup;
@@ -41,15 +40,12 @@ export class CargarAulaMateriaPorDocenteComponent implements OnInit {
 
   ngOnInit(): void {
     this.aulaService.getAula().subscribe((resp: any) => {
-      console.log(resp);
       this.aulas = resp.aula;
     });
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
-      console.log(resp);
       this.usuarios = resp.usuario;
     });
     this.materiasService.getMateria().subscribe((resp: any) => {
-      console.log(resp);
       this.materias = resp.materia;
     });
     this.forma = new FormGroup({
@@ -79,5 +75,5 @@ export class CargarAulaMateriaPorDocenteComponent implements OnInit {
   }
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

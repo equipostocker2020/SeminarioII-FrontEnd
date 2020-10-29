@@ -18,7 +18,7 @@ export class ActualizarEvaluacionComponent implements OnInit {
   evaluacion: Evaluacion;
   materias: Materia[] = [];
   instancias: Instancia[] = [];
-  usuario : Usuario;
+  usuario: Usuario;
 
   constructor(
     public evaluacionService: EvaluacionService,
@@ -33,12 +33,10 @@ export class ActualizarEvaluacionComponent implements OnInit {
   ngOnInit(): void {
     this.materiaService.getMateria().subscribe((resp: any) => {
       this.materias = resp.materia;
-      console.log(this.materias);
     });
 
     this.evaluacionService.getInstanciaEvaluacion().subscribe((resp: any) => {
       this.instancias = resp.instancia_evaluacion;
-      console.log(this.instancias);
     });
   }
 
@@ -91,5 +89,5 @@ export class ActualizarEvaluacionComponent implements OnInit {
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

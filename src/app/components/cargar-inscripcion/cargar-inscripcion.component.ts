@@ -12,7 +12,7 @@ import { Aula_materia } from '../../models/aula_materia.models';
 @Component({
   selector: 'app-cargar-inscripcion',
   templateUrl: './cargar-inscripcion.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class CargarInscripcionComponent implements OnInit {
   forma: FormGroup;
@@ -38,8 +38,8 @@ export class CargarInscripcionComponent implements OnInit {
     public tipoUsuarioService: TipoUsuarioService,
     public router: Router,
     public usuarioService: UsuarioService,
-    public aulaMateriaService: AulaMateriaService,
-  ) { 
+    public aulaMateriaService: AulaMateriaService
+  ) {
     this.usuarioLogOut = this.usuarioService.usuario;
   }
 
@@ -67,18 +67,21 @@ export class CargarInscripcionComponent implements OnInit {
       id_aula_materia: '',
     });
   }
+  
   registrarInscripcion() {
     const inscripcion = new Inscripcion(
       this.forma.value.id_inscripcion,
       this.forma.value.id_alumno,
       this.forma.value.id_aula_materia
     );
-    this.inscripcionService.postInscripcion(inscripcion).subscribe((resp: any) => {
-      this.router.navigate(['/inscripciones']);
-    });
+    this.inscripcionService
+      .postInscripcion(inscripcion)
+      .subscribe((resp: any) => {
+        this.router.navigate(['/inscripciones']);
+      });
   }
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

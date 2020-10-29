@@ -17,7 +17,8 @@ export class AulasComponent implements OnInit {
 
   constructor(
     public aulaService: AulaService,
-    public usuarioService: UsuarioService) {
+    public usuarioService: UsuarioService
+  ) {
     this.usuario = this.usuarioService.usuario;
     this.aulaService.aula;
   }
@@ -28,14 +29,12 @@ export class AulasComponent implements OnInit {
 
   getAula() {
     this.aulaService.getAula().subscribe((resp: any) => {
-      console.log(resp.aula);
       this.aulas = resp.aula;
     });
   }
 
   updateAula(aula: Aula) {
     this.aulaService.actualizarAula(aula).subscribe((resp: any) => {
-      console.log(resp);
       this.eliminarStorage();
     });
   }
@@ -52,13 +51,11 @@ export class AulasComponent implements OnInit {
     localStorage.removeItem('aula');
   }
 
-  cambiarEstado(aula: Aula){
-    this.aulaService.actualizarAula(aula)
-    .subscribe ((resp: any) => {
-    });
+  cambiarEstado(aula: Aula) {
+    this.aulaService.actualizarAula(aula).subscribe((resp: any) => {});
   }
 
   eliminarStorageLogOut() {
     localStorage.clear();
-}
+  }
 }

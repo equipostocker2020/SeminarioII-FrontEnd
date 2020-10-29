@@ -13,15 +13,14 @@ import { UsuarioService } from '../../services/usuario.service';
 @Component({
   selector: 'app-actualizar-aulaMateria',
   templateUrl: './actualizar-aulaMateria.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class ActualizarAulaMateriaComponent implements OnInit {
-
   token: string;
   aula_materia: Aula_materia;
-  aulas: Aula [] = [];
-  materias: Materia [] = [];
-  docentes: Usuario [] = [];
+  aulas: Aula[] = [];
+  materias: Materia[] = [];
+  docentes: Usuario[] = [];
   json_aulas_materia: {
     id_aula: string;
     id_materia: string;
@@ -37,27 +36,23 @@ export class ActualizarAulaMateriaComponent implements OnInit {
     public tipoUsuarioService: TipoUsuarioService,
     public aulaMateriaService: AulaMateriaService,
     public router: Router,
-    public usuarioService : UsuarioService,
+    public usuarioService: UsuarioService
   ) {
     this.usuario = this.usuarioService.usuario;
     this.cargarStorage();
-    console.log(this.aula_materia);
   }
 
   ngOnInit(): void {
     this.materiaService.getMateria().subscribe((resp: any) => {
       this.materias = resp.materia;
-      console.log(this.materias);
     });
 
     this.aulaService.getAula().subscribe((resp: any) => {
       this.aulas = resp.aula;
-      console.log( this.aulas);
     });
 
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
       this.docentes = resp.usuario;
-      console.log( this.docentes);
     });
   }
 
@@ -79,13 +74,12 @@ export class ActualizarAulaMateriaComponent implements OnInit {
   }
 
   guardarStorage(id: string, token: string, aula_materia: Aula_materia) {
-    localStorage.setItem(
-      'id_rel',
-      this.aulaService.aula.id_aula
-    );
+    localStorage.setItem('id_rel', this.aulaService.aula.id_aula);
     localStorage.setItem('token', this.token);
-    localStorage.setItem('aula_materiaActualizar', JSON.stringify(aula_materia));
-
+    localStorage.setItem(
+      'aula_materiaActualizar',
+      JSON.stringify(aula_materia)
+    );
     this.aula_materia = aula_materia;
     this.token = token;
   }
@@ -96,15 +90,11 @@ export class ActualizarAulaMateriaComponent implements OnInit {
       'aula_materia',
       JSON.stringify(this.aulaMateriaService.aula_materia)
     );
-    this.aula_materia= this.aulaMateriaService.aula_materia;
+    this.aula_materia = this.aulaMateriaService.aula_materia;
     this.token = this.token;
   }
 
   guardar(aula_materia: Aula_materia) {
-    console.log(aula_materia.id_aula)
-    console.log(aula_materia.id_materia)
-    console.log(aula_materia.id_docente)
-    console.log(aula_materia.anho)
     this.aula_materia.id_aula = aula_materia.id_aula;
     this.aula_materia.id_materia = aula_materia.id_materia;
     this.aula_materia.anho = aula_materia.anho;
@@ -120,6 +110,5 @@ export class ActualizarAulaMateriaComponent implements OnInit {
 
   eliminarStorage() {
     localStorage.clear();
-}
-
+  }
 }

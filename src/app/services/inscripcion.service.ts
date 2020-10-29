@@ -28,8 +28,8 @@ export class InscripcionService {
     this.token = token;
   }
 
-  getIdUsuarioLocalStorage(){
-    if (localStorage.getItem('id_usuario')){
+  getIdUsuarioLocalStorage() {
+    if (localStorage.getItem('id_usuario')) {
       this.idUsuario = localStorage.getItem('id_usuario');
       return this.idUsuario;
     }
@@ -51,42 +51,53 @@ export class InscripcionService {
     return this.http.get(url);
   }
 
-  postInscripcion(inscripcion: Inscripcion){
+  postInscripcion(inscripcion: Inscripcion) {
     let url = URL_SERVICIOS + '/inscripcion';
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
-    return this.http.post(url, inscripcion)
-    .pipe(
-      map((resp: any) =>{
-        Swal.fire('Se registro una inscripcion', 'success');
+    return this.http.post(url, inscripcion).pipe(
+      map((resp: any) => {
+        Swal.fire('Se registro una inscripcion', '', 'success');
         return resp.inscripcion;
       }),
-      catchError((err: any) =>{
-        Swal.fire('Error al registrar la inscripcion', err.error.error.sqlMessage, 'error');
+      catchError((err: any) => {
+        Swal.fire(
+          'Error al registrar la inscripcion',
+          err.error.error.sqlMessage,
+          'error'
+        );
         return err.throw(err.error.error.sqlMessage);
-      }));
+      })
+    );
   }
 
   actualizarInscripcion(inscripcion: Inscripcion) {
     let url = URL_SERVICIOS + '/inscripcion/' + inscripcion.id_inscripcion;
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
-    return this.http.put(url, inscripcion)
-    .pipe(
+    return this.http.put(url, inscripcion).pipe(
       map((resp: any) => {
-        Swal.fire('La inscripcion ha sido actualizada', inscripcion.id_rel , 'success');
+        Swal.fire('La inscripcion ha sido actualizada', '', 'success');
         return resp.inscripcion;
       }),
-     catchError((err: any) =>{
-       Swal.fire('Error al actualizar inscripcion', err.error.error.sqlMessage, 'error' );
-       return err.throw(err.error.error.sqlMessage);
-     }));
+      catchError((err: any) => {
+        Swal.fire(
+          'Error al actualizar inscripcion',
+          err.error.error.sqlMessage,
+          'error'
+        );
+        return err.throw(err.error.error.sqlMessage);
+      })
+    );
   }
 
-  borrarInscripcion(id: string){
+  borrarInscripcion(id: string) {
     let url = URL_SERVICIOS + '/evaluacion/' + id;
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
-    return this.http.delete(url)
-    .map(resp => {
-      Swal.fire('Inscripcion Eliminada', 'la inscripcion ha sido eliminada', 'success');
+    return this.http.delete(url).map((resp) => {
+      Swal.fire(
+        'Inscripcion Eliminada',
+        'la inscripcion ha sido eliminada',
+        'success'
+      );
       return true;
     });
   }

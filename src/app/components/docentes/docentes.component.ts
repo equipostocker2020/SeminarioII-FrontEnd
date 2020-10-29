@@ -19,7 +19,7 @@ export class DocentesComponent implements OnInit {
     public usuarioService: UsuarioService
   ) {
     this.usuarioService.usuario;
-    this.usuarioLog = this.usuarioService.usuario
+    this.usuarioLog = this.usuarioService.usuario;
   }
   ngOnInit(): void {
     this.getDocente();
@@ -27,14 +27,12 @@ export class DocentesComponent implements OnInit {
 
   getDocente() {
     this.tipoUsuario.getDocente().subscribe((resp: any) => {
-      console.log(resp.usuario);
       this.usuarios = resp.usuario;
     });
   }
 
   updateUsuario(usuario: Usuario) {
     this.usuarioService.actualizarUsuario(usuario).subscribe((resp: any) => {
-      console.log(resp);
       this.eliminarStorage();
     });
   }
@@ -53,15 +51,13 @@ export class DocentesComponent implements OnInit {
     localStorage.removeItem('usuario');
   }
 
-  cambiarEstado(usuario: Usuario){
+  cambiarEstado(usuario: Usuario) {
     usuario.fecha_nac = this.transformarFecha(usuario.fecha_nac);
-    this.usuarioService.actualizarUsuario(usuario)
-    .subscribe ((resp: any) => {
-    });
+    this.usuarioService.actualizarUsuario(usuario).subscribe((resp: any) => {});
   }
 
-  transformarFecha(params: string){
-    if (params.indexOf('T') !== -1){
+  transformarFecha(params: string) {
+    if (params.indexOf('T') !== -1) {
       const fecha = params.split('T');
       const fechaTransformada = fecha[0];
       return fechaTransformada;

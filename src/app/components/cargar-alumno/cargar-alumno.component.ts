@@ -91,5 +91,5 @@ export class CargarAlumnoComponent implements OnInit {
 
   eliminarStorageLogOut() {
     localStorage.clear();
-}
+  }
 }

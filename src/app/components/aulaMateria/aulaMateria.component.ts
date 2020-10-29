@@ -10,7 +10,6 @@ import { UsuarioService } from '../../services/usuario.service';
   styleUrls: [],
 })
 export class AulaMateriaComponent implements OnInit {
-
   aulas_materia: Aula_materia;
   get_aulas_materia: {
     anho: string;
@@ -29,9 +28,9 @@ export class AulaMateriaComponent implements OnInit {
   constructor(
     public aulaMateriaService: AulaMateriaService,
     public usuarioService: UsuarioService
-    ) {
-      this.usuario = this.usuarioService.usuario;
-    }
+  ) {
+    this.usuario = this.usuarioService.usuario;
+  }
 
   ngOnInit(): void {
     this.getAulaMateria();
@@ -39,7 +38,10 @@ export class AulaMateriaComponent implements OnInit {
 
   guardarStorage(id: string, aulas_materia: Aula_materia) {
     localStorage.setItem('id_rel', id);
-    localStorage.setItem('aulas_materiaActualizar', JSON.stringify(aulas_materia));
+    localStorage.setItem(
+      'aulas_materiaActualizar',
+      JSON.stringify(aulas_materia)
+    );
     this.aulas_materia = aulas_materia;
   }
 
@@ -51,20 +53,18 @@ export class AulaMateriaComponent implements OnInit {
 
   getAulaMateria() {
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
-      console.log(resp);
       this.get_aulas_materia = resp.aulas_materias;
-      console.log(this.get_aulas_materia);
     });
   }
 
-  cambiarEstado(aula_materia: Aula_materia){
+  cambiarEstado(aula_materia: Aula_materia) {
     aula_materia.id_docente = aula_materia.id_usuario;
-    this.aulaMateriaService.actualizarAulaMateria(aula_materia)
-    .subscribe ((resp: any) => {
-    });
+    this.aulaMateriaService
+      .actualizarAulaMateria(aula_materia)
+      .subscribe((resp: any) => {});
   }
 
   eliminarStorageLogOut() {
     localStorage.clear();
-}
+  }
 }

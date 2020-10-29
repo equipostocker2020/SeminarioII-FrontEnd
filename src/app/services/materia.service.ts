@@ -45,8 +45,8 @@ export class MateriaService {
     return this.http.get(url);
   }
 
-  getIdUsuarioLocalStorage(){
-    if (localStorage.getItem('id_usuario')){
+  getIdUsuarioLocalStorage() {
+    if (localStorage.getItem('id_usuario')) {
       this.idUsuario = localStorage.getItem('id_usuario');
       return this.idUsuario;
     }

@@ -1,8 +1,8 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item ">
@@ -29,9 +29,6 @@
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
-                <!-- <li *ngIf="usuario.rol == 'DOCENTE'" class="nav-item">
-                    <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
-                </li> -->
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/aulasMaterias">Asignacion</a>
                 </li>
@@ -94,8 +91,8 @@
                                         {{evaluacion.fecha | date:'dd-MM-yyyy' }}
                                     </td>
                                     <select [(ngModel)]="evaluacion.estado" name="role" class="form-control" (change)="cambiarEstado(evaluacion)">
-                                      <option value="ACTIVO">ACTIVO</option>
-                                      <option value="INACTIVO">INACTIVO</option>
+                                        <option value="ACTIVO">ACTIVO</option>
+                                        <option value="INACTIVO">INACTIVO</option>
                                     </select>
                                     <td class="text text-center">
                                         {{evaluacion.nombre_instancia}}

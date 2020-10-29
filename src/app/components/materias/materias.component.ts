@@ -18,9 +18,9 @@ export class MateriasComponent implements OnInit {
   constructor(
     public materiaService: MateriaService,
     public usuarioService: UsuarioService
-    ) {
-      this.usuario = this.usuarioService.usuario;
-    }
+  ) {
+    this.usuario = this.usuarioService.usuario;
+  }
 
   ngOnInit(): void {
     this.getMateria();
@@ -50,13 +50,11 @@ export class MateriasComponent implements OnInit {
     localStorage.removeItem('materia');
   }
 
-  cambiarEstado(materia: Materia){
-    this.materiaService.actualizarMateria(materia)
-    .subscribe ((resp: any) => {
-    });
+  cambiarEstado(materia: Materia) {
+    this.materiaService.actualizarMateria(materia).subscribe((resp: any) => {});
   }
 
   eliminarStorageLogOut() {
     localStorage.clear();
-}
+  }
 }

@@ -1,8 +1,8 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li *ngIf="usuarioLogOut.rol == 'ADMIN'" class="nav-item ">
@@ -29,9 +29,6 @@
                 <li *ngIf="usuarioLogOut.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
-                <!-- <li *ngIf="usuario.rol == 'DOCENTE'" class="nav-item">
-                    <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
-                </li> -->
                 <li *ngIf="usuarioLogOut.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/aulasMaterias">Asignacion</a>
                 </li>
@@ -64,20 +61,23 @@
                         <form ngNativeValidate ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarInscripcion()" id="loginform">
                             <select formControlName="id_alumno" class="form-control" required>
                                 <option value="">Seleccione Alumno</option>
-                                <option class="form-control" *ngFor="let usuario of usuarios" [value]="usuario.id_usuario">
+                                <option class="form-control" *ngFor="let usuario of usuarios"
+                                    [value]="usuario.id_usuario">
                                     {{usuario.nombre}}
                                 </option>
                             </select>
                             <br>
                             <select formControlName="id_aula_materia" class="form-control" required>
                                 <option value="">Seleccione Instancia</option>
-                                <option class="form-control" *ngFor="let aulaMateria of aulasMaterias" [value]="aulaMateria.id_rel">
+                                <option class="form-control" *ngFor="let aulaMateria of aulasMaterias"
+                                    [value]="aulaMateria.id_rel">
                                     {{'Nombre Materia: ' + aulaMateria.nombre_materia +' , Docente: ' +aulaMateria.apellido + ' , Aula:' +aulaMateria.nombre_aula }}
                                 </option>
                             </select>
                             <br>
                             <div class="text-center">
-                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Registar Inscripcion </button>
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Registar
+                                    Inscripcion </button>
                                 <button type="submit" routerLink="/inscripciones" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
                             </div>
                         </form>

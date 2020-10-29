@@ -28,14 +28,12 @@ export class AlumnosComponent implements OnInit {
 
   getAlumno() {
     this.tipoUsuario.getAlumno().subscribe((resp: any) => {
-      console.log(resp);
       this.usuarios = resp.usuario;
     });
   }
 
   updateUsuario(usuario: Usuario) {
     this.usuarioService.actualizarUsuario(usuario).subscribe((resp: any) => {
-      console.log(resp);
       this.eliminarStorage();
     });
   }
@@ -54,15 +52,13 @@ export class AlumnosComponent implements OnInit {
     localStorage.removeItem('usuario');
   }
 
-  cambiarEstado(usuario: Usuario){
+  cambiarEstado(usuario: Usuario) {
     usuario.fecha_nac = this.transformarFecha(usuario.fecha_nac);
-    this.usuarioService.actualizarUsuario(usuario)
-    .subscribe ((resp: any) => {
-    });
+    this.usuarioService.actualizarUsuario(usuario).subscribe((resp: any) => {});
   }
 
-  transformarFecha(params: string){
-    if (params.indexOf('T') !== -1){
+  transformarFecha(params: string) {
+    if (params.indexOf('T') !== -1) {
       const fecha = params.split('T');
       const fechaTransformada = fecha[0];
       return fechaTransformada;

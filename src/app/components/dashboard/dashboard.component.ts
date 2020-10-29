@@ -33,10 +33,10 @@ export class DashboardComponent implements OnInit {
   asignaciones: Aula_materia[] = [];
   //user role alumno
   inscripcionAlumno: Inscripcion;
-  inscripcionesAlumno: Inscripcion [] = [];
+  inscripcionesAlumno: Inscripcion[] = [];
   // user rol docente
   asignacionDocente: Aula_materia;
-  asignacionesDocente: Aula_materia [] = [];
+  asignacionesDocente: Aula_materia[] = [];
 
   constructor(
     public usuarioService: UsuarioService,
@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
     public aulaMateriaService: AulaMateriaService
   ) {
     this.usuario = usuarioService.usuario;
-    console.log(this.usuario);
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
       this.docentes = resp.usuario;
     });
@@ -62,7 +61,6 @@ export class DashboardComponent implements OnInit {
     });
     this.inscripcionService.getInscripcion().subscribe((resp: any) => {
       this.inscripciones = resp.inscripciones;
-      console.log(this.inscripciones);
     });
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       this.asignaciones = resp.aulas_materias;
@@ -93,24 +91,26 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  verInscripcionesAlumno(){
-    if (this.usuario.rol === 'ESTUDIANTE'){
-      this.tipoUsuarioService.getInscripcionesAlumno(this.usuario.id_usuario).subscribe((resp: any) => {
-        console.log('Respusta al alumno', resp);
-        this.inscripcionesAlumno = resp.inscripciones;
-      });
+  verInscripcionesAlumno() {
+    if (this.usuario.rol === 'ESTUDIANTE') {
+      this.tipoUsuarioService
+        .getInscripcionesAlumno(this.usuario.id_usuario)
+        .subscribe((resp: any) => {
+          this.inscripcionesAlumno = resp.inscripciones;
+        });
     }
   }
-  verAsignacionesDocente(){
-    if (this.usuario.rol === 'DOCENTE'){
-    this.tipoUsuarioService.getAsignacionesDocente(this.usuario.id_usuario).subscribe((resp: any) => {
-    console.log('Respusta al docente', resp);
-    this.asignacionesDocente = resp.aulas_materias;
-    });
+  verAsignacionesDocente() {
+    if (this.usuario.rol === 'DOCENTE') {
+      this.tipoUsuarioService
+        .getAsignacionesDocente(this.usuario.id_usuario)
+        .subscribe((resp: any) => {
+          this.asignacionesDocente = resp.aulas_materias;
+        });
     }
   }
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }

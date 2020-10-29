@@ -1,8 +1,8 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item ">
@@ -29,9 +29,6 @@
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
                 </li>
-                <!-- <li *ngIf="usuario.rol == 'DOCENTE'" class="nav-item">
-                    <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
-                </li> -->
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/aulasMaterias">Asignacion</a>
                 </li>
@@ -58,16 +55,18 @@
             <br><br>
             <h4 class="card-title text-center">Bienvenido <b>{{usuario.nombre}} {{usuario.apellido}}</b>
             </h4>
-            <p class="card-text text-center">La direccion de correo electronico registrada es <b>{{usuario.email}}</b></p>
+            <p class="card-text text-center">La direccion de correo electronico registrada es <b>{{usuario.email}}</b>
+            </p>
             <p class="card-text text-center">Usted tiene el rol <b>{{usuario.rol}}</b></p>
             <button routerLink="/login" type="button" class="btn btn-block btn-lg text-uppercase btn-success waves-effect">
-                                    <i class="material-icons">settings</i>
-                                    <span>Actualizar tu Perfil</span>
-                                </button>
+                <i class="material-icons">settings</i>
+                <span>Actualizar tu Perfil</span>
+            </button>
         </div>
     </div>
     <br>
-    <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Docentes Registrados</h4>
+    <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Docentes Registrados
+    </h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
@@ -155,7 +154,8 @@
         </table>
     </div>
     <!-- <br> -->
-    <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Materias Registradas</h4>
+    <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Materias Registradas
+    </h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
@@ -185,7 +185,8 @@
         </table>
     </div>
     <!-- <br> -->
-    <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Asignaciones Registradas</h4>
+    <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Asignaciones Registradas
+    </h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
@@ -223,7 +224,8 @@
         </table>
     </div>
     <!-- <br><br> -->
-    <h4 *ngIf="usuario.rol =='ESTUDIANTE'" class="card-title text-center" style="color: blue gray;">Mis Inscripciones Registradas</h4>
+    <h4 *ngIf="usuario.rol =='ESTUDIANTE'" class="card-title text-center" style="color: blue gray;">Mis Inscripciones Registradas
+    </h4>
     <div *ngIf="usuario.rol=='ESTUDIANTE'" class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
@@ -247,9 +249,6 @@
                     <td class="text text-center">
                         {{inscripcionAlumno.nombre_aula}}
                     </td>
-                    <!-- <td class="text text-center">
-                        {{inscripcionAlumno.apellido}}
-                    </td> -->
                     <td class="text text-center">
                         {{inscripcionAlumno.dia}}
                     </td>
@@ -261,7 +260,8 @@
         </table>
     </div>
     <!-- <br><br> -->
-    <h4 *ngIf="usuario.rol =='DOCENTE'" class="card-title text-center" style="color: blue gray;">Mis Asignaciones Registradas</h4>
+    <h4 *ngIf="usuario.rol =='DOCENTE'" class="card-title text-center" style="color: blue gray;">Mis Asignaciones Registradas
+    </h4>
     <div *ngIf="usuario.rol=='DOCENTE'" class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>

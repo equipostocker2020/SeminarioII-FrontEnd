@@ -19,9 +19,9 @@ export class CargarMateriaComponent implements OnInit {
     public materiaService: MateriaService,
     public router: Router,
     public usuarioService: UsuarioService
-    ) {
-      this.usuario = this.usuarioService.usuario;
-    }
+  ) {
+    this.usuario = this.usuarioService.usuario;
+  }
 
   ngOnInit(): void {
     this.forma = new FormGroup({
@@ -50,5 +50,5 @@ export class CargarMateriaComponent implements OnInit {
 
   eliminarStorage() {
     localStorage.clear();
-}
+  }
 }
