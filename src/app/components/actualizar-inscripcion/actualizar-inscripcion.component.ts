@@ -45,8 +45,10 @@ export class ActualizarInscripcionComponent implements OnInit {
       for (var i = 0; i < this.auxAulasMaterias.length; i++) {
         if (this.auxAulasMaterias[i].estado === 'ACTIVO') {
           this.aulas_materias[i] = this.auxAulasMaterias[i];
+          console.log(this.aulas_materias)
         }
       }
+
     });
   }
 
