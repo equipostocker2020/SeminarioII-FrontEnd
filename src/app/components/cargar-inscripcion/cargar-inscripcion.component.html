@@ -61,7 +61,7 @@
                         <form ngNativeValidate ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarInscripcion()" id="loginform">
                             <select formControlName="id_alumno" class="form-control" required>
                                 <option value="">Seleccione Alumno</option>
-                                <option class="form-control" *ngFor="let usuario of usuarios"
+                                <option class="form-control"  *ngFor="let usuario of usuarios"
                                     [value]="usuario.id_usuario">
                                     {{usuario.nombre}}
                                 </option>

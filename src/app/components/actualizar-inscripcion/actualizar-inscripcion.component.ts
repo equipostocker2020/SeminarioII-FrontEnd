@@ -21,6 +21,7 @@ export class ActualizarInscripcionComponent implements OnInit {
   alumno: Usuario;
   aula_materia: Aula_materia;
   usuario: Usuario;
+  auxAulasMaterias: Aula_materia [] = [];
 
   constructor(
     public tipoUsuarioService: TipoUsuarioService,
@@ -40,7 +41,12 @@ export class ActualizarInscripcionComponent implements OnInit {
 
   ngOnInit(): void {
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
-      this.aulas_materias = resp.aulas_materias;
+      this.auxAulasMaterias = resp.aulas_materias;
+      for (var i = 0; i < this.auxAulasMaterias.length; i++) {
+        if (this.auxAulasMaterias[i].estado === 'ACTIVO') {
+          this.aulas_materias[i] = this.auxAulasMaterias[i];
+        }
+      }
     });
   }
 

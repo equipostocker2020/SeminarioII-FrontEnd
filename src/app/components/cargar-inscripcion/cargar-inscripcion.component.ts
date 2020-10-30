@@ -32,6 +32,7 @@ export class CargarInscripcionComponent implements OnInit {
     nombre_materia: string;
   };
   usuarioLogOut: Usuario;
+  auxUsuarios: Usuario [] = [];
 
   constructor(
     public inscripcionService: InscripcionService,
@@ -47,11 +48,16 @@ export class CargarInscripcionComponent implements OnInit {
     this.inscripcionService.getInscripcion().subscribe((resp: any) => {
       console.log(resp);
       this.inscripciones = resp.inscripciones;
-    });
+      });
     this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
-      console.log(resp);
-      this.usuarios = resp.usuario;
+      this.auxUsuarios = resp.usuario;
+      for (var i = 0; i < this.auxUsuarios.length; i++) {
+        if (this.auxUsuarios[i].estado === 'ACTIVO') {
+          this.usuarios[i] = this.auxUsuarios[i];
+        }
+      }
     });
+
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       console.log(resp);
       this.aulasMaterias = resp.aulas_materias;
