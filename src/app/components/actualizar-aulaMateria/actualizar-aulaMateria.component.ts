@@ -19,8 +19,11 @@ export class ActualizarAulaMateriaComponent implements OnInit {
   token: string;
   aula_materia: Aula_materia;
   aulas: Aula[] = [];
+  auxAulas: Aula[] = [];
   materias: Materia[] = [];
+  auxMateria: Materia [] = [];
   docentes: Usuario[] = [];
+  auxDocente: Usuario [] = [];
   json_aulas_materia: {
     id_aula: string;
     id_materia: string;
@@ -44,15 +47,30 @@ export class ActualizarAulaMateriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.materiaService.getMateria().subscribe((resp: any) => {
-      this.materias = resp.materia;
+      for (var i = 0; i < resp.materia.length; i++) {
+        if (resp.materia[i].estado === 'ACTIVO') {
+          this.auxMateria[i] = resp.materia[i];
+          this.materias.push(this.auxMateria[i]);
+        }
+      }
     });
 
     this.aulaService.getAula().subscribe((resp: any) => {
-      this.aulas = resp.aula;
+      for (var i = 0; i < resp.aula.length; i++) {
+        if (resp.aula[i].estado === 'ACTIVO') {
+          this.auxAulas[i] = resp.aula[i];
+          this.aulas.push(this.auxAulas[i]);
+        }
+      }
     });
 
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
-      this.docentes = resp.usuario;
+      for (var i = 0; i < resp.usuario.length; i++) {
+        if (resp.usuario[i].estado === 'ACTIVO') {
+          this.auxDocente[i] = resp.usuario[i];
+          this.docentes.push(this.auxDocente[i]);
+        }
+      }
     });
   }
 

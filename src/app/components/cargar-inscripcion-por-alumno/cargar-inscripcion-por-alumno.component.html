@@ -63,7 +63,7 @@
                             <br>
                             <select formControlName="id_aula_materia" class="form-control" required>
                                 <option value="">Seleccione Materia</option>
-                                <option class="form-control" *ngFor="let aulaMateria of aulasMaterias"
+                                <option class="form-control" *ngFor="let aulaMateria of auxAulasMaterias2"
                                     [value]="aulaMateria.id_rel">
                                     {{'Nombre Materia: ' + aulaMateria.nombre_materia +' , Docente: ' +aulaMateria.apellido + ' , Aula:' +aulaMateria.nombre_aula }}
                                 </option>

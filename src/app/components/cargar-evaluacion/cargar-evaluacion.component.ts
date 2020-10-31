@@ -18,7 +18,9 @@ import { UsuarioService } from '../../services/usuario.service';
 export class CargarEvaluacionComponent implements OnInit {
   forma: FormGroup;
   materias: Materia[] = [];
+  auxMateria: Materia [] = [];
   instancias: Instancia[] = [];
+  auxInstancia: Instancia [] = [];
   get_aulas_materia: {
     anho: string;
     apellido: string;
@@ -42,12 +44,21 @@ export class CargarEvaluacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.materiaService.getMateria().subscribe((resp: any) => {
-      this.materias = resp.materia;
+      for (var i = 0; i < resp.materia.length; i++) {
+        if (resp.materia[i].estado === 'ACTIVO') {
+          this.auxMateria[i] = resp.materia[i];
+          this.materias.push(this.auxMateria[i]);
+        }
+      }
     });
 
     this.evaluacionService.getInstanciaEvaluacion().subscribe((resp: any) => {
-      this.get_aulas_materia = resp.instancia_evaluacion;
-      console.log(this.get_aulas_materia);
+      for (var i = 0; i < resp.instancia_evaluacion.length; i++) {
+        if (resp.instancia_evaluacion[i].estado === 'ACTIVO') {
+          this.auxInstancia[i] = resp.instancia_evaluacion[i];
+          this.instancias.push(this.auxInstancia[i]);
+        }
+      }
     });
 
     this.forma = new FormGroup({

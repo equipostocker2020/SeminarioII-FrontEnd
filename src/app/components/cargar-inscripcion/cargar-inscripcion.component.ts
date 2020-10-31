@@ -46,25 +46,20 @@ export class CargarInscripcionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.inscripcionService.getInscripcion().subscribe((resp: any) => {
-      console.log(resp);
-      this.inscripciones = resp.inscripciones;
-      });
     this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
-      this.auxUsuarios = resp.usuario;
-      for (var i = 0; i < this.auxUsuarios.length; i++) {
-        if (this.auxUsuarios[i].estado === 'ACTIVO') {
-          this.usuarios[i] = this.auxUsuarios[i];
+      for (var i = 0; i < resp.usuario.length; i++) {
+        if (resp.usuario[i].estado === 'ACTIVO') {
+          this.auxUsuarios[i] = resp.usuario[i];
+          this.usuarios.push(this.auxUsuarios[i]);
         }
       }
     });
 
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
-      console.log(resp);
-      this.auxAulasMaterias = resp.aulas_materias;
-      for (var i = 0; i < this.auxAulasMaterias.length; i++) {
-        if (this.auxAulasMaterias[i].estado === 'ACTIVO') {
-          this.aulasMaterias[i] = this.auxAulasMaterias[i];
+      for (var i = 0; i < resp.aulas_materias.length; i++) {
+        if (resp.aulas_materias[i].estado === 'ACTIVO') {
+          this.auxAulasMaterias[i] = resp.aulas_materias[i];
+          this.aulasMaterias.push(this.auxAulasMaterias[i]);
         }
       }
     });

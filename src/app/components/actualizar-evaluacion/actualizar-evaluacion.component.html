@@ -62,15 +62,27 @@
 
                             <div class="form-group form-float">
                                 <label class="form-label">Materia</label>
-                                <div class="form-group">
-                                    <input [ngModel]="evaluacion.nombre_materia" value="evaluacion.id_materia" type="text" class="form-control" name="nombreMateria" disabled>
+                                <div class="form-line">
+                                    <!--<input [ngModel]="evaluacion.nombre_materia" value="evaluacion.id_materia" type="text" class="form-control" name="nombreMateria" disabled>-->
+                                    <select [ngModel]="evaluacion.nombre_materia" class="form-control input-lg" name="id_materia" required>
+                                        <option class="form-control" *ngFor="let materia of materias"
+                                            [value]="materia.id_materia">
+                                            {{materia.nombre_materia}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <br>
                             <div class="form-group form-float">
                                 <label class="form-label">Instancia</label>
                                 <div class="form-group">
-                                    <input [ngModel]="evaluacion.nombre_instancia" value="evaluacion.id_instancia" type="text" class="form-control" name="nombreInstancia" disabled>
+                                    <!--<input [ngModel]="evaluacion.nombre_instancia" value="evaluacion.id_instancia" type="text" class="form-control" name="nombreInstancia" disabled>-->
+                                    <select [ngModel]="evaluacion.nombre_instancia" class="form-control input-lg" name="id_instancia" required>
+                                        <option class="form-control" *ngFor="let instancia of instancias"
+                                            [value]="instancia.id_instancia">
+                                            {{instancia.nombre_instancia}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <br>

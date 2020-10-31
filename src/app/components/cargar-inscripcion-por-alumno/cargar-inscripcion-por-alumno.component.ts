@@ -20,7 +20,10 @@ export class CargarInscripcionPorAlumnoComponent implements OnInit {
   inscripciones: Inscripcion[] = [];
   usuario: Usuario;
   usuarios: Usuario[] = [];
+  auxUsuarios: Usuario [] = [];
   aulasMaterias: Aula_materia[] = [];
+  auxAulasMaterias: Aula_materia [] = [];
+  auxAulasMaterias2: Aula_materia [] = [];
   aulaMateria: {
     anho: string;
     apellido: string;
@@ -43,17 +46,22 @@ export class CargarInscripcionPorAlumnoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.inscripcionService.getInscripcion().subscribe((resp: any) => {
-      console.log(resp);
-      this.inscripciones = resp.inscripciones;
-    });
     this.tipoUsuarioService.getAlumno().subscribe((resp: any) => {
-      console.log(resp);
-      this.usuarios = resp.usuario;
+      for (var i = 0; i < resp.usuario.length; i++) {
+        if (resp.usuario[i].estado === 'ACTIVO') {
+          this.auxUsuarios[i] = resp.usuario[i];
+          this.usuarios.push(this.auxUsuarios[i]);
+        }
+      }
     });
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
-      console.log(resp);
-      this.aulasMaterias = resp.aulas_materias;
+      this.auxAulasMaterias = resp.aulas_materias;
+      for (var i = 0; i < this.auxAulasMaterias.length; i++) {
+        if (this.auxAulasMaterias[i].estado === 'ACTIVO') {
+          this.aulasMaterias[i] = this.auxAulasMaterias[i];
+          this.auxAulasMaterias2.push(this.aulasMaterias[i]);
+        }
+      }
     });
     this.forma = new FormGroup({
       id_inscripcion: new FormControl(null, Validators.required),

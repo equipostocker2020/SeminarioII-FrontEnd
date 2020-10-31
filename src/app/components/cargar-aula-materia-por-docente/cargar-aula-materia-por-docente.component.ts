@@ -19,11 +19,11 @@ import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 export class CargarAulaMateriaPorDocenteComponent implements OnInit {
   forma: FormGroup;
   materias: Materia[] = [];
-  materia: Materia;
+  auxMateria: Materia [] = [];
   docentes: Usuario[] = [];
-  docente: Usuario;
+  auxDocente: Usuario [] = [];
   aulas: Aula[] = [];
-  aula: Aula;
+  auxAulas: Aula[] = [];
   usuario: Usuario;
   usuarios: Usuario[] = [];
 
@@ -40,13 +40,23 @@ export class CargarAulaMateriaPorDocenteComponent implements OnInit {
 
   ngOnInit(): void {
     this.aulaService.getAula().subscribe((resp: any) => {
-      this.aulas = resp.aula;
+      for (var i = 0; i < resp.aula.length; i++) {
+        if (resp.aula[i].estado === 'ACTIVO') {
+          this.auxAulas[i] = resp.aula[i];
+          this.aulas.push(this.auxAulas[i]);
+        }
+      }
     });
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
       this.usuarios = resp.usuario;
     });
     this.materiasService.getMateria().subscribe((resp: any) => {
-      this.materias = resp.materia;
+      for (var i = 0; i < resp.materia.length; i++) {
+        if (resp.materia[i].estado === 'ACTIVO') {
+          this.auxMateria[i] = resp.materia[i];
+          this.materias.push(this.auxMateria[i]);
+        }
+      }
     });
     this.forma = new FormGroup({
       id_aula: new FormControl(null, Validators.required),

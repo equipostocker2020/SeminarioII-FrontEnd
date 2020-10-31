@@ -63,7 +63,14 @@
                             <div class="form-group form-float">
                                 <label class="form-label">Nombre de Alumno</label>
                                 <div class="form-line">
-                                    <input [ngModel]="inscripcion.nombre" type="text" class="form-control" name="alumno_nombre" required>
+                                    <!--<input [ngModel]="inscripcion.nombre" type="text" class="form-control" name="alumno_nombre" required>-->
+                                    <select [ngModel]="inscripcion.nombre" class="form-control" name="alumno_nombre" required>
+                                        <option value="">Seleccione Alumno</option>
+                                        <option class="form-control"  *ngFor="let usuario of usuarios"
+                                            [value]="usuario.id_usuario">
+                                            {{usuario.nombre}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <br>

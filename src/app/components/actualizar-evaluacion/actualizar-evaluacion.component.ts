@@ -17,7 +17,9 @@ export class ActualizarEvaluacionComponent implements OnInit {
   token: string;
   evaluacion: Evaluacion;
   materias: Materia[] = [];
+  auxMaterias: Materia [] = [];
   instancias: Instancia[] = [];
+  auxInstancia: Instancia [] = [];
   usuario: Usuario;
 
   constructor(
@@ -32,11 +34,21 @@ export class ActualizarEvaluacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.materiaService.getMateria().subscribe((resp: any) => {
-      this.materias = resp.materia;
+      for (var i = 0; i < resp.materia.length; i++) {
+        if (resp.materia[i].estado === 'ACTIVO') {
+          this.auxMaterias[i] = resp.materia[i];
+          this.materias.push(this.auxMaterias[i]);
+        }
+      }
     });
 
     this.evaluacionService.getInstanciaEvaluacion().subscribe((resp: any) => {
-      this.instancias = resp.instancia_evaluacion;
+      for (var i = 0; i < resp.instancia_evaluacion.length; i++) {
+        if (resp.instancia_evaluacion[i].estado === 'ACTIVO') {
+          this.auxInstancia[i] = resp.instancia_evaluacion[i];
+          this.instancias.push(this.auxInstancia[i]);
+        }
+      }
     });
   }
 
@@ -75,8 +87,8 @@ export class ActualizarEvaluacionComponent implements OnInit {
   }
 
   guardar(evaluacion: Evaluacion) {
-    this.evaluacion.nombre_materia = this.evaluacion.nombre_materia;
-    this.evaluacion.nombre_instancia = this.evaluacion.nombre_instancia;
+    this.evaluacion.id_materia = evaluacion.id_materia;
+    this.evaluacion.id_instancia = evaluacion.id_instancia;
     this.evaluacion.fecha = evaluacion.fecha;
     this.evaluacionService.token = this.token;
     this.evaluacionService

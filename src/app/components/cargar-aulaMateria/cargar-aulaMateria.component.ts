@@ -19,13 +19,11 @@ import { AulaMateriaService } from 'src/app/services/aulaMateria.service';
 export class CargarAulaMateriaComponent implements OnInit {
   forma: FormGroup;
   materias: Materia[] = [];
-  materia: Materia;
+  auxMateria: Materia [] = [];
   docentes: Usuario[] = [];
-  docente: Usuario;
+  auxDocente: Usuario [] = [];
   aulas: Aula[] = [];
-  aula: Aula;
-  usuario: Usuario;
-  usuarios: Usuario[] = [];
+  auxAulas: Aula[] = [];
   usuarioLog: Usuario;
 
   constructor(
@@ -41,16 +39,28 @@ export class CargarAulaMateriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.aulaService.getAula().subscribe((resp: any) => {
-      console.log(resp);
-      this.aulas = resp.aula;
+      for (var i = 0; i < resp.aula.length; i++) {
+        if (resp.aula[i].estado === 'ACTIVO') {
+          this.auxAulas[i] = resp.aula[i];
+          this.aulas.push(this.auxAulas[i]);
+        }
+      }
     });
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
-      console.log(resp);
-      this.usuarios = resp.usuario;
+      for (var i = 0; i < resp.usuario.length; i++) {
+        if (resp.usuario[i].estado === 'ACTIVO') {
+          this.auxDocente[i] = resp.usuario[i];
+          this.docentes.push(this.auxDocente[i]);
+        }
+      }
     });
     this.materiasService.getMateria().subscribe((resp: any) => {
-      console.log(resp);
-      this.materias = resp.materia;
+      for (var i = 0; i < resp.materia.length; i++) {
+        if (resp.materia[i].estado === 'ACTIVO') {
+          this.auxMateria[i] = resp.materia[i];
+          this.materias.push(this.auxMateria[i]);
+        }
+      }
     });
     this.forma = new FormGroup({
       id_aula: new FormControl(null, Validators.required),
