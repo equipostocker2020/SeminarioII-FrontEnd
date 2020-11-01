@@ -27,6 +27,9 @@ import { ActualizarAulaMateriaComponent } from './components/actualizar-aulaMate
 import { ActualizarInscripcionComponent } from './components/actualizar-inscripcion/actualizar-inscripcion.component';
 import { CargarInscripcionPorAlumnoComponent } from './components/cargar-inscripcion-por-alumno/cargar-inscripcion-por-alumno.component';
 import { CargarAulaMateriaPorDocenteComponent } from './components/cargar-aula-materia-por-docente/cargar-aula-materia-por-docente.component';
+import { VerAlumnosPorAsignacionComponent } from './components/ver-alumnos-por-asignacion/ver-alumnos-por-asignacion.component';
+
+
 
 
 
@@ -58,6 +61,7 @@ const routes: Routes = [
   { path: 'aulasMaterias', component: AulaMateriaComponent , data: {titulo: 'Ver Aula Materia'}},
   { path: 'aulaMateria/cargar-aulaMateria', component: CargarAulaMateriaComponent , data: {titulo: 'Crear Aula Materia'}},
   { path: 'docente/aulaMateria/cargar-aulaMateria', component: CargarAulaMateriaPorDocenteComponent , data: {titulo: 'Crear Aula Materia'}},
+  { path: 'alumnos/asignacion', component: VerAlumnosPorAsignacionComponent , data: {titulo: 'Crear Aula Materia'}},
   { path: '**', redirectTo: '/login' }
 ];
 

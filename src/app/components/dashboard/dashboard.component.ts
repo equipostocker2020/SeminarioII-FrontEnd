@@ -10,6 +10,7 @@ import { Inscripcion } from '../../models/inscripcion.models';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 import { AulaMateriaService } from '../../services/aulaMateria.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -37,6 +38,8 @@ export class DashboardComponent implements OnInit {
   // user rol docente
   asignacionDocente: Aula_materia;
   asignacionesDocente: Aula_materia[] = [];
+  aulaMateria: Aula_materia;
+  aula_materia: Aula_materia;
 
   constructor(
     public usuarioService: UsuarioService,
@@ -64,6 +67,7 @@ export class DashboardComponent implements OnInit {
     });
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       this.asignaciones = resp.aulas_materias;
+      console.log(this.asignaciones);
     });
     this.verInscripcionesAlumno();
     this.verAsignacionesDocente();
@@ -108,6 +112,10 @@ export class DashboardComponent implements OnInit {
           this.asignacionesDocente = resp.aulas_materias;
         });
     }
+  }
+
+  guardarStorage(id_rel: string) {
+    localStorage.setItem('id_rel', id_rel);
   }
 
   eliminarStorage() {

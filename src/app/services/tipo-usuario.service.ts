@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from '../config/config';
 import { Usuario } from '../models/usuario.models';
+import { AulaMateriaService } from './aulaMateria.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,13 @@ import { Usuario } from '../models/usuario.models';
 export class TipoUsuarioService {
   token: string;
   usuario: Usuario;
+  id_docente: string;
 
-  constructor(public http: HttpClient, public router: Router) {
+  constructor(
+    public http: HttpClient,
+    public router: Router,
+    public aulaMateriaService: AulaMateriaService
+    ) {
     this.cargarStorage();
   }
 
@@ -55,5 +61,18 @@ export class TipoUsuarioService {
     let url = URL_SERVICIOS + '/tipo/docente/aulas_materias/' + id;
     url += '?token=' + this.token;
     return this.http.get(url);
+  }
+
+  getnotasPorAlumno(id: string){
+    let url = URL_SERVICIOS + '/tipo/notasxalumno/' +id;
+    url += '?token=' + this.token;
+    return this.http.get(url);
+  }
+
+  getIdUsuarioLocalStorage() {
+    if (localStorage.getItem('id_usuario')) {
+      this.id_docente = localStorage.getItem('id_usuario');
+      return this.id_docente;
+    }
   }
 }

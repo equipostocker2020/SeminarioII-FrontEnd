@@ -22,14 +22,6 @@ export class AulaMateriaService {
     this.getIdUsuarioLocalStorage();
   }
 
-  guardarStorage(id: string, token: string, usuario: Usuario) {
-    localStorage.setItem('ID_USUARIO', id);
-    localStorage.setItem('token', token);
-    localStorage.setItem('Usuario', JSON.stringify(usuario));
-    this.usuario = usuario;
-    this.token = token;
-  }
-
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
@@ -96,5 +88,10 @@ export class AulaMateriaService {
         return err.throw(err.error.error.sqlMessage);
       })
     );
+  }
+  getAulaMateriaPorId(id: string){
+    let url = URL_SERVICIOS + '/aulas_materias/' + id;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
+    return this.http.get(url);
   }
 }

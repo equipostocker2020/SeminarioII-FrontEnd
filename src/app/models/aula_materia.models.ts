@@ -11,6 +11,8 @@ export class Aula_materia {
     public nombre_aula?:string,
     public apellido?:string,
     public dia?:string,
-    public horario?:string
+    public horario?:string,
+    public dni?: string,
+    public email?: string
   ) {}
 }

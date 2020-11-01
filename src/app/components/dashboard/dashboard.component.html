@@ -271,7 +271,7 @@
                     <th class="text">Nombre de la Materia</th>
                     <th class="text">Horario</th>
                     <th class="text">Aula</th>
-                    <!-- <th class="text">Apellido Docente</th> -->
+                    <th class="text">Ver Alumnos</th>
                 </tr>
             </thead>
             <tbody class="table-striped">
@@ -290,6 +290,9 @@
                     </td>
                     <td class="text text-center">
                         {{asignacionDocente.nombre_aula}}
+                    </td>
+                    <td class="text text-center">
+                        <a routerLink="/alumnos/asignacion" (click)="guardarStorage(asignacionDocente.id_rel)">Ver alumnos</a>
                     </td>
                 </tr>
             </tbody>
