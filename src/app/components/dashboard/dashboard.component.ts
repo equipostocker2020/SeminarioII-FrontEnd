@@ -10,7 +10,6 @@ import { Inscripcion } from '../../models/inscripcion.models';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 import { AulaMateriaService } from '../../services/aulaMateria.service';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,8 +37,7 @@ export class DashboardComponent implements OnInit {
   // user rol docente
   asignacionDocente: Aula_materia;
   asignacionesDocente: Aula_materia[] = [];
-  aulaMateria: Aula_materia;
-  aula_materia: Aula_materia;
+  token: string;
 
   constructor(
     public usuarioService: UsuarioService,
@@ -67,7 +65,6 @@ export class DashboardComponent implements OnInit {
     });
     this.aulaMateriaService.getAulaMateria().subscribe((resp: any) => {
       this.asignaciones = resp.aulas_materias;
-      console.log(this.asignaciones);
     });
     this.verInscripcionesAlumno();
     this.verAsignacionesDocente();
@@ -93,7 +90,12 @@ export class DashboardComponent implements OnInit {
   //   { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
   // ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cargarStorage();
+    if(this.usuario.rol == 'ESTUDIANTE' || this.usuario.rol == 'DOCENTE' ){
+      this.cargarStorageAux();
+    }
+  }
 
   verInscripcionesAlumno() {
     if (this.usuario.rol === 'ESTUDIANTE') {
@@ -114,8 +116,40 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  guardarStorage(id_rel: string) {
-    localStorage.setItem('id_rel', id_rel);
+  //agregado por mi
+  cargarStorage() {
+    if (localStorage.getItem('token')) {
+      this.token = localStorage.getItem('token');
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    } else {
+      this.token = '';
+      this.usuario = null;
+    }
+  }
+
+  cargarStorageAux() {
+    if (localStorage.getItem('token')) {
+      this.token = localStorage.getItem('token');
+      this.usuario = JSON.parse(localStorage.getItem('usuarioActualizar'));
+      if(this.usuario == null){
+        this.usuario = JSON.parse(localStorage.getItem('usuario'));
+      }
+      localStorage.setItem('usuario', JSON.stringify(this.usuario));
+    } else {
+      this.token = '';
+      this.usuario = null;
+    }
+  }
+
+  guardarStorage(id: string, token: string, usuario: Usuario) {
+    localStorage.setItem(
+      'id',
+      this.usuarioService.usuario.id_usuario
+    );
+    localStorage.setItem('token', this.usuarioService.token);
+    localStorage.setItem('usuarioActualizar', JSON.stringify(usuario));
+    this.usuario = usuario;
+    this.token = token;
   }
 
   eliminarStorage() {

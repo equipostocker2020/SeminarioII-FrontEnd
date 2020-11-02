@@ -1,0 +1,120 @@
+<section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item ">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/login">Login </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/alumnos">Alumnos</a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/docentes">Docentes</a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/aulas">Aulas</a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/materias">Materias</a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/aulasMaterias">Asignacion</a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'DOCENTE'" class="nav-item">
+                    <a class="nav-link" routerLink="/docente/aulaMateria/cargar-aulaMateria">Asignacion</a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/inscripciones">Inscripcion</a>
+                </li>
+                <li *ngIf="usuarioLog.rol == 'ESTUDIANTE'" class="nav-item">
+                    <a class="nav-link" routerLink="/alumno/inscripcion/cargar-inscripcion">Inscripcion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" (click)="eliminarStorage()">Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
+<br><br><br><br><br>
+<section>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2 class="text-center">Actualizar Admin</h2>
+                    </div>
+                    <div class="body">
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)">
+                            <div class="form-group form-float">
+                                <label class="form-label">Nombre</label>
+                                <div class="form-line">
+                                    <input [ngModel]="usuario.nombre" type="text" class="form-control" name="nombre" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <label class="form-label">Apellido</label>
+                                <div class="form-line">
+                                    <input [ngModel]="usuario.apellido" type="text" class="form-control" name="apellido" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <label class="form-label">Direccion</label>
+                                <div class="form-line">
+                                    <input [ngModel]="usuario.direccion" type="text" class="form-control" name="direccion" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <label class="form-label">Email</label>
+                                <div class="form-line">
+                                    <input [ngModel]="usuario.email" type="email" class="form-control" name="email" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <label class="form-label">DNI</label>
+                                <div class="form-line">
+                                    <input [ngModel]="usuario.dni" type="text" class="form-control" name="dni" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <label class="form-label">CUIT</label>
+                                <div class="form-line">
+                                    <input [ngModel]="usuario.cuit_cuil" type="text" class="form-control" name="cuit_cuil" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <label class="form-label">Fecha Nacimiento</label>
+                                <div class="form-line">
+                                    <input [ngModel]="usuario.fecha_nac | date: 'yyyy-MM-dd'" type="text" class="form-control " name="fecha_nac" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <label class="form-label">Edad</label>
+                                <div class="form-line">
+                                    <input [ngModel]="usuario.edad" type="text" class="form-control" name="edad" required>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn bg-blue-grey waves-effect waves-light m-2" type="submit">Actualizar</button>
+                                <button type="submit" routerLink="/dashboard" class="btn bg-blue-grey waves-effect waves-light m-2">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

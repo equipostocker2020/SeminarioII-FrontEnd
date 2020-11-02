@@ -4,35 +4,30 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
-  selector: 'app-actualizar-docente',
-  templateUrl: './actualizar-docente.component.html',
-  styleUrls: [],
+  selector: 'app-actualizar-admin',
+  templateUrl: './actualizar-admin.component.html',
+  styleUrls: []
 })
-export class ActualizarDocenteComponent implements OnInit {
+export class ActualizarAdminComponent implements OnInit {
+
   token: string;
   usuario: Usuario;
-  usuarioLogueado: Usuario;
   usuarioLog: Usuario;
 
   constructor(public usuarioService: UsuarioService, public router: Router) {
-    this.usuario = this.usuarioService.usuario;
     this.usuarioLog = this.usuarioService.usuario;
-    console.log(this.usuario);
+    console.log('->', this.usuario);
     this.cargarStorage();
-    this.guardarStorage(
-      this.usuario.id_usuario,
-      this.usuarioService.token,
-      this.usuario
-    );
+    console.log("actualizar admin",this.usuario)
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.usuario = JSON.parse(localStorage.getItem('usuarioActualizar'));
-      this.usuarioLogueado = JSON.parse(localStorage.getItem('usuario'));
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
     } else {
       this.token = '';
       this.usuario = null;
@@ -45,7 +40,7 @@ export class ActualizarDocenteComponent implements OnInit {
       this.usuarioService.usuario.id_usuario
     );
     localStorage.setItem('token', this.usuarioService.token);
-    localStorage.setItem('usuarioActualizar', JSON.stringify(usuario));
+    localStorage.setItem('usuario', JSON.stringify(usuario));
     this.usuario = usuario;
     this.token = token;
   }
@@ -55,7 +50,7 @@ export class ActualizarDocenteComponent implements OnInit {
     localStorage.setItem('token', this.usuarioService.token);
     localStorage.setItem(
       'usuario',
-      JSON.stringify(this.usuarioService.usuario)
+      JSON.stringify(this.usuario)
     );
     this.usuario = this.usuarioService.usuario;
     this.token = this.token;
@@ -71,19 +66,10 @@ export class ActualizarDocenteComponent implements OnInit {
     this.usuario.fecha_nac = usuario.fecha_nac;
     this.usuario.edad = usuario.edad;
     this.usuarioService.token = this.token;
-    this.guardarStorage(
-      this.usuario.id_usuario,
-      this.usuarioService.token,
-      this.usuario
-    );
     this.usuarioService
       .actualizarUsuario(this.usuario)
       .subscribe((resp: any) => {
-        if(this.usuarioLogueado.rol == "DOCENTE"){
-          this.router.navigate(['/dashboard']);  
-        }else{
-        this.router.navigate(['/docentes']);
-        }
+        this.router.navigate(['/dashboard']);
         this.resetStorage();
       });
   }

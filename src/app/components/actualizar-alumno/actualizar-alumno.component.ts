@@ -11,15 +11,15 @@ import { UsuarioService } from '../../services/usuario.service';
 export class ActualizarAlumnoComponent implements OnInit {
   token: string;
   usuario: Usuario;
+  usuarioLogueado: Usuario;
   usuarioLog: Usuario;
 
   constructor(public usuarioService: UsuarioService, public router: Router) {
     this.usuario = this.usuarioService.usuario;
     this.usuarioLog = this.usuarioService.usuario;
-    console.log('->', this.usuario);
     this.cargarStorage();
     this.guardarStorage(
-      this.usuarioService.usuario.id_usuario,
+      this.usuario.id_usuario,
       this.usuarioService.token,
       this.usuario
     );
@@ -31,6 +31,7 @@ export class ActualizarAlumnoComponent implements OnInit {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuarioActualizar'));
+      this.usuarioLogueado = JSON.parse(localStorage.getItem('usuario'));
     } else {
       this.token = '';
       this.usuario = null;
@@ -69,10 +70,19 @@ export class ActualizarAlumnoComponent implements OnInit {
     this.usuario.fecha_nac = usuario.fecha_nac;
     this.usuario.edad = usuario.edad;
     this.usuarioService.token = this.token;
+    this.guardarStorage(
+      this.usuario.id_usuario,
+      this.usuarioService.token,
+      this.usuario
+    );
     this.usuarioService
       .actualizarUsuario(this.usuario)
       .subscribe((resp: any) => {
+        if(this.usuarioLogueado.rol == "ESTUDIANTE"){
+          this.router.navigate(['/dashboard']);  
+        }else{
         this.router.navigate(['/alumnos']);
+        }
         this.resetStorage();
       });
   }
