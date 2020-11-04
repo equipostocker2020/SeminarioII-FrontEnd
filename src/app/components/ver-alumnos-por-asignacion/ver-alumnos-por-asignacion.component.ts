@@ -4,7 +4,6 @@ import { TipoUsuarioService } from '../../services/tipo-usuario.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 import { Usuario } from '../../models/usuario.models';
 import { Inscripcion } from '../../models/inscripcion.models';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ver-alumnos-por-asignacion',
@@ -28,6 +27,10 @@ export class VerAlumnosPorAsignacionComponent implements OnInit {
     public tipoUsuarioService: TipoUsuarioService
   ) {
      this.getItemLocalStorage();
+     this.tipoUsuarioService.getnotasPorAlumno(this.id_rel).subscribe((resp: any) =>{
+      this.notasPorAlumnos = resp.notas_x_alumno;
+      console.log(resp.notas_x_alumno);
+     });
   }
 
   ngOnInit(): void {
@@ -38,11 +41,16 @@ export class VerAlumnosPorAsignacionComponent implements OnInit {
       this.id_rel = localStorage.getItem('id_rel');
       this.tipoUsuarioService.getnotasPorAlumno(this.id_rel).subscribe((resp: any) => {
         console.log(resp);
-        if(resp.err){
-        console.log("el error");
+        if (resp.err){
+        console.log(resp.err);
         }
-        this.notasPorAlumnos   = resp.notas_x_alumno;
+        this.notasPorAlumnos = resp.notas_x_alumno;
       });
     }
 }
+
+guardarStorageIdRel(id_inscripcion: string) {
+  localStorage.setItem('id_inscripcion', id_inscripcion);
+}
+
 }

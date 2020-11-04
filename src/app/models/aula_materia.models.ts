@@ -6,6 +6,7 @@ export class Aula_materia {
     public id_docente?: string,
     public id_rel?: string,
     public estado?: string,
+    public id_inscripcion?: string,
     public id_usuario?: string,
     public nombre_materia?:string,
     public nombre_aula?:string,

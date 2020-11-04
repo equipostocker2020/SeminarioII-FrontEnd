@@ -29,6 +29,7 @@ import { CargarInscripcionPorAlumnoComponent } from './components/cargar-inscrip
 import { CargarAulaMateriaPorDocenteComponent } from './components/cargar-aula-materia-por-docente/cargar-aula-materia-por-docente.component';
 import { VerAlumnosPorAsignacionComponent } from './components/ver-alumnos-por-asignacion/ver-alumnos-por-asignacion.component';
 import { ActualizarAdminComponent } from './components/actualizar-admin/actualizar-admin.component';
+import { NotaAlumnoComponent } from './components/nota-alumno/nota-alumno.component';
 
 
 const routes: Routes = [
@@ -61,6 +62,7 @@ const routes: Routes = [
   { path: 'docente/aulaMateria/cargar-aulaMateria', component: CargarAulaMateriaPorDocenteComponent , data: {titulo: 'Crear Aula Materia'}},
   { path: 'alumnos/asignacion', component: VerAlumnosPorAsignacionComponent , data: {titulo: 'Crear Aula Materia'}},
   { path: 'actualizar-admin', component: ActualizarAdminComponent, data: {titulo: 'Actualizar Admin'}},
+  { path: 'alumno/calificar', component: NotaAlumnoComponent, data: {titulo: 'Actualizar Admin'}},
   { path: '**', redirectTo: '/login' }
 ];
 

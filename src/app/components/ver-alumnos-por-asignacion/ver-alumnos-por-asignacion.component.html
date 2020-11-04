@@ -1,10 +1,9 @@
 <section class="container">
     <div class="card mt-3 bg-light-green">
         <div classs="card-body">
-
             <br>
-            <!-- <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Docentes Registrados -->
-            <!-- </h4> -->
+            <h4 class="card-title text-center" style="color: blue gray;">Alumnos Registrados
+            </h4>
             <div class="body table-responsive table-borderless table-striped">
                 <table class="table table-condensed">
                     <thead>
@@ -39,7 +38,7 @@
                                 {{notaPorAlumno.nombre_materia}}
                             </td>
                             <td class="text text-center">
-                                <a routerLink="/home">Calificar</a>
+                                <a routerLink="/alumno/calificar" (click)=guardarStorageIdRel(notaPorAlumno.id_inscripcion)>Calificar</a>
                             </td>
 
                         </tr>
