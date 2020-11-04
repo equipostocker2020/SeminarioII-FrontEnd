@@ -66,4 +66,8 @@ export class AlumnosComponent implements OnInit {
       return;
     }
   }
+
+  eliminarStorate(){
+    localStorage.clear();
+  }
 }

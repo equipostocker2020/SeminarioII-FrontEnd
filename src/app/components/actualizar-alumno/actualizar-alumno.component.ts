@@ -49,17 +49,6 @@ export class ActualizarAlumnoComponent implements OnInit {
     this.token = token;
   }
 
-  resetStorage() {
-    localStorage.setItem('id', this.usuarioService.usuario.id_usuario);
-    localStorage.setItem('token', this.usuarioService.token);
-    localStorage.setItem(
-      'usuario',
-      JSON.stringify(this.usuarioService.usuario)
-    );
-    this.usuario = this.usuarioService.usuario;
-    this.token = this.token;
-  }
-
   guardar(usuario: Usuario) {
     this.usuario.nombre = usuario.nombre;
     this.usuario.apellido = usuario.apellido;
@@ -78,13 +67,19 @@ export class ActualizarAlumnoComponent implements OnInit {
     this.usuarioService
       .actualizarUsuario(this.usuario)
       .subscribe((resp: any) => {
-        if(this.usuarioLogueado.rol == "ESTUDIANTE"){
-          this.router.navigate(['/dashboard']);  
+        if (this.usuarioLogueado.rol === 'ESTUDIANTE'){
+          this.router.navigate(['/dashboard']);
         }else{
-        this.router.navigate(['/alumnos']);
+        this.router.navigate(['/dashboard']);
         }
-        this.resetStorage();
+        this.removerItemsStorage();
       });
+  }
+
+  removerItemsStorage(){
+    localStorage.removeItem('idActualizar');
+    localStorage.removeItem('usuarioActualizar');
+    localStorage.removeItem('id');
   }
 
   eliminarStorage() {

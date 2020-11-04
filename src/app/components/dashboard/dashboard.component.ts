@@ -38,6 +38,8 @@ export class DashboardComponent implements OnInit {
   asignacionDocente: Aula_materia;
   asignacionesDocente: Aula_materia[] = [];
   token: string;
+  aulaMateria: Aula_materia;
+  aula_materia: Aula_materia;
 
   constructor(
     public usuarioService: UsuarioService,
@@ -150,6 +152,10 @@ export class DashboardComponent implements OnInit {
     localStorage.setItem('usuarioActualizar', JSON.stringify(usuario));
     this.usuario = usuario;
     this.token = token;
+  }
+
+  guardarStorageIdRel(id_rel: string) {
+    localStorage.setItem('id_rel', id_rel);
   }
 
   eliminarStorage() {

@@ -27,9 +27,7 @@ export class VerAlumnosPorAsignacionComponent implements OnInit {
     public aulaMateriaService: AulaMateriaService,
     public tipoUsuarioService: TipoUsuarioService
   ) {
-
      this.getItemLocalStorage();
-
   }
 
   ngOnInit(): void {
@@ -46,6 +44,5 @@ export class VerAlumnosPorAsignacionComponent implements OnInit {
         this.notasPorAlumnos   = resp.notas_x_alumno;
       });
     }
-
 }
 }
