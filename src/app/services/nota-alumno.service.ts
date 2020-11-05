@@ -77,5 +77,23 @@ export class NotaAlumnoService {
       })
     );
   }
+  putNotaAlumno(notaAlumno: Nota_alumno, id: string){
+    let url = URL_SERVICIOS + '/nota_alumno/' + id;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
+    return this.http.put(url, notaAlumno).pipe(
+      map((resp:any) => {
+        Swal.fire('Se modifica la nota', '', 'success');
+        return resp.nota_alumno;
+      }),
+      catchError((err: any) => {
+        console.log(err);
+        Swal.fire(
+          'Error al modificar la nota',
+          err.error.error.sqlMessage,
+          'error'
+        );
+        return err.throw(err.error.error.sqlMessage);
+        })
+    ); 
+  }
 }
-

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TipoUsuarioService } from '../../services/tipo-usuario.service';
 import { Inscripcion } from '../../models/inscripcion.models';
 import { Usuario } from '../../models/usuario.models';
+import { NotaAlumnoService } from 'src/app/services/nota-alumno.service';
+import { Nota_alumno } from 'src/app/models/nota_alumno.models';
 
 @Component({
   selector: 'app-ver-notas-mis-alumnos',
@@ -15,9 +17,11 @@ export class VerNotasMisAlumnosComponent implements OnInit {
   inscripciones: Inscripcion [] = [];
   usuarios: Usuario [] = [];
   usuario: Usuario;
+  nota: Nota_alumno;
 
   constructor(
     public tipoUsuarioService: TipoUsuarioService,
+    public notaAlumnoService: NotaAlumnoService,
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +42,18 @@ export class VerNotasMisAlumnosComponent implements OnInit {
   getItemLocalStorage(){
   this.id_alumno = localStorage.getItem('id_alumno');
   return this.id_alumno;
+  }
+
+  actualizarNota(nota: Nota_alumno){
+    nota.id_inscripcion = this.nota.id_inscripcion;
+    nota.id_instancia = this.nota.id_instancia;
+    nota.nota = this.nota.nota;
+    nota.estado = this.nota.estado;
+    this.notaAlumnoService.putNotaAlumno(nota, nota.id_nota).subscribe((resp: any) => {
+      console.log(resp);
+    })
+
+    
   }
 
 }
