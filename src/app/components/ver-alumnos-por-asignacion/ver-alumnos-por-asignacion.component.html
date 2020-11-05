@@ -15,6 +15,7 @@
                             <th class="text">Aula</th>
                             <th class="text">Materia</th>
                             <th class="text">Calificar</th>
+                            <th class="text">Ver notas</th>
                         </tr>
                     </thead>
                     <tbody class="table-striped">
@@ -39,6 +40,9 @@
                             </td>
                             <td class="text text-center">
                                 <a routerLink="/alumno/calificar" (click)=guardarStorageIdRel(notaPorAlumno.id_inscripcion)>Calificar</a>
+                            </td>
+                            <td class="text text-center">
+                                <a routerLink="/docente/verNotasPorAlumno" (click)=guardarStorateidAlumno(notaPorAlumno.id_usuario)>Ver Notas</a>
                             </td>
 
                         </tr>

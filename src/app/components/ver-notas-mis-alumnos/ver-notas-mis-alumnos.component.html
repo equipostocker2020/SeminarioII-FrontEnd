@@ -1,0 +1,39 @@
+<section class="container">
+    <div class="card mt-3 bg-light-green">
+        <div classs="card-body">
+            <br>
+            <h4 class="card-title text-center" style="color: blue gray;">Notas Para {{usuario.nombre}} {{usuario.apellido}}
+            </h4>
+            <div class="body table-responsive table-borderless table-striped">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="text-center bg-green">
+                            <th class="text">#</th>
+                            <th class="text">Nombre Materia</th>
+                            <th class="text">Instancia Evaluacion</th>
+                            <th class="text">Nota</th>
+                            <th class="text">Cambiar Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-striped">
+                        <tr class="text-center bg-light-green" *ngFor=" let inscripcion of inscripciones ">
+                            <td class="text text-center">
+                                {{inscripcion.id_nota}}
+                            </td>
+                            <td class="text text-center">
+                                {{inscripcion.nombre_materia}}
+                            </td>
+                            <td class="text text-center">
+                                {{inscripcion.nombre_instancia}}
+                            </td>
+                            <td class="text text-center">
+                                {{inscripcion.nota}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" routerLink="/dashboard" class="btn bg-blue-grey waves-effect waves-light m-2">Volver</button>
+            </div>
+        </div>
+    </div>
+</section>

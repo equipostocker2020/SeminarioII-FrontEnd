@@ -45,8 +45,20 @@ export class TipoUsuarioService {
     return this.http.get(url);
   }
 
+  getAlumnoPorId(id:string){
+    let url = URL_SERVICIOS + '/tipo/alumno/' + id;
+    url += '?token=' + this.token;
+    return this.http.get(url);
+  }
+
   getDocente() {
     let url = URL_SERVICIOS + '/tipo/docente';
+    url += '?token=' + this.token;
+    return this.http.get(url);
+  }
+
+  getDocentePorId(id:string){
+    let url = URL_SERVICIOS + '/tipo/docente/' + id;
     url += '?token=' + this.token;
     return this.http.get(url);
   }
@@ -75,4 +87,11 @@ export class TipoUsuarioService {
       return this.id_docente;
     }
   }
+
+  getNotasPorAlumnoDesdeDocente(id: string){
+    let url = URL_SERVICIOS + '/tipo/alumno/misnotas/' + id;
+    url += '?token=' + this.token;
+    return this.http.get(url);
+  }
+ 
 }

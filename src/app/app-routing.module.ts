@@ -30,6 +30,7 @@ import { CargarAulaMateriaPorDocenteComponent } from './components/cargar-aula-m
 import { VerAlumnosPorAsignacionComponent } from './components/ver-alumnos-por-asignacion/ver-alumnos-por-asignacion.component';
 import { ActualizarAdminComponent } from './components/actualizar-admin/actualizar-admin.component';
 import { NotaAlumnoComponent } from './components/nota-alumno/nota-alumno.component';
+import { VerNotasMisAlumnosComponent } from './components/ver-notas-mis-alumnos/ver-notas-mis-alumnos.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'alumnos/asignacion', component: VerAlumnosPorAsignacionComponent , data: {titulo: 'Crear Aula Materia'}},
   { path: 'actualizar-admin', component: ActualizarAdminComponent, data: {titulo: 'Actualizar Admin'}},
   { path: 'alumno/calificar', component: NotaAlumnoComponent, data: {titulo: 'Actualizar Admin'}},
+  { path: 'docente/verNotasPorAlumno', component: VerNotasMisAlumnosComponent, data: {titulo: 'Actualizar Admin'}},
   { path: '**', redirectTo: '/login' }
 ];
 

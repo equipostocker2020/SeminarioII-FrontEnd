@@ -53,4 +53,8 @@ guardarStorageIdRel(id_inscripcion: string) {
   localStorage.setItem('id_inscripcion', id_inscripcion);
 }
 
+guardarStorateidAlumno(id_alumno: string){
+  localStorage.setItem('id_alumno', id_alumno);
+}
+
 }

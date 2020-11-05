@@ -37,6 +37,7 @@ import { CargarAulaMateriaPorDocenteComponent } from './components/cargar-aula-m
 import { VerAlumnosPorAsignacionComponent } from './components/ver-alumnos-por-asignacion/ver-alumnos-por-asignacion.component';
 import { ActualizarAdminComponent } from './components/actualizar-admin/actualizar-admin.component';
 import { NotaAlumnoComponent } from './components/nota-alumno/nota-alumno.component';
+import { VerNotasMisAlumnosComponent } from './components/ver-notas-mis-alumnos/ver-notas-mis-alumnos.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { NotaAlumnoComponent } from './components/nota-alumno/nota-alumno.compon
     CargarAulaMateriaPorDocenteComponent,
     VerAlumnosPorAsignacionComponent,
     ActualizarAdminComponent,
-    NotaAlumnoComponent
+    NotaAlumnoComponent,
+    VerNotasMisAlumnosComponent
   ],
   imports: [
     BrowserModule,

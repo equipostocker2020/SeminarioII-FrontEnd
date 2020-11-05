@@ -13,5 +13,8 @@ export class Inscripcion {
     public nombre_aula?: string,
     public dia?: string,
     public horario?: string,
+    public id_nota?: string,
+    public nombre_instancia?: string,
+    public nota?:string,
   ) {}
 }
