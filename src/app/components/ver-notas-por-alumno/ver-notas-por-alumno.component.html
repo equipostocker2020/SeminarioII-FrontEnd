@@ -1,0 +1,90 @@
+<!-- <section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item ">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/login">Login </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/alumnos">Alumnos</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/docentes">Docentes</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/aulas">Aulas</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/materias">Materias</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/aulasMaterias">Asignacion</a>
+                </li>
+                <li *ngIf="usuario.rol == 'DOCENTE'" class="nav-item">
+                    <a class="nav-link" routerLink="/docente/aulaMateria/cargar-aulaMateria">Asignacion</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/inscripciones">Inscripcion</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ESTUDIANTE'" class="nav-item">
+                    <a class="nav-link" routerLink="/alumno/inscripcion/cargar-inscripcion">Inscripcion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" (click)="eliminarStorage()">Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>-->
+<br><br><br><br><br>
+
+<section class="container">
+    <div class="card mt-3 bg-light-green">
+        <div classs="card-body">
+            <br>
+            <h4 class="card-title text-center" style="color: blue gray;">Mis Notas
+            </h4>
+            <div class="body table-responsive table-borderless table-striped">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="text-center bg-green">
+                            <th class="text">#</th>
+                            <th class="text">Nombre Instancia</th>
+                            <th class="text">Nombre Materia</th>
+                            <th class="text">Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-striped">
+                        <tr class="text-center bg-light-green" *ngFor=" let inscripcion of inscripciones ">
+                            <td class="text text-center">
+                                {{inscripcion.id_nota}}
+                            </td>
+                            <td class="text text-center">
+                                {{inscripcion.nombre_instancia}}
+                            </td>
+                            <td class="text text-center">
+                                {{inscripcion.nombre_materia}}
+                            </td>
+                            <td class="text text-center">
+                                {{inscripcion.nota}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" routerLink="/dashboard" class="btn bg-blue-grey waves-effect waves-light m-2">Volver</button>
+            </div>
+        </div>
+    </div>
+</section>

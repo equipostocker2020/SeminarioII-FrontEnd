@@ -32,6 +32,7 @@ import { ActualizarAdminComponent } from './components/actualizar-admin/actualiz
 import { NotaAlumnoComponent } from './components/nota-alumno/nota-alumno.component';
 import { VerNotasMisAlumnosComponent } from './components/ver-notas-mis-alumnos/ver-notas-mis-alumnos.component';
 import { ActualizarNotaComponent } from './components/actualizar-nota/actualizar-nota.component';
+import { VerNotasPorAlumnoComponent } from './components/ver-notas-por-alumno/ver-notas-por-alumno.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent , data: {titulo: 'Register'}},
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: 'actualizar-admin', component: ActualizarAdminComponent, data: {titulo: 'Actualizar Admin'}},
   { path: 'alumno/calificar', component: NotaAlumnoComponent, data: {titulo: 'Calificar Alumno'}},
   { path: 'docente/verNotasPorAlumno', component: VerNotasMisAlumnosComponent, data: {titulo: 'Ver notas por alumno'}},
+  { path: 'alumno/ver-nota', component: VerNotasPorAlumnoComponent, data: {titulo: 'Ver nota por alumno'}},
   { path: 'alumno/actualizarNota', component: ActualizarNotaComponent, data: {titulo: 'Actualizar Nota'}},
   { path: '**', redirectTo: '/login' }
 ];

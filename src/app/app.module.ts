@@ -39,6 +39,7 @@ import { ActualizarAdminComponent } from './components/actualizar-admin/actualiz
 import { NotaAlumnoComponent } from './components/nota-alumno/nota-alumno.component';
 import { VerNotasMisAlumnosComponent } from './components/ver-notas-mis-alumnos/ver-notas-mis-alumnos.component';
 import { ActualizarNotaComponent } from './components/actualizar-nota/actualizar-nota.component';
+import { VerNotasPorAlumnoComponent } from './components/ver-notas-por-alumno/ver-notas-por-alumno.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { ActualizarNotaComponent } from './components/actualizar-nota/actualizar
     ActualizarAdminComponent,
     NotaAlumnoComponent,
     VerNotasMisAlumnosComponent,
-    ActualizarNotaComponent
+    ActualizarNotaComponent,
+    VerNotasPorAlumnoComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,9 @@ import { Inscripcion } from '../../models/inscripcion.models';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 import { AulaMateriaService } from '../../services/aulaMateria.service';
+import { Nota_alumno } from 'src/app/models/nota_alumno.models';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -40,6 +43,7 @@ export class DashboardComponent implements OnInit {
   token: string;
   aulaMateria: Aula_materia;
   aula_materia: Aula_materia;
+  notas_alumnos: Nota_alumno [] = [];
 
   constructor(
     public usuarioService: UsuarioService,
@@ -47,8 +51,9 @@ export class DashboardComponent implements OnInit {
     public aulaService: AulaService,
     public materiaService: MateriaService,
     public inscripcionService: InscripcionService,
-    public aulaMateriaService: AulaMateriaService
-  ) {
+    public aulaMateriaService: AulaMateriaService,
+    public router: Router
+    ) {
     this.usuario = usuarioService.usuario;
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
       this.docentes = resp.usuario;
@@ -161,4 +166,25 @@ export class DashboardComponent implements OnInit {
   eliminarStorage() {
     localStorage.clear();
   }
+
+  compruebaNotas(token: string, id : string){
+    this.tipoUsuarioService.getNotasPorAlumnoDesdeDocente(id)
+    .subscribe ((resp: any) => {
+      this.notas_alumnos =  resp.inscripciones;
+      console.log(resp.inscripciones)
+      if(this.notas_alumnos.length == 0){
+        Swal.fire({title: 'El estudiante no tiene notas',
+        icon: 'warning',
+        confirmButtonColor: '#3085d6'
+      });
+      }else{
+        this.router.navigate(['/alumno/ver-nota']);
+        localStorage.setItem('token', token);
+        localStorage.setItem('id_alumnoNotas', JSON.stringify(id));
+        this.token = token;
+      }
+    });
+
+
+}
 }

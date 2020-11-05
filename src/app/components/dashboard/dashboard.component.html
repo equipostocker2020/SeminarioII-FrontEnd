@@ -251,6 +251,7 @@
                     <!-- <th class="text">Apellido Docente</th> -->
                     <th class="text">Dia</th>
                     <th class="text">Horario</th>
+                    <th class="text">Notas</th>
                 </tr>
             </thead>
             <tbody class="table-striped">
@@ -269,6 +270,11 @@
                     </td>
                     <td class="text text-center">
                         {{inscripcionAlumno.horario}}
+                    </td>
+                    <td class="text text-center">
+                        <div class="col text">
+                            <a class="btn btn-outline-primary " (click)="compruebaNotas(token,inscripcionAlumno.id_usuario)">Ver Notas</a>
+                        </div>
                     </td>
                 </tr>
             </tbody>
