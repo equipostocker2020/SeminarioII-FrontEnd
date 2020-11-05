@@ -38,6 +38,7 @@ import { VerAlumnosPorAsignacionComponent } from './components/ver-alumnos-por-a
 import { ActualizarAdminComponent } from './components/actualizar-admin/actualizar-admin.component';
 import { NotaAlumnoComponent } from './components/nota-alumno/nota-alumno.component';
 import { VerNotasMisAlumnosComponent } from './components/ver-notas-mis-alumnos/ver-notas-mis-alumnos.component';
+import { ActualizarNotaComponent } from './components/actualizar-nota/actualizar-nota.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { VerNotasMisAlumnosComponent } from './components/ver-notas-mis-alumnos/
     VerAlumnosPorAsignacionComponent,
     ActualizarAdminComponent,
     NotaAlumnoComponent,
-    VerNotasMisAlumnosComponent
+    VerNotasMisAlumnosComponent,
+    ActualizarNotaComponent
   ],
   imports: [
     BrowserModule,

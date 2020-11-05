@@ -16,5 +16,6 @@ export class Inscripcion {
     public id_nota?: string,
     public nombre_instancia?: string,
     public nota?:string,
+    public id_instancia?: string,
   ) {}
 }

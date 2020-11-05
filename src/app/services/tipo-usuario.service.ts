@@ -75,7 +75,7 @@ export class TipoUsuarioService {
     return this.http.get(url);
   }
 
-  getnotasPorAlumno(id: string){
+  getnotasPorAlumnoPorId(id: string){
     let url = URL_SERVICIOS + '/tipo/notasxalumno/' + id;
     url += '?token=' + this.token;
     return this.http.get(url);

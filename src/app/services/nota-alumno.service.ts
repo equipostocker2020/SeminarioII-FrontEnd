@@ -77,8 +77,8 @@ export class NotaAlumnoService {
       })
     );
   }
-  putNotaAlumno(notaAlumno: Nota_alumno, id: string){
-    let url = URL_SERVICIOS + '/nota_alumno/' + id;
+  putNotaAlumno(notaAlumno: Nota_alumno){
+    let url = URL_SERVICIOS + '/nota_alumno/' + notaAlumno.id_nota;
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
     return this.http.put(url, notaAlumno).pipe(
       map((resp:any) => {

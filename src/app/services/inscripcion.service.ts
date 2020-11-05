@@ -51,6 +51,12 @@ export class InscripcionService {
     return this.http.get(url);
   }
 
+  getInscripcionPorId(id: string) {
+    let url = URL_SERVICIOS + '/inscripcion/' + id;
+    url += '?token=' + this.token;
+    return this.http.get(url);
+  }
+
   postInscripcion(inscripcion: Inscripcion) {
     let url = URL_SERVICIOS + '/inscripcion';
     url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();

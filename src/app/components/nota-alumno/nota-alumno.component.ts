@@ -5,6 +5,8 @@ import { TipoUsuarioService } from '../../services/tipo-usuario.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Nota_alumno } from '../../models/nota_alumno.models';
+import { Usuario } from 'src/app/models/usuario.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-nota-alumno',
@@ -17,12 +19,15 @@ export class NotaAlumnoComponent implements OnInit {
   instanciaEvaluaciones: Instancia [] = [];
   forma: FormGroup;
   id_inscripcion: string;
+  usuario: Usuario;
 
   constructor(
     public notaAlumnoService: NotaAlumnoService,
     public tipoUsuarioService: TipoUsuarioService,
     public router: Router,
+    public usuarioService: UsuarioService,
   ) {
+    this.usuario = usuarioService.usuario;
     notaAlumnoService.getInstancias().subscribe((resp: any) => {
       this.instanciaEvaluaciones = resp.instancia_evaluacion;
     });
@@ -64,6 +69,10 @@ export class NotaAlumnoComponent implements OnInit {
   getItemLocalStorage(){
     this.id_inscripcion = localStorage.getItem('id_inscripcion');
     return this.id_inscripcion;
+  }
+
+  eliminarStorage() {
+    localStorage.clear();
   }
 
 }

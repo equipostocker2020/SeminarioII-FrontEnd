@@ -4,6 +4,7 @@ import { TipoUsuarioService } from '../../services/tipo-usuario.service';
 import { Aula_materia } from '../../models/aula_materia.models';
 import { Usuario } from '../../models/usuario.models';
 import { Inscripcion } from '../../models/inscripcion.models';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-ver-alumnos-por-asignacion',
@@ -17,17 +18,20 @@ export class VerAlumnosPorAsignacionComponent implements OnInit {
   docente: Usuario;
   aulaMateria: Aula_materia;
   id_rel: string
-  isnscripcion: Inscripcion;
+  inscripcion: Inscripcion;
   inscripciones: Inscripcion [] = [];
   notasPorAlumno: Aula_materia;
   notasPorAlumnos: Aula_materia [] = [];
+  usuario: Usuario;
 
   constructor(
     public aulaMateriaService: AulaMateriaService,
-    public tipoUsuarioService: TipoUsuarioService
+    public tipoUsuarioService: TipoUsuarioService,
+    public usuarioService: UsuarioService,
   ) {
+     this.usuario = usuarioService.usuario;
      this.getItemLocalStorage();
-     this.tipoUsuarioService.getnotasPorAlumno(this.id_rel).subscribe((resp: any) =>{
+     this.tipoUsuarioService.getnotasPorAlumnoPorId(this.id_rel).subscribe((resp: any) =>{
       this.notasPorAlumnos = resp.notas_x_alumno;
       console.log(resp.notas_x_alumno);
      });
@@ -39,7 +43,7 @@ export class VerAlumnosPorAsignacionComponent implements OnInit {
  getItemLocalStorage(){
     if (localStorage.getItem('id_rel')) {
       this.id_rel = localStorage.getItem('id_rel');
-      this.tipoUsuarioService.getnotasPorAlumno(this.id_rel).subscribe((resp: any) => {
+      this.tipoUsuarioService.getnotasPorAlumnoPorId(this.id_rel).subscribe((resp: any) => {
         console.log(resp);
         if (resp.err){
         console.log(resp.err);
@@ -55,6 +59,10 @@ guardarStorageIdRel(id_inscripcion: string) {
 
 guardarStorateidAlumno(id_alumno: string){
   localStorage.setItem('id_alumno', id_alumno);
+}
+
+eliminarStorage() {
+  localStorage.clear();
 }
 
 }

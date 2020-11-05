@@ -31,7 +31,7 @@ import { VerAlumnosPorAsignacionComponent } from './components/ver-alumnos-por-a
 import { ActualizarAdminComponent } from './components/actualizar-admin/actualizar-admin.component';
 import { NotaAlumnoComponent } from './components/nota-alumno/nota-alumno.component';
 import { VerNotasMisAlumnosComponent } from './components/ver-notas-mis-alumnos/ver-notas-mis-alumnos.component';
-
+import { ActualizarNotaComponent } from './components/actualizar-nota/actualizar-nota.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent , data: {titulo: 'Register'}},
@@ -63,8 +63,9 @@ const routes: Routes = [
   { path: 'docente/aulaMateria/cargar-aulaMateria', component: CargarAulaMateriaPorDocenteComponent , data: {titulo: 'Crear Aula Materia'}},
   { path: 'alumnos/asignacion', component: VerAlumnosPorAsignacionComponent , data: {titulo: 'Crear Aula Materia'}},
   { path: 'actualizar-admin', component: ActualizarAdminComponent, data: {titulo: 'Actualizar Admin'}},
-  { path: 'alumno/calificar', component: NotaAlumnoComponent, data: {titulo: 'Actualizar Admin'}},
-  { path: 'docente/verNotasPorAlumno', component: VerNotasMisAlumnosComponent, data: {titulo: 'Actualizar Admin'}},
+  { path: 'alumno/calificar', component: NotaAlumnoComponent, data: {titulo: 'Calificar Alumno'}},
+  { path: 'docente/verNotasPorAlumno', component: VerNotasMisAlumnosComponent, data: {titulo: 'Ver notas por alumno'}},
+  { path: 'alumno/actualizarNota', component: ActualizarNotaComponent, data: {titulo: 'Actualizar Nota'}},
   { path: '**', redirectTo: '/login' }
 ];
 

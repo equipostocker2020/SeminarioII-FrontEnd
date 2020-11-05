@@ -1,3 +1,55 @@
+<section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item ">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/login">Login </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/alumnos">Alumnos</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/docentes">Docentes</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/aulas">Aulas</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/materias">Materias</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/aulasMaterias">Asignacion</a>
+                </li>
+                <li *ngIf="usuario.rol == 'DOCENTE'" class="nav-item">
+                    <a class="nav-link" routerLink="/docente/aulaMateria/cargar-aulaMateria">Asignacion</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="/inscripciones">Inscripcion</a>
+                </li>
+                <li *ngIf="usuario.rol == 'ESTUDIANTE'" class="nav-item">
+                    <a class="nav-link" routerLink="/alumno/inscripcion/cargar-inscripcion">Inscripcion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" (click)="eliminarStorage()">Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
+<br><br><br><br><br>
+
 <section class="container">
     <div class="card mt-3 bg-light-green">
         <div classs="card-body">
@@ -30,23 +82,12 @@
                                 {{inscripcion.nota}}
                             </td>
                             <td>
-                                <select [(ngModel)]="nota.nota" name="nota" class="form-control" (change)="actualizarNota(nota)">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
+                                <a routerLink="/alumno/actualizarNota" (click)=setItemsLocalStorage(inscripcion.id_instancia,inscripcion.id_inscripcion,inscripcion.id_nota,inscripcion)> actualizar</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" routerLink="/dashboard" class="btn bg-blue-grey waves-effect waves-light m-2">Volver</button>
+                <button type="submit" routerLink="/alumnos/asignacion" class="btn bg-blue-grey waves-effect waves-light m-2">Volver</button>
             </div>
         </div>
     </div>
