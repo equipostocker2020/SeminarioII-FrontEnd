@@ -109,5 +109,11 @@ export class TipoUsuarioService {
     url += '?token=' + this.token;
     return this.http.get(url);
   }
+
+  getNotasPorAlumnoDocenteReload(id: string){
+    let url = URL_SERVICIOS + '/tipo/alumno/misnotas/' + id;
+    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
+    return this.http.get(url);
+  }
  
 }

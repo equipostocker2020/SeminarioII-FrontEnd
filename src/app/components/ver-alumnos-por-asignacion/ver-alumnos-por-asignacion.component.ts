@@ -65,5 +65,4 @@ guardarStorateidAlumno(id_alumno: string){
 eliminarStorage() {
   localStorage.clear();
 }
-
 }

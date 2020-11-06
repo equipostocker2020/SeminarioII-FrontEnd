@@ -34,9 +34,8 @@ export class VerNotasMisAlumnosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tipoUsuarioService.getNotasPorAlumnoDesdeDocente(this.getItemLocalStorage()).subscribe((resp: any) => {
-      this.inscripciones = resp.inscripciones;
-      console.log(this.inscripciones);
+    this.tipoUsuarioService.getNotasPorAlumnoDocenteReload(this.getItemLocalStorage()).subscribe((resp: any) =>{
+    this.inscripciones = resp.inscripciones;
     });
     this.tipoUsuarioService.getAlumnoPorId(this.getItemLocalStorage()).subscribe((resp: any) =>{
       this.usuarios = resp.usuario;
