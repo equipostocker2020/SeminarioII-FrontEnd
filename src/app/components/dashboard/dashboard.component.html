@@ -50,42 +50,41 @@
 </section>
 <br><br><br><br><br>
 <section class="container">
-    <div class="card mt-3 bg-light-green">
+    <div class="card mt-3 bg-white">
         <div classs="card-body">
             <br><br>
-            <h4 class="card-title text-center">Bienvenido <b>{{usuario.nombre}} {{usuario.apellido}}</b>
+            <h4 class="card-title text-center text-dark">Bienvenido <b>{{usuario.nombre}} {{usuario.apellido}}</b>
             </h4>
-            <p class="card-text text-center">La direccion de correo electronico registrada es <b>{{usuario.email}}</b>
+            <p class="card-text text-center text-dark">La direccion de correo electronico registrada es <b>{{usuario.email}}</b>
             </p>
-            <p class="card-text text-center">Usted tiene el rol <b>{{usuario.rol}}</b></p>
+            <p class="card-text text-center text-dark">Usted tiene el rol <b>{{usuario.rol}}</b></p>
 
             <div *ngIf="this.usuario.rol == 'ADMIN' ">
-                <button routerLink="/actualizar-admin" type="button" class="btn btn-block btn-lg text-uppercase btn-success waves-effect" (click)="guardarStorage(usuario.id_usuario, token, usuario)">
+                <button routerLink="/actualizar-admin" type="button" class="btn btn-block btn-lg text-uppercase btn-secondary waves-effect" (click)="guardarStorage(usuario.id_usuario, token, usuario)">
                     <i class="material-icons">settings</i>
                     <span>Actualizar tu Perfil</span>
                 </button>
             </div>
             <div *ngIf="this.usuario.rol == 'DOCENTE' ">
-                <button routerLink="/docente/actualizar-docente" type="button" class="btn btn-block btn-lg text-uppercase btn-success waves-effect" (click)="guardarStorage(usuario.id_usuario, token, usuario)">
+                <button routerLink="/docente/actualizar-docente" type="button" class="btn btn-block btn-lg text-uppercase btn-secondary waves-effect" (click)="guardarStorage(usuario.id_usuario, token, usuario)">
                     <i class="material-icons">settings</i>
                     <span>Actualizar tu Perfil</span>
                 </button>
             </div>
             <div *ngIf="this.usuario.rol == 'ESTUDIANTE' ">
-                <button routerLink="/alumno/actualizar-alumno" type="button" class="btn btn-block btn-lg text-uppercase btn-success waves-effect" (click)="guardarStorage(usuario.id_usuario, token, usuario)">
+                <button routerLink="/alumno/actualizar-alumno" type="button" class="btn btn-block btn-lg text-uppercase btn-secondary waves-effect" (click)="guardarStorage(usuario.id_usuario, token, usuario)">
                     <i class="material-icons">settings</i>
                     <span>Actualizar tu Perfil</span>
                 </button>
             </div>
         </div>
     </div>
-    <br>
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Docentes Registrados
     </h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
-                <tr class="text-center bg-green">
+                <tr class="text-center bg-white text-dark">
                     <th class="text">#</th>
                     <th class="text">Nombre</th>
                     <th class="text">Apellido</th>
@@ -93,17 +92,17 @@
                 </tr>
             </thead>
             <tbody class="table-striped">
-                <tr class="text-center bg-light-green" *ngFor=" let docente of docentes ">
-                    <td class="text text-center">
+                <tr class="text-center bg-secondary text-dark" *ngFor=" let docente of docentes ">
+                    <td class="text text-center text-white">
                         {{docente.id_usuario}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{docente.nombre}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{docente.apellido}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{docente.email}}
                     </td>
 
@@ -111,12 +110,11 @@
             </tbody>
         </table>
     </div>
-    <!-- <br> -->
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center">Alumnos Registrados</h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless">
         <table class="table table-condensed">
             <thead>
-                <tr class="text-center bg-green">
+                <tr class="text-center text-dark bg-white">
                     <th class="text">#</th>
                     <th class="text">Nombre</th>
                     <th class="text">Apellido</th>
@@ -124,17 +122,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-light-green text-center" *ngFor=" let alumno of alumnos ">
-                    <td class="text text-center">
+                <tr class="bg-secondary text-dark text-center" *ngFor=" let alumno of alumnos ">
+                    <td class="text text-center text-white">
                         {{alumno.id_usuario}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{alumno.nombre}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{alumno.apellido}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{alumno.email}}
                     </td>
 
@@ -142,39 +140,37 @@
             </tbody>
         </table>
     </div>
-    <!-- <br> -->
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Aulas Registradas</h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
-                <tr class="text-center bg-green">
+                <tr class="text-center text-dark bg-white">
                     <th class="text">#</th>
                     <th class="text">Nombre</th>
                     <th class="text">Estado del aula</th>
                 </tr>
             </thead>
             <tbody class="table-striped">
-                <tr class="text-center bg-light-green" *ngFor=" let aula of aulas ">
-                    <td class="text text-center">
+                <tr class="text-center bg-secondary" *ngFor=" let aula of aulas ">
+                    <td class="text text-center text-white">
                         {{aula.id_aula}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{aula.nombre_aula}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{aula.estado}}
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <!-- <br> -->
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Materias Registradas
     </h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
-                <tr class="text-center bg-green">
+                <tr class="text-center text-dark bg-white">
                     <th class="text">#</th>
                     <th class="text">Nombre Materia</th>
                     <th class="text">Dia de la Cursada</th>
@@ -182,30 +178,29 @@
                 </tr>
             </thead>
             <tbody class="table-striped">
-                <tr class="text-center bg-light-green" *ngFor=" let materia of materias ">
-                    <td class="text text-center">
+                <tr class="text-center bg-secondary" *ngFor=" let materia of materias ">
+                    <td class="text text-center text-white">
                         {{materia.id_materia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{materia.nombre_materia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{materia.dia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{materia.horario}}
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <!-- <br> -->
     <h4 *ngIf="usuario.rol == 'ADMIN'" class="card-title text-center" style="color: blue gray;">Asignaciones Registradas
     </h4>
     <div *ngIf="this.usuario.rol == 'ADMIN' " class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
-                <tr class="text-center bg-green">
+                <tr class="text-center text-dark bg-white">
                     <th class="text">#</th>
                     <th class="text">Nombre Materia</th>
                     <th class="text">Aula</th>
@@ -215,189 +210,113 @@
                 </tr>
             </thead>
             <tbody class="table-striped">
-                <tr class="text-center bg-light-green" *ngFor=" let asignacion of asignaciones ">
-                    <td class="text text-center">
+                <tr class="text-center bg-secondary" *ngFor=" let asignacion of asignaciones ">
+                    <td class="text text-center text-white">
                         {{asignacion.id_rel}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacion.nombre_materia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacion.nombre_aula}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacion.apellido}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacion.dia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacion.horario}}
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <!-- <br><br> -->
+    <br *ngIf="usuario.rol =='ESTUDIANTE'">
     <h4 *ngIf="usuario.rol =='ESTUDIANTE'" class="card-title text-center" style="color: blue gray;">Mis Inscripciones Registradas
     </h4>
+    <br *ngIf="usuario.rol =='ESTUDIANTE'">
     <div *ngIf="usuario.rol=='ESTUDIANTE'" class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
-                <tr class="text-center bg-green">
+                <tr class="text-center text-dark bg-white">
                     <th class="text">#</th>
                     <th class="text">Nombre Materia</th>
                     <th class="text">Aula</th>
-                    <!-- <th class="text">Apellido Docente</th> -->
                     <th class="text">Dia</th>
                     <th class="text">Horario</th>
                     <th class="text">Notas</th>
                 </tr>
             </thead>
             <tbody class="table-striped">
-                <tr class="text-center bg-light-green" *ngFor=" let inscripcionAlumno of inscripcionesAlumno ">
-                    <td class="text text-center">
+                <tr class="text-center bg-secondary" *ngFor=" let inscripcionAlumno of inscripcionesAlumno ">
+                    <td class="text text-center text-white">
                         {{inscripcionAlumno.id_rel}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{inscripcionAlumno.nombre_materia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{inscripcionAlumno.nombre_aula}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{inscripcionAlumno.dia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{inscripcionAlumno.horario}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         <div class="col text">
-                            <a class="btn btn-outline-primary " (click)="compruebaNotas(token,inscripcionAlumno.id_usuario)">Ver Notas</a>
+                            <a class="btn btn-outline btn-secondary" (click)="compruebaNotas(token,inscripcionAlumno.id_usuario)">Ver Notas</a>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <!-- <br><br> -->
+    <br *ngIf="usuario.rol =='DOCENTE'">
     <h4 *ngIf="usuario.rol =='DOCENTE'" class="card-title text-center" style="color: blue gray;">Mis Asignaciones Registradas
     </h4>
+    <br *ngIf="usuario.rol =='DOCENTE'">
     <div *ngIf="usuario.rol=='DOCENTE'" class="body table-responsive table-borderless table-striped">
         <table class="table table-condensed">
             <thead>
-                <tr class="text-center bg-green">
+                <tr class="text-center text-dark bg-white">
                     <th class="text">#</th>
                     <th class="text">Dia</th>
                     <th class="text">Nombre de la Materia</th>
                     <th class="text">Horario</th>
                     <th class="text">Aula</th>
-                    <!-- <th class="text">Apellido Docente</th> -->
                     <th class="text">Ver Alumnos</th>
                 </tr>
             </thead>
             <tbody class="table-striped">
-                <tr class="text-center bg-light-green" *ngFor=" let asignacionDocente of asignacionesDocente ">
-                    <td class="text text-center">
+                <tr class="text-center bg-secondary" *ngFor=" let asignacionDocente of asignacionesDocente ">
+                    <td class="text text-center text-white">
                         {{asignacionDocente.id_rel}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacionDocente.dia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacionDocente.nombre_materia}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacionDocente.horario}}
                     </td>
-                    <td class="text text-center">
+                    <td class="text text-center text-white">
                         {{asignacionDocente.nombre_aula}}
                     </td>
-                    <td class="text text-center">
-                        <!-- <span class="input-group-addon">
-                            <i class="material-icons">person</i>
-                        </span> -->
-                        <a routerLink="/alumnos/asignacion" (click)="guardarStorageIdRel(asignacionDocente.id_rel)">Ver alumnos</a>
+                    <td class="text text-center text-white">
+
+
+                        <a class="btn btn-outline btn-secondary" routerLink="/alumnos/asignacion" (click)="guardarStorageIdRel(asignacionDocente.id_rel)">Ver alumnos</a>
+
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <!-- <div class="row clearfix"> -->
-    <!-- Line Chart -->
-    <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2 class="text-center">Promedio edad Alumnos</h2>
-                </div>
-                <div class="body">
-                    <div>
-                        <div style="display: block">
-                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                                </canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    <!-- #END# Line Chart -->
-    <!-- Bar Chart -->
-    <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2 class="text-center">Promedio de notas</h2>
-
-                </div>
-                <div class="body">
-                    <div>
-                        <div style="display: block">
-                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                                </canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    <!-- #END# Bar Chart -->
-    <!-- </div> -->
-
-    <!-- <div class="row clearfix"> -->
-    <!-- Radar Chart -->
-    <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2 class="text-center">Promedio edad Docentes</h2>
-                </div>
-                <div class="body">
-                    <div>
-                        <div style="display: block">
-                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                                </canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    <!-- #END# Radar Chart -->
-    <!-- Pie Chart -->
-    <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2 class="text-center">Promedio aprobados por cursada</h2>
-                </div>
-                <div class="body">
-                    <div>
-                        <div style="display: block">
-                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
-                                </canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    <!-- #END# Pie Chart -->
-    <!-- </div> -->
-    <!-- </div> -->
-
     <br><br>
 </section>

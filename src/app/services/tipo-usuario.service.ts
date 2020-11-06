@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { URL_SERVICIOS } from '../config/config';
 import { Usuario } from '../models/usuario.models';
 import { AulaMateriaService } from './aulaMateria.service';
+import { map,catchError } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -79,6 +81,20 @@ export class TipoUsuarioService {
     let url = URL_SERVICIOS + '/tipo/notasxalumno/' + id;
     url += '?token=' + this.token;
     return this.http.get(url);
+    // .pipe(
+    //   map((resp: any) => {
+    //   return resp.id;
+    //   }),
+    //   catchError((err: any) => {
+    //     console.log(err);
+    //     Swal.fire(
+    //       'No hay Alumnos',
+    //       err.error,
+    //       'error'
+    //     );
+    //     return err.throw(err.error.error);
+    //   })
+    // );
   }
 
   getIdUsuarioLocalStorage() {

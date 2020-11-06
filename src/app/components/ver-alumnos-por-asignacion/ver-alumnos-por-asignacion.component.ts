@@ -5,6 +5,7 @@ import { Aula_materia } from '../../models/aula_materia.models';
 import { Usuario } from '../../models/usuario.models';
 import { Inscripcion } from '../../models/inscripcion.models';
 import { UsuarioService } from '../../services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ver-alumnos-por-asignacion',
@@ -31,7 +32,7 @@ export class VerAlumnosPorAsignacionComponent implements OnInit {
   ) {
      this.usuario = usuarioService.usuario;
      this.getItemLocalStorage();
-     this.tipoUsuarioService.getnotasPorAlumnoPorId(this.id_rel).subscribe((resp: any) =>{
+     this.tipoUsuarioService.getnotasPorAlumnoPorId(this.id_rel).subscribe((resp: any) => {
       this.notasPorAlumnos = resp.notas_x_alumno;
       console.log(resp.notas_x_alumno);
      });

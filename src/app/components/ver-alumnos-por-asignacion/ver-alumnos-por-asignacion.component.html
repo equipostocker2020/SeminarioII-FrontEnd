@@ -50,7 +50,7 @@
 </section>
 <br><br><br><br><br>
 <section class="container">
-    <div class="card mt-3 bg-light-green">
+    <div class="card mt-3 bg-white text-dark">
         <div classs="card-body">
             <br>
             <h4 class="card-title text-center" style="color: blue gray;">Alumnos Registrados
@@ -58,7 +58,7 @@
             <div class="body table-responsive table-borderless table-striped">
                 <table class="table table-condensed">
                     <thead>
-                        <tr class="text-center bg-green">
+                        <tr class="text-center text-dark bg-white">
                             <th class="text">#</th>
                             <th class="text">Apellido</th>
                             <th class="text">DNI</th>
@@ -70,36 +70,38 @@
                         </tr>
                     </thead>
                     <tbody class="table-striped">
-                        <tr class="text-center bg-light-green" *ngFor=" let notaPorAlumno of notasPorAlumnos ">
-                            <td class="text text-center">
+                        <tr class="text-center bg-secondary" *ngFor=" let notaPorAlumno of notasPorAlumnos ">
+                            <td class="text text-center text-white">
                                 {{notaPorAlumno.id_rel}}
                             </td>
-                            <td class="text text-center">
+                            <td class="text text-center text-white">
                                 {{notaPorAlumno.apellido}}
                             </td>
-                            <td class="text text-center">
+                            <td class="text text-center text-white">
                                 {{notaPorAlumno.dni}}
                             </td>
-                            <td class="text text-center">
+                            <td class="text text-center text-white">
                                 {{notaPorAlumno.email}}
                             </td>
-                            <td class="text text-center">
+                            <td class="text text-center text-white">
                                 {{notaPorAlumno.nombre_aula}}
                             </td>
-                            <td class="text text-center">
+                            <td class="text text-center text-white">
                                 {{notaPorAlumno.nombre_materia}}
                             </td>
                             <td class="text text-center">
-                                <a routerLink="/alumno/calificar" (click)=guardarStorageIdRel(notaPorAlumno.id_inscripcion)>Calificar</a>
+                                <a class="btn btn-outline btn-secondary" routerLink="/alumno/calificar" (click)=guardarStorageIdRel(notaPorAlumno.id_inscripcion)>Calificar</a>
                             </td>
                             <td class="text text-center">
-                                <a routerLink="/docente/verNotasPorAlumno" (click)=guardarStorateidAlumno(notaPorAlumno.id_usuario)>Ver Notas</a>
+                                <a class="btn btn-outline btn-secondary" routerLink="/docente/verNotasPorAlumno" (click)=guardarStorateidAlumno(notaPorAlumno.id_usuario)>Ver Notas</a>
                             </td>
 
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" routerLink="/dashboard" class="btn bg-blue-grey waves-effect waves-light m-2">Volver</button>
+                <div class="container text-center">
+                    <button type="submit" routerLink="/dashboard" class="btn btn-lg bg-blue-grey waves-effect waves-light m-2">Volver</button>
+                </div>
             </div>
         </div>
     </div>
