@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   token: string;
   aulaMateria: Aula_materia;
   aula_materia: Aula_materia;
-  notas_alumnos: Nota_alumno [] = [];
+  notas_alumnos: Nota_alumno[] = [];
 
   constructor(
     public usuarioService: UsuarioService,
@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
     public inscripcionService: InscripcionService,
     public aulaMateriaService: AulaMateriaService,
     public router: Router
-    ) {
+  ) {
     this.usuario = usuarioService.usuario;
     this.tipoUsuarioService.getDocente().subscribe((resp: any) => {
       this.docentes = resp.usuario;
@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarStorage();
-    if(this.usuario.rol == 'ESTUDIANTE' || this.usuario.rol == 'DOCENTE' ){
+    if (this.usuario.rol == 'ESTUDIANTE' || this.usuario.rol == 'DOCENTE') {
       this.cargarStorageAux();
     }
   }
@@ -138,7 +138,7 @@ export class DashboardComponent implements OnInit {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuarioActualizar'));
-      if(this.usuario == null){
+      if (this.usuario == null) {
         this.usuario = JSON.parse(localStorage.getItem('usuario'));
       }
       localStorage.setItem('usuario', JSON.stringify(this.usuario));
@@ -167,24 +167,28 @@ export class DashboardComponent implements OnInit {
     localStorage.clear();
   }
 
-  compruebaNotas(token: string, id : string){
+  compruebaNotas(token: string, id: string) {
     this.tipoUsuarioService.getNotasPorAlumnoDesdeDocente(id)
-    .subscribe ((resp: any) => {
-      this.notas_alumnos =  resp.inscripciones;
-      console.log(resp.inscripciones)
-      if(this.notas_alumnos.length == 0){
-        Swal.fire({title: 'El estudiante no tiene notas',
-        icon: 'warning',
-        confirmButtonColor: '#3085d6'
+      .subscribe((resp: any) => {
+        console.log(resp)
+        console.log("notas", resp.inscripciones)
+        console.log("cantidad", this.notas_alumnos.length)
+
+        this.notas_alumnos = resp.inscripciones;
+        if (this.notas_alumnos.length == 0) {
+          Swal.fire({
+            title: 'El estudiante no tiene notas',
+            icon: 'warning',
+            confirmButtonColor: '#3085d6'
+          });
+        } else {
+          this.router.navigate(['/alumno/ver-nota']);
+          localStorage.setItem('token', token);
+          localStorage.setItem('id_alumnoNotas', JSON.stringify(id));
+          this.token = token;
+        }
       });
-      }else{
-        this.router.navigate(['/alumno/ver-nota']);
-        localStorage.setItem('token', token);
-        localStorage.setItem('id_alumnoNotas', JSON.stringify(id));
-        this.token = token;
-      }
-    });
 
 
-}
+  }
 }

@@ -107,7 +107,18 @@ export class TipoUsuarioService {
   getNotasPorAlumnoDesdeDocente(id: string){
     let url = URL_SERVICIOS + '/tipo/alumno/misnotas/' + id;
     url += '?token=' + this.token;
-    return this.http.get(url);
+    return this.http.get(url)
+    .pipe(
+      map((resp: any) => {
+        return resp;
+      }),
+      catchError((err: any) => {
+        console.log(err);
+        console.log(err.error.error);
+        const errores = err.error.error;
+        Swal.fire('Error esta asignacion no tiene Notas', errores.substring(0), 'error');
+        return err.throw(err);
+      }));
   }
 
   getNotasPorAlumnoDocenteReload(id: string){
