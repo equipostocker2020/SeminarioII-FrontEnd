@@ -6,6 +6,7 @@ import { Usuario } from '../../models/usuario.models';
 import { Inscripcion } from '../../models/inscripcion.models';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-alumnos-por-asignacion',
@@ -24,11 +25,14 @@ export class VerAlumnosPorAsignacionComponent implements OnInit {
   notasPorAlumno: Aula_materia;
   notasPorAlumnos: Aula_materia [] = [];
   usuario: Usuario;
+  token: string;
+  notas_de_los_alumnos: Inscripcion[] = [];
 
   constructor(
     public aulaMateriaService: AulaMateriaService,
     public tipoUsuarioService: TipoUsuarioService,
     public usuarioService: UsuarioService,
+    public router: Router
   ) {
      this.usuario = usuarioService.usuario;
      this.getItemLocalStorage();
@@ -58,9 +62,27 @@ guardarStorageIdRel(id_inscripcion: string) {
   localStorage.setItem('id_inscripcion', id_inscripcion);
 }
 
-guardarStorateidAlumno(id_alumno: string){
-  localStorage.setItem('id_alumno', id_alumno);
+compruebaNotas(token: string, id: string) {
+  this.tipoUsuarioService.getNotasPorAlumnoDesdeDocente(id)
+    .subscribe((resp: any) => {
+      this.notas_de_los_alumnos = resp.inscripciones;
+      if (this.notas_de_los_alumnos.length == 0) {
+        Swal.fire({
+          title: 'El estudiante no tiene notas',
+          icon: 'warning',
+          confirmButtonColor: '#3085d6'
+        });
+      } else {
+        this.router.navigate(['/docente/verNotasPorAlumno']);
+        localStorage.setItem('token', token);
+        localStorage.setItem('id_alumno', id);
+        this.token = token;
+      }
+    });
+
+
 }
+
 
 eliminarStorage() {
   localStorage.clear();

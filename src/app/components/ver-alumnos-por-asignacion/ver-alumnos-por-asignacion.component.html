@@ -93,7 +93,7 @@
                                 <a class="btn btn-outline btn-secondary" routerLink="/alumno/calificar" (click)=guardarStorageIdRel(notaPorAlumno.id_inscripcion)>Calificar</a>
                             </td>
                             <td class="text text-center">
-                                <a class="btn btn-outline btn-secondary" routerLink="/docente/verNotasPorAlumno" (click)=guardarStorateidAlumno(notaPorAlumno.id_usuario)>Ver Notas</a>
+                                <a class="btn btn-outline btn-secondary"  (click)=compruebaNotas(token,notaPorAlumno.id_usuario)>Ver Notas</a>
                             </td>
 
                         </tr>

@@ -31,13 +31,14 @@ export class VerNotasMisAlumnosComponent implements OnInit {
     public usuarioService: UsuarioService,
   ) {
     this.usuarioUpdate = usuarioService.usuario;
+    this.getItemLocalStorage();
   }
 
   ngOnInit(): void {
-    this.tipoUsuarioService.getNotasPorAlumnoDocenteReload(this.getItemLocalStorage()).subscribe((resp: any) =>{
+    this.tipoUsuarioService.getNotasPorAlumnoDocenteReload(this.id_alumno).subscribe((resp: any) =>{
     this.inscripciones = resp.inscripciones;
     });
-    this.tipoUsuarioService.getAlumnoPorId(this.getItemLocalStorage()).subscribe((resp: any) =>{
+    this.tipoUsuarioService.getAlumnoPorId(this.id_alumno).subscribe((resp: any) =>{
       this.usuarios = resp.usuario;
       for (let i of this.usuarios){
         if (this.usuarios.length === 1){

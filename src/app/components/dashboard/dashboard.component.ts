@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   token: string;
   aulaMateria: Aula_materia;
   aula_materia: Aula_materia;
-  notas_alumnos: Nota_alumno[] = [];
+  notas_de_los_alumnos: Inscripcion[] = [];
 
   constructor(
     public usuarioService: UsuarioService,
@@ -170,12 +170,8 @@ export class DashboardComponent implements OnInit {
   compruebaNotas(token: string, id: string) {
     this.tipoUsuarioService.getNotasPorAlumnoDesdeDocente(id)
       .subscribe((resp: any) => {
-        console.log(resp)
-        console.log("notas", resp.inscripciones)
-        console.log("cantidad", this.notas_alumnos.length)
-
-        this.notas_alumnos = resp.inscripciones;
-        if (this.notas_alumnos.length == 0) {
+        this.notas_de_los_alumnos = resp.inscripciones;
+        if (this.notas_de_los_alumnos.length == 0) {
           Swal.fire({
             title: 'El estudiante no tiene notas',
             icon: 'warning',

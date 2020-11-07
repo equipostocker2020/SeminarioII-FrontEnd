@@ -123,8 +123,22 @@ export class TipoUsuarioService {
 
   getNotasPorAlumnoDocenteReload(id: string){
     let url = URL_SERVICIOS + '/tipo/docente/notasxalumno/' + id;
-    url += '?token=' + this.token + '&idUsuario=' + this.getIdUsuarioLocalStorage();
-    return this.http.get(url);
+    url += '?token=' + this.token + '&id_usuario=' + this.getIdUsuarioLocalStorage();
+    console.log("USUARIO DEL DOCENTE ----> ", this.getIdUsuarioLocalStorage());
+    console.log("USUARIO DEL ALUMNO ---->" ,id)
+    console.log(url)
+    return this.http.get(url)
+    .pipe(
+    map((resp: any) => {
+      return resp;
+    }),
+    catchError((err: any) => {
+      console.log(err);
+      console.log(err.error.error);
+      const errores = err.error.error;
+      Swal.fire('Este alumno aún no tiene notas asignadas', errores.substring(0), 'error');
+      return err.throw(err);
+    }));
   }
  
 }
