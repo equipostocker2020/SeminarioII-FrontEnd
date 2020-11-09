@@ -76,6 +76,10 @@
                     <i class="material-icons">settings</i>
                     <span>Actualizar tu Perfil</span>
                 </button>
+
+                <button  type="button" class="btn btn-block btn-lg text-uppercase btn-secondary waves-effect" (click)="compruebaNotas(token,usuario.id_usuario)">
+                    <span>Ver Notas</span>
+                </button>
             </div>
         </div>
     </div>
@@ -246,7 +250,6 @@
                     <th class="text">Aula</th>
                     <th class="text">Dia</th>
                     <th class="text">Horario</th>
-                    <th class="text">Notas</th>
                 </tr>
             </thead>
             <tbody class="table-striped">
@@ -265,11 +268,6 @@
                     </td>
                     <td class="text text-center text-white">
                         {{inscripcionAlumno.horario}}
-                    </td>
-                    <td class="text text-center text-white">
-                        <div class="col text">
-                            <a class="btn btn-outline btn-secondary" (click)="compruebaNotas(token,inscripcionAlumno.id_usuario)">Ver Notas</a>
-                        </div>
                     </td>
                 </tr>
             </tbody>
