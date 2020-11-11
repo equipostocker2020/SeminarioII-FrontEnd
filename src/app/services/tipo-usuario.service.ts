@@ -116,7 +116,7 @@ export class TipoUsuarioService {
         console.log(err);
         console.log(err.error.error);
         const errores = err.error.error;
-        Swal.fire('Error esta asignacion no tiene Notas', errores.substring(0), 'error');
+        Swal.fire('El estudiante no tiene notas', errores.substring(0), 'error');
         return err.throw(err);
       }));
   }
