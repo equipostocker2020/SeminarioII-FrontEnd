@@ -26,9 +26,9 @@
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/materias">Materias</a>
                 </li>
-                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                <!-- <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
-                </li>
+                </li> -->
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/aulasMaterias">Asignacion</a>
                 </li>
@@ -268,11 +268,11 @@
                 </tr>
             </tbody>
         </table>
-    <div class="container-center">
-        <button  type="button" class="btn btn-block btn-lg text-uppercase btn-secondary waves-effect" (click)="compruebaNotas(token,usuario.id_usuario)">
+        <div class="container-center">
+            <button type="button" class="btn btn-block btn-lg text-uppercase btn-secondary waves-effect" (click)="compruebaNotas(token,usuario.id_usuario)">
             <span>Ver Notas</span>
         </button>
-    </div>
+        </div>
     </div>
     <br *ngIf="usuario.rol =='DOCENTE'">
     <h4 *ngIf="usuario.rol =='DOCENTE'" class="card-title text-center" style="color: blue gray;">Mis Asignaciones Registradas
