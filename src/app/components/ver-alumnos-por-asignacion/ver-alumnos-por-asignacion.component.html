@@ -26,9 +26,9 @@
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/materias">Materias</a>
                 </li>
-                <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
+                <!-- <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
-                </li>
+                </li> -->
                 <li *ngIf="usuario.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/aulasMaterias">Asignacion</a>
                 </li>
@@ -93,7 +93,7 @@
                                 <a class="btn btn-outline btn-secondary" routerLink="/alumno/calificar" (click)=guardarStorageIdRel(notaPorAlumno.id_inscripcion)>Calificar</a>
                             </td>
                             <td class="text text-center">
-                                <a class="btn btn-outline btn-secondary"  (click)=compruebaNotas(token,notaPorAlumno.id_usuario)>Ver Notas</a>
+                                <a class="btn btn-outline btn-secondary" (click)=compruebaNotas(token,notaPorAlumno.id_usuario)>Ver Notas</a>
                             </td>
 
                         </tr>

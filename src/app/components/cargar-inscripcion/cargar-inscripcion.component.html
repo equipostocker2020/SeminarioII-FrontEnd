@@ -26,9 +26,9 @@
                 <li *ngIf="usuarioLogOut.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/materias">Materias</a>
                 </li>
-                <li *ngIf="usuarioLogOut.rol == 'ADMIN'" class="nav-item">
+                <!-- <li *ngIf="usuarioLogOut.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/evaluaciones">Evaluaciones</a>
-                </li>
+                </li> -->
                 <li *ngIf="usuarioLogOut.rol == 'ADMIN'" class="nav-item">
                     <a class="nav-link" href="/aulasMaterias">Asignacion</a>
                 </li>
@@ -63,7 +63,7 @@
                                 <option value="">Seleccione Alumno</option>
                                 <option class="form-control"  *ngFor="let usuario of usuarios"
                                     [value]="usuario.id_usuario">
-                                    {{usuario.nombre}}
+                                    {{usuario.nombre}} {{usuario.apellido}}
                                 </option>
                             </select>
                             <br>

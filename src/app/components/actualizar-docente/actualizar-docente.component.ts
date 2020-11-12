@@ -69,9 +69,9 @@ export class ActualizarDocenteComponent implements OnInit {
       .actualizarUsuario(this.usuario)
       .subscribe((resp: any) => {
         if (this.usuarioLogueado.rol === 'DOCENTE'){
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/docentes']);
         }else{
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/docentes']);
         }
         this.removerItemsStorage();
       });
